@@ -1,0 +1,39 @@
+#mainPage #the-edit[data-bottleneck]{position:relative;background:#080a0c;color:#edf1f4;min-height:0}
+#mainPage #the-edit[data-bottleneck] .bottleneck-sticky{box-sizing:border-box;position:sticky;top:var(--chapter-header-offset,52px);height:var(--scene-height,calc(100svh - 52px));min-height:440px;padding:28px var(--page-gutter,5%) 22px;display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch;grid-template-rows:auto minmax(0,1fr) auto;gap:18px;background:#080a0c;overflow:hidden}
+.bottleneck-heading h2{font:500 clamp(34px,4.5vw,68px)/1.1 MeaningDisplay,Impact,sans-serif;margin:0 0 14px;letter-spacing:0}
+.bottleneck-heading p{font:clamp(15px,1.5vw,22px)/1.4 var(--sans,Arial,sans-serif);color:#a8b5c0;margin:0}
+.bottleneck-visual{position:relative;min-height:0;width:100%;isolation:isolate}
+.bottleneck-canvas{display:none;position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.bottleneck-stages{list-style:none;margin:0;padding:0;display:grid;gap:24px}
+.bottleneck-stages li{font:500 clamp(20px,2.3vw,36px)/1.2 MeaningDisplay,Impact,sans-serif}
+.bottleneck-stages small{display:block;font:11px/1.4 var(--sans,Arial,sans-serif);color:#798b99;margin-bottom:12px}
+.bottleneck-annotation{display:none;font:clamp(10px,1vw,14px)/1.3 var(--sans,Arial,sans-serif);color:#a8bfce}
+.bottleneck-annotation .resolved{display:none}.bottleneck-resolved .bottleneck-annotation .resolved{display:block}.bottleneck-resolved .bottleneck-annotation .constraint{display:none}
+.bottleneck-caption{font:clamp(14px,1.4vw,21px)/1.4 var(--sans,Arial,sans-serif);margin:0;min-height:2.8em;max-width:760px;color:#b9c7d1}
+.bottleneck-controls{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin-top:10px}
+.bottleneck-controls button{font:11px/1.3 var(--sans,Arial,sans-serif);padding:8px 0;min-height:40px;color:#7d909f;background:none;border:0;border-bottom:1px solid transparent;cursor:pointer}
+.bottleneck-controls button[aria-pressed=true]{color:#e9f1f6;border-bottom-color:#a4b9c9}
+.bottleneck-controls .bottleneck-motion{margin-left:auto;color:#b8c9d6;border:1px solid #46545e;border-radius:2px;padding:8px 12px}
+.bottleneck-controls button:focus-visible{outline:2px solid #c5d8e7;outline-offset:4px}
+#mainPage #the-edit[data-bottleneck-ready] .bottleneck-canvas{display:block}
+#mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages{display:block}
+#mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li{position:absolute;top:13%;width:25%;white-space:nowrap}
+#mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li:nth-child(1){left:2%}#mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li:nth-child(2){left:28%}#mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li:nth-child(3){left:54%}#mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li:nth-child(4){left:80%;width:20%}
+#mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li:nth-child(2):before{content:'';position:absolute;left:-8px;top:-14px;width:95%;height:8px;border:1px solid #adc5d7;border-bottom:0;opacity:var(--bottleneck-focus,0)}
+#mainPage #the-edit[data-bottleneck-ready] .bottleneck-annotation{display:block;position:absolute;left:28%;top:85%;max-width:65%}
+@media(max-width:720px){
+ #mainPage #the-edit[data-bottleneck] .bottleneck-sticky{min-height:510px;padding:18px 6% 16px;gap:12px}
+ .bottleneck-heading h2{font-size:clamp(32px,9vw,48px);margin-bottom:8px}.bottleneck-heading p{font-size:14px;max-width:26ch}
+ #mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li{left:0!important;top:auto;width:65%!important;font-size:clamp(18px,5.7vw,27px)}
+ #mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li:nth-child(1){top:8%}#mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li:nth-child(2){top:32%}#mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li:nth-child(3){top:56%}#mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li:nth-child(4){top:80%}
+ .bottleneck-stages small{font-size:9px;margin-bottom:4px}
+ #mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li:nth-child(2):before{left:-7px;top:-4px;width:1px;height:80px;border:0;border-left:1px solid #adc5d7}
+ #mainPage #the-edit[data-bottleneck-ready] .bottleneck-annotation{left:0;top:43%;max-width:65%;font-size:9px}
+ .bottleneck-caption{font-size:13px;min-height:2.8em}.bottleneck-controls{gap:4px 12px;margin-top:4px}.bottleneck-controls button{font-size:9px;min-height:34px}.bottleneck-controls .bottleneck-motion{font-size:9px;padding:6px 8px}
+}
+@media(max-height:580px) and (min-width:721px){#mainPage #the-edit[data-bottleneck] .bottleneck-sticky{min-height:310px;padding-block:12px;gap:8px}.bottleneck-heading h2{font-size:30px;margin-bottom:5px}.bottleneck-heading p{font-size:13px}.bottleneck-caption{font-size:12px;min-height:1.4em}.bottleneck-controls{margin-top:0}.bottleneck-stages li{font-size:22px}.bottleneck-stages small{margin-bottom:3px}.bottleneck-controls button{min-height:30px}}
+/* A natural-height reading layout remains available without Canvas/JavaScript. */
+#mainPage #the-edit[data-bottleneck]:not([data-bottleneck-ready]) .bottleneck-sticky{height:auto;min-height:0;overflow:visible;position:relative}
+#mainPage #the-edit[data-bottleneck]:not([data-bottleneck-ready]) .bottleneck-controls{display:none}
+@media(prefers-reduced-motion:reduce){#mainPage #the-edit[data-bottleneck] *{scroll-behavior:auto}}
+@media(max-width:720px) and (max-height:650px){#mainPage #the-edit[data-bottleneck-ready] .bottleneck-annotation{display:none}.bottleneck-caption{font-size:12px}.bottleneck-controls{gap:4px 9px}}

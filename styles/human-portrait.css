@@ -1,0 +1,44 @@
+/* A continuous dark portrait, with a compact heading/portrait pairing on mobile. */
+#human.has-portrait{background:#080909;color:#f0f1ed}
+#mainPage #human.has-portrait .human-editorial-grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);column-gap:var(--chapter-gap);align-items:start}
+#human.has-portrait .human-editorial-portrait{grid-column:1;grid-row:1;align-self:start;min-height:0;height:auto;max-height:none;aspect-ratio:4/5;margin:0;overflow:hidden;background:#080909}
+#human.has-portrait .human-editorial-portrait img{display:block;width:100%;height:100%;object-fit:contain;filter:grayscale(1);mask-image:linear-gradient(to bottom,#000 0%,#000 74%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 74%,transparent 100%)}
+#human.has-portrait .human-editorial-portrait::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#080909,transparent 9%,transparent 91%,#080909),linear-gradient(180deg,#080909,transparent 7%,transparent 85%,#080909)}
+#human.has-portrait .human-editorial-copy{grid-column:2;grid-row:1;display:block}
+#mainPage #human.has-portrait .human-editorial-intro{margin-top:var(--chapter-copy-gap);color:#dedfdb}
+#human.has-portrait .human-editorial-background{margin-top:20px;color:#b6bbb6}
+#human.has-portrait .human-editorial-columns{margin-top:36px;padding-top:28px;gap:28px 20px;border-color:#ffffff30}
+#human.has-portrait .human-editorial-column li>span{color:#aeb3ae}
+@media(min-width:801px) and (max-width:1100px){
+ #human.has-portrait .human-editorial-columns{grid-template-columns:1fr 1fr}
+ #human.has-portrait .human-editorial-column:last-child{grid-column:1/-1}
+ #human.has-portrait .human-editorial-column:last-child ul{display:flex;flex-wrap:wrap;gap:8px 20px}
+}
+@media(max-width:800px){
+ #mainPage #human.has-portrait .human-editorial-grid{grid-template-columns:minmax(132px,.95fr) minmax(0,1.05fr);column-gap:8px;row-gap:20px}
+ #human.has-portrait .human-editorial-copy{display:contents}
+ #human.has-portrait #human-title{grid-column:1;grid-row:1;align-self:start;white-space:normal;text-align:left;text-wrap:normal;position:relative;z-index:1}
+ #human.has-portrait #human-title span{display:block}
+ #human.has-portrait .human-editorial-portrait{grid-column:2;grid-row:1;width:calc(100% + 8px);max-width:none;justify-self:end;align-self:center;min-height:0;aspect-ratio:4/5}
+ #mainPage #human.has-portrait .human-editorial-intro{grid-column:1/-1;grid-row:2;margin:0}
+ #human.has-portrait .human-editorial-background{grid-column:1/-1;grid-row:3;margin:0}
+ #human.has-portrait .human-editorial-columns{grid-column:1/-1;grid-row:4;margin-top:8px}
+}
+
+/* Education and dated training from the original hh resume. */
+#human.has-portrait .human-education strong{font-weight:400;color:#e2e4df}
+#human.has-portrait .human-education li>span{display:block;margin-top:6px}
+#human.has-portrait .human-courses{margin-top:20px;border-top:1px solid #ffffff30;color:#e2e4df;min-width:0}
+#human .human-courses summary{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:64px;padding:14px 0;cursor:pointer;list-style:none;font:14px/1.4 var(--sans)}
+#human .human-courses summary::-webkit-details-marker{display:none}
+#human .human-courses summary small{display:block;margin-top:5px;color:#aeb3ae;font:11px/1.5 var(--sans)}
+#human .human-courses summary>span{min-width:0}
+#human .human-courses summary>svg{flex:none;width:18px;height:18px}
+#human .human-courses[open] summary>svg path:last-child{opacity:0}
+#human .human-courses summary:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+#human .human-course-groups{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;padding:8px 0 4px 12px;border-left:1px solid #ffffff26}
+#human .human-course-group{min-width:0}
+#human .human-course-group h4{margin:0 0 12px;font:600 13px/1.5 var(--sans);color:#eeefe9}
+#human .human-course-group h4>span{display:block;font-weight:400;color:#969d96}
+#human .human-course-group ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+#human .human-course-group li{font:14px/1.6 var(--sans);color:#b6bbb6;overflow-wrap:anywhere}

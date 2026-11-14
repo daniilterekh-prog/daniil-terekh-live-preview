@@ -1,0 +1,30 @@
+/* A selected direction gives its space to the description. */
+#services .service-direction[hidden]{display:none}
+#services .services-close{display:flex;align-items:center;justify-content:center;width:56px;height:56px;top:calc(var(--chapter-top) + var(--chapter-title) + 20px);right:calc(var(--page-gutter) - 8px);color:#fff;mix-blend-mode:difference}
+#services .services-close[hidden]{display:none}
+#services .services-close svg{display:block;width:36px;height:36px}
+#services .service-role-card>.service-role-title{display:flex;align-items:center;justify-content:space-between;gap:16px}
+#services .service-role-label{min-width:0}
+#services .service-role-title>.service-role-label+span{display:flex;flex-shrink:0}
+#services .service-role-title .ui-arrow{width:30px;height:30px}
+@media(min-width:801px){
+ #services.is-open .services-panel-area{margin-top:calc(var(--chapter-top) + var(--chapter-title) + 32px)}
+ #services.is-open .service-direction.is-active{font-size:clamp(60px,8vw,128px)}
+ #services[data-selection="team"] .services-type{display:none}
+}
+@media(max-width:800px){
+ #services:not(.is-open) .services-type{padding-bottom:0}
+ #services .service-role-card{position:relative;left:auto;right:auto;bottom:auto;width:calc(100% - 2*var(--page-gutter));margin:32px var(--page-gutter);padding-top:20px}
+ #services .service-role-card>.service-role-title{font-size:clamp(24px,7vw,30px);line-height:1.1;gap:12px}
+ #services .service-role-title .ui-arrow{width:26px;height:26px}
+ #services.is-open .services-type{padding-bottom:24px;padding-right:calc(var(--page-gutter) + 52px)}
+ #services.is-open .service-direction.is-active{font-size:clamp(48px,17vw,86px);line-height:1}
+ #services.is-open .services-panel-area{padding-bottom:32px}
+ #services[data-selection="team"] .services-type{display:none}
+ #services[data-selection="team"] .services-panel-area{padding-top:calc(var(--chapter-top) + var(--chapter-title) + 32px)}
+ #services[data-selection="team"] .service-panel-role h3{padding-right:48px;font-size:clamp(34px,10vw,44px)}
+}
+@media(max-width:800px) and (max-height:700px){
+ #services:not(.is-open) .service-direction{font-size:clamp(38px,min(14vw,7.6svh),72px)}
+ #services:not(.is-open) .service-role-card{margin-top:24px}
+}

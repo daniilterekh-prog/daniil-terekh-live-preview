@@ -1,0 +1,40 @@
+#mainPage #cycle.cycle-iwe{min-height:calc(var(--scene-height) + 100svh);overflow:visible}
+#mainPage #cycle.cycle-iwe .cycle-composition{position:sticky;top:var(--header-height);grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:center;min-height:var(--scene-height);box-sizing:border-box;gap:5%;padding-block:var(--chapter-top)}
+#cycle.cycle-iwe .cycle-intro{align-self:start;min-width:0}
+#mainPage #cycle.cycle-iwe .cycle-lead{margin-top:24px}
+#cycle.cycle-iwe .cycle-description{max-width:37ch}
+#cycle.cycle-iwe .cycle-type-scene{align-self:center;min-width:0;perspective:1100px}
+#cycle .cycle-letter-art{display:block;width:100%;overflow:visible;filter:none;transform:none;transform-origin:center}
+#cycle .iwe-spine,#cycle .iwe-bar{fill:#f0f1ed}
+#cycle .iwe-stroke{fill:none;stroke:#f0f1ed;stroke-width:44;stroke-linecap:butt;stroke-linejoin:miter}
+#cycle .iwe-spine{transform:translateX(calc(110px * var(--iwe-shift,0)))}
+#cycle .iwe-bar{transform-box:fill-box;transform-origin:left center;transform:scaleX(var(--iwe-e,0));opacity:var(--iwe-e,0)}
+#cycle .iwe-stroke{transform-box:fill-box;transform-origin:center;opacity:var(--iwe-w,0);transform:translateY(calc(20px * (1 - var(--iwe-w,0)))) scaleX(var(--iwe-w,0))}
+#cycle .iwe-w2{transform-origin:bottom center}#cycle .iwe-w3{transform-origin:top center}
+#cycle .cycle-signatures{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;min-height:84px;margin-top:20px}
+#cycle .cycle-signatures strong{display:block;font:600 11px/1.3 Arial,sans-serif;letter-spacing:.06em;margin-bottom:12px}
+#cycle .cycle-signatures span{display:block;color:#b1b6b2;font:13px/1.5 Arial,sans-serif;max-width:23ch}
+#cycle .cycle-team{opacity:var(--iwe-result,0);transform:translateY(calc(10px * (1 - var(--iwe-result,0))))}
+#cycle .cycle-iwe-logo{display:block;width:112px;height:22px;margin-bottom:8px}
+@media(max-width:800px){
+ #mainPage #cycle.cycle-iwe .cycle-composition{grid-template-columns:1fr;gap:28px;align-content:start}
+ #cycle.cycle-iwe .cycle-intro{display:contents}
+ #mainPage #cycle.cycle-iwe #cycle-title{grid-row:1}
+ #cycle.cycle-iwe .cycle-type-scene{grid-row:2;width:100%;max-width:520px;justify-self:center}
+ #mainPage #cycle.cycle-iwe .cycle-lead{grid-row:3;margin:0;font-size:21px;line-height:1.25}
+ #mainPage #cycle.cycle-iwe .cycle-lead br{display:none}
+ #mainPage #cycle.cycle-iwe .cycle-description{grid-row:4;margin:0;font-size:15px;line-height:1.5}
+ #mainPage #cycle.cycle-iwe .cycle-project{grid-row:5;margin:0}
+ #cycle .cycle-letter-art{max-height:230px;transform:none}
+ #cycle .cycle-signatures{gap:16px;min-height:66px;margin-top:8px}
+ #cycle .cycle-signatures strong{font-size:9px;margin-bottom:8px}
+ #cycle .cycle-signatures span{font-size:11px}
+ #cycle .cycle-iwe-logo{width:90px;height:18px;margin-bottom:3px}
+}
+@media(max-height:580px) and (min-width:600px){#mainPage #cycle.cycle-iwe .cycle-composition{grid-template-columns:.9fr 1.1fr;gap:6%;align-content:start}#cycle.cycle-iwe .cycle-intro{display:block}#cycle.cycle-iwe .cycle-type-scene{grid-row:auto}#cycle .cycle-letter-art{max-height:200px}#cycle .cycle-signatures{margin-top:0}#cycle.cycle-iwe .cycle-description{font-size:13px}#cycle.cycle-iwe .cycle-lead{font-size:18px}}
+@media(prefers-reduced-motion:reduce){#mainPage #cycle.cycle-iwe{min-height:var(--scene-height)}}
+
+#cycle .iwe-w1{--iwe-w:var(--iwe-w1,0)}#cycle .iwe-w2{--iwe-w:var(--iwe-w2,0)}#cycle .iwe-w3{--iwe-w:var(--iwe-w3,0)}#cycle .iwe-w4{--iwe-w:var(--iwe-w4,0)}
+
+/* One continuous font outline, sharing E's exact 50–330 cap and baseline. */
+#cycle .iwe-letter-w{fill:#f0f1ed;stroke:none;transform-box:fill-box;transform-origin:center;opacity:var(--iwe-w,0);transform:translateY(calc(20px * (1 - var(--iwe-w,0)))) scaleX(var(--iwe-w,0))}

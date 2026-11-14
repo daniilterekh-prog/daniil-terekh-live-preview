@@ -1,0 +1,19 @@
+/* Native inertia stops at chapter boundaries; oversized chapters remain readable. */
+/* hidden on body creates an intermediate scroller that captures snap areas. */
+body {overflow-x:clip}
+html.chapter-snapping:not(.chapter-navigating) {
+  scroll-snap-type:y mandatory;
+  scroll-padding-top:var(--chapter-header-offset,var(--header-height));
+}
+#mainPage>[data-chapter-anchor] {
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  scroll-margin-block:0;
+}
+@media(prefers-reduced-motion:reduce) {
+  html.chapter-snapping {scroll-snap-type:none}
+}
+
+/* An inertial gesture lands on the completed composition before the next chapter. */
+#mainPage .scene-rest{position:absolute;left:0;width:1px;height:1px;pointer-events:none;scroll-snap-align:start;scroll-snap-stop:always;scroll-margin:0}
+@media(prefers-reduced-motion:reduce){#mainPage .scene-rest{scroll-snap-align:none;scroll-snap-stop:normal}}
