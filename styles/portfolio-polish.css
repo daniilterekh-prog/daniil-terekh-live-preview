@@ -32,6 +32,8 @@
 @media(max-width:800px) and (orientation:portrait){
  #mainPage #cycle.cycle-iwe{height:auto;min-height:var(--scene-height)}
  #mainPage #cycle.cycle-iwe .cycle-composition{position:relative;top:auto;height:auto;min-height:var(--scene-height);overflow:visible;grid-template-rows:repeat(5,auto);gap:24px}
+ #mainPage #cycle.cycle-iwe[data-iwe-motion="true"]{min-height:calc(var(--iwe-mobile-height,var(--scene-height)) + var(--iwe-mobile-travel,95svh))}
+ #mainPage #cycle.cycle-iwe[data-iwe-motion="true"] .cycle-composition{position:sticky;top:var(--header-height)}
  #cycle.cycle-iwe .cycle-type-scene{display:block;align-self:start;max-height:none}
  #cycle .cycle-letters{display:block;flex:none;height:auto}
  #cycle.cycle-iwe .cycle-letter-art{height:auto;max-height:none;aspect-ratio:3/2}
