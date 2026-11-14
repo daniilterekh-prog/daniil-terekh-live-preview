@@ -5,10 +5,13 @@
  if(typeof module==='object'&&module.exports){module.exports={state,entryProgress};return}
  const section=document.querySelector('#cycle.cycle-iwe');if(!section)return;
  const svg=section.querySelector('.cycle-letter-art'),signatures=section.querySelector('.cycle-signatures');
- const frame=section.querySelector('.cycle-composition'),reduced=matchMedia('(prefers-reduced-motion:reduce)'),natural=matchMedia('(max-width:800px) and (orientation:portrait)');let visible=false,queued=0,last=-1;
- function paint(){queued=0;if(!visible)return;const r=section.getBoundingClientRect(),top=root.DTViewport?.top()||52,travel=Math.max(1,section.offsetHeight-frame.offsetHeight),p=reduced.matches?1:natural.matches?entryProgress(r.top,top,root.DTViewport?.contentHeight?.()||innerHeight-top):clamp((top-r.top)/travel);if(p===last)return;last=p;const s=state(p);for(const key of ['shift','e','w','w1','w2','w3','w4','result'])section.style.setProperty('--iwe-'+key,s[key]);const matrix=svg.getScreenCTM();if(matrix){const left=signatures.getBoundingClientRect().left;section.style.setProperty('--iwe-person-anchor',(matrix.e+(292-100.3*s.shift)*matrix.a-left)+'px');section.style.setProperty('--iwe-team-anchor',(matrix.e+457*matrix.a-left)+'px');}}
+ const frame=section.querySelector('.cycle-composition'),button=section.querySelector('.cycle-motion'),reduced=matchMedia('(prefers-reduced-motion:reduce)'),natural=matchMedia('(max-width:800px) and (orientation:portrait)');let visible=false,queued=0,last=-1,override=false;
+ const staticScene=()=>reduced.matches&&!override;
+ function paint(){queued=0;if(!visible)return;const r=section.getBoundingClientRect(),top=root.DTViewport?.top()||52,travel=Math.max(1,section.offsetHeight-frame.offsetHeight),p=staticScene()?1:natural.matches?entryProgress(r.top,top,root.DTViewport?.contentHeight?.()||innerHeight-top):clamp((top-r.top)/travel);if(p===last)return;last=p;const s=state(p);for(const key of ['shift','e','w','w1','w2','w3','w4','result'])section.style.setProperty('--iwe-'+key,s[key]);const matrix=svg.getScreenCTM();if(matrix){const left=signatures.getBoundingClientRect().left;section.style.setProperty('--iwe-person-anchor',(matrix.e+(292-100.3*s.shift)*matrix.a-left)+'px');section.style.setProperty('--iwe-team-anchor',(matrix.e+457*matrix.a-left)+'px');}}
  function queue(){if(visible&&!queued)queued=requestAnimationFrame(paint)}
  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;queue()}).observe(section);
- root.addEventListener('scroll',queue,{passive:true});root.addEventListener('resize',()=>{last=-1;queue()},{passive:true});reduced.addEventListener('change',()=>{last=-1;queue()});
+ function syncMotion(){section.dataset.iweMotion=String(!staticScene());button.hidden=!reduced.matches;button.textContent=staticScene()?button.dataset.play:button.dataset.pause;button.setAttribute('aria-pressed',String(!staticScene()));last=-1;queue()}
+ button.addEventListener('click',()=>{override=!override;syncMotion()});
+ root.addEventListener('scroll',queue,{passive:true});root.addEventListener('resize',()=>{last=-1;queue()},{passive:true});reduced.addEventListener('change',()=>{override=false;syncMotion()});syncMotion();
  if(document.fonts)document.fonts.ready.then(()=>{last=-1;queue()});
 })(globalThis);

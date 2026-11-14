@@ -32,7 +32,11 @@
  #cycle .cycle-iwe-logo{width:90px;height:18px;margin-bottom:3px}
 }
 @media(max-height:580px) and (min-width:600px){#mainPage #cycle.cycle-iwe .cycle-composition{grid-template-columns:.9fr 1.1fr;gap:6%;align-content:start}#cycle.cycle-iwe .cycle-intro{display:block}#cycle.cycle-iwe .cycle-type-scene{grid-row:auto}#cycle .cycle-letter-art{max-height:200px}#cycle .cycle-signatures{margin-top:0}#cycle.cycle-iwe .cycle-description{font-size:13px}#cycle.cycle-iwe .cycle-lead{font-size:18px}}
-@media(prefers-reduced-motion:reduce){#mainPage #cycle.cycle-iwe{min-height:var(--scene-height)}}
+@media(prefers-reduced-motion:reduce){#mainPage #cycle.cycle-iwe:not([data-iwe-motion="true"]){min-height:var(--scene-height)}}
+#cycle .cycle-motion{display:inline-flex;align-items:center;min-height:36px;margin-top:12px;padding:8px 12px;border:1px solid #5a615b;border-radius:0;background:transparent;color:#d4d9d1;font:12px/1.3 var(--sans,Arial,sans-serif);cursor:pointer}
+#cycle .cycle-motion[hidden]{display:none}
+#cycle .cycle-motion:focus-visible{outline:2px solid #d4d9d1;outline-offset:4px}
+@media(max-width:800px){#cycle .cycle-motion{grid-row:6;justify-self:start;margin:0}}
 
 #cycle .iwe-w1{--iwe-w:var(--iwe-w1,0)}#cycle .iwe-w2{--iwe-w:var(--iwe-w2,0)}#cycle .iwe-w3{--iwe-w:var(--iwe-w3,0)}#cycle .iwe-w4{--iwe-w:var(--iwe-w4,0)}
 

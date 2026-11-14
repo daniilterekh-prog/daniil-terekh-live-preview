@@ -24,6 +24,7 @@
  html #cycle .cycle-iwe-logo{width:calc(112 * var(--wide-unit));height:calc(22 * var(--wide-unit));margin-bottom:calc(8 * var(--wide-unit))}
  html #cycle .cycle-project{font-size:calc(14 * var(--wide-unit));gap:calc(24 * var(--wide-unit));margin-top:var(--chapter-copy-gap);min-height:calc(44 * var(--wide-unit))}
  html #cycle .cycle-project .ui-arrow{width:calc(28 * var(--wide-unit));height:calc(28 * var(--wide-unit))}
+ html #cycle .cycle-motion{font-size:calc(12 * var(--wide-unit));min-height:calc(36 * var(--wide-unit));margin-top:calc(12 * var(--wide-unit));padding:calc(8 * var(--wide-unit)) calc(12 * var(--wide-unit))}
 
  html #human.has-portrait .human-editorial-portrait{height:min(calc(640 * var(--wide-unit)),calc(var(--scene-height) - 2*var(--chapter-top)))}
  html #human .human-editorial-intro{font-size:calc(28 * var(--wide-unit));max-width:40ch}
