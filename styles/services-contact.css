@@ -1,0 +1,51 @@
+/* Read the offer before the detailed scope; retain the established scene. */
+#mainPage #services.is-open .service-panel>h3{font:500 clamp(26px,2.4vw,36px)/1.2 var(--sans);letter-spacing:-.035em;max-width:24ch;margin:0 0 16px;padding-right:0}
+#mainPage #services.is-open .service-panel-role>h3{padding-right:52px}
+#mainPage #services.is-open .service-panel>p:first-of-type{font:18px/1.55 Georgia,serif;max-width:52ch;margin:0;padding-right:0}
+#mainPage #services .service-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 16px;margin:22px 0 0;padding:16px 18px;border:1px solid #16161626;background:#f5f5f2;font:16px/1.5 var(--sans)}
+#mainPage #services .service-price strong{font-size:36px;line-height:1.1;font-weight:500;letter-spacing:-.04em;white-space:nowrap}
+#mainPage #services .service-price small{font-size:14px;line-height:1.5;color:#454545;max-width:100%}
+#mainPage #services .service-actions{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;margin:12px 0 26px}
+#mainPage #services .service-project{min-height:56px;padding:16px 18px;font:500 15px/1.4 var(--sans);letter-spacing:0;background:#111;color:#fff;gap:16px}
+#mainPage #services .service-project:hover{background:#303030}
+#mainPage #services .service-project:focus-visible{outline:2px solid #111;outline-offset:4px}
+#mainPage #services .service-project .ui-arrow{width:22px;height:22px;flex:none}
+#mainPage #services .service-all-link{justify-content:flex-start;gap:9px;min-height:44px;padding:8px 0;border:0;font:14px/1.4 var(--sans);letter-spacing:0;color:#444;background:transparent;text-decoration:underline;text-underline-offset:4px}
+#mainPage #services .service-all-link:hover{color:#000;background:transparent}
+#mainPage #services .service-all-link .ui-arrow{width:16px;height:16px}
+#mainPage #services .service-groups{gap:26px 28px;padding-top:4px}
+#mainPage #services .service-group h4{font:600 14px/1.4 var(--sans);letter-spacing:0;color:#222;margin:0 0 12px}
+#mainPage #services .service-group ul{gap:10px}
+#mainPage #services .service-group li{font-size:16px;line-height:1.55;color:#393939;padding-left:14px}
+
+/* Two distinct reasons to get in touch, with equal weight. */
+#mainPage #contact,#mainPage #contact .contact-composition{height:auto;min-height:var(--scene-height);overflow:visible}
+#mainPage #contact .contact-composition{padding-block:var(--chapter-top) max(32px,env(safe-area-inset-bottom,0px));display:flex;align-items:center}
+#mainPage #contact .contact-center{width:100%;min-height:0;max-width:1080px;margin-inline:auto;padding:0;text-align:center}
+#mainPage #contact #contact-title{font-family:ThinkingNarrow,Impact,sans-serif;font-size:var(--chapter-title);font-weight:400;line-height:1.16;letter-spacing:0;margin:0;text-wrap:balance}
+#mainPage #contact .contact-intents{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;width:min(840px,100%);margin:28px auto 0}
+#mainPage #contact .contact-intents a{display:flex;flex-direction:column;justify-content:center;min-width:0;min-height:148px;padding:24px;border:1px solid #181818;background:#f5f5f2;text-align:left;text-decoration:none;transition:background 180ms ease}
+#mainPage #contact .contact-intents a:hover{background:#e9e9e4}
+#mainPage #contact .contact-intents a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+#mainPage #contact .contact-intents a>span{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0;font:500 clamp(22px,2vw,28px)/1.25 var(--sans);letter-spacing:-.025em}
+#mainPage #contact .contact-intents i{display:flex;flex:none}
+#mainPage #contact .contact-intents .ui-arrow{width:24px;height:24px;flex:none}
+#mainPage #contact .contact-intents small{display:block;margin-top:12px;font:15px/1.5 var(--sans);color:#535353;max-width:34ch}
+#mainPage #contact .contact-messengers{margin:28px auto 0;width:min(560px,100%)}
+#mainPage #contact .contact-messenger{min-height:88px}
+@media(max-width:800px){
+ #mainPage #services.is-open .service-panel>h3{font-size:26px;margin-bottom:14px}
+ #mainPage #services.is-open .service-panel>p:first-of-type{font-size:17px;line-height:1.55}
+ #mainPage #services .service-price{margin-top:18px;padding:14px 16px}
+ #mainPage #services .service-price strong{font-size:34px}
+ #mainPage #services .service-groups{grid-template-columns:minmax(0,1fr);gap:24px}
+ #mainPage #contact .contact-intents{margin-top:24px}
+}
+@media(max-width:600px){
+ #mainPage #contact .contact-intents{grid-template-columns:minmax(0,1fr);gap:12px}
+ #mainPage #contact .contact-intents a{min-height:122px;padding:20px}
+ #mainPage #contact .contact-intents a>span{font-size:22px}
+ #mainPage #contact .contact-intents small{font-size:14px;margin-top:10px}
+ #mainPage #contact .contact-messengers{margin-top:22px}
+}
+@media(prefers-reduced-motion:reduce){#mainPage #contact .contact-intents a{transition:none}}

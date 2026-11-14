@@ -49,7 +49,10 @@
   topic=trigger?.dataset.contactTopic||'';
   if(trigger?.closest('#detailPage'))topic="О проекте "+document.getElementById('detailName').textContent;
   context.textContent=topic;context.hidden=!topic;
-  const draft=topic?"Здравствуйте, Даниил! Хочу обсудить задачу.\n\n"+topic+'\n\n':"Здравствуйте, Даниил! Хочу обсудить проект или предложить работу в команде.";
+  const intent=trigger?.dataset.contactIntent;
+  const greeting=intent==='role'?"Даниил, здравствуйте! Хочу обсудить роль в нашей команде.":"Даниил, здравствуйте! Хочу обсудить проект.";
+  const brief=intent==='role'?"Компания и команда:\nРоль и ответственность:\nФормат работы:":"Задача:\nЧто уже есть:\nСроки:";
+  const draft=intent==='project'||intent==='role'?greeting+'\n\n'+(topic?topic+'\n\n':'')+brief:topic?"Здравствуйте, Даниил! Хочу обсудить задачу.\n\n"+topic+'\n\n':"Здравствуйте, Даниил! Хочу обсудить проект или предложить работу в команде.";
   email.href='mailto:'+address+'?subject='+encodeURIComponent(topic||"Обсудим задачу")+'&body='+encodeURIComponent(draft);
   for(const link of [telegram,whatsapp]){
    const chat=new URL(link.href);chat.searchParams.set('text',draft);link.href=chat.href;

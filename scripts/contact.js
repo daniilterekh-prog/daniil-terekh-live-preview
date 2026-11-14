@@ -49,7 +49,10 @@
   topic=trigger?.dataset.contactTopic||'';
   if(trigger?.closest('#detailPage'))topic='About '+document.getElementById('detailName').textContent;
   context.textContent=topic;context.hidden=!topic;
-  const draft=topic?'Hi Daniil! I’d like to connect.\n\n'+topic+'\n\n':'Hi Daniil! I’d like to discuss a project or a role with you.';
+  const intent=trigger?.dataset.contactIntent;
+  const greeting=intent==='role'?'Hi Daniil! I’d like to discuss a role on our team.':'Hi Daniil! I’d like to discuss a project.';
+  const brief=intent==='role'?'Company and team:\nRole and responsibilities:\nWorking format:':'Goal:\nWhat we have now:\nTiming:';
+  const draft=intent==='project'||intent==='role'?greeting+'\n\n'+(topic?topic+'\n\n':'')+brief:topic?'Hi Daniil! I’d like to connect.\n\n'+topic+'\n\n':'Hi Daniil! I’d like to discuss a project or a role with you.';
   email.href='mailto:'+address+'?subject='+encodeURIComponent(topic||'Let’s connect')+'&body='+encodeURIComponent(draft);
   for(const link of [telegram,whatsapp]){
    const chat=new URL(link.href);chat.searchParams.set('text',draft);link.href=chat.href;
