@@ -36,6 +36,11 @@
 #mainPage #the-edit[data-bottleneck]:not([data-bottleneck-ready]) .bottleneck-sticky{height:auto;min-height:0;overflow:visible;position:relative}
 #mainPage #the-edit[data-bottleneck]:not([data-bottleneck-ready]) .bottleneck-controls{display:none}
 #mainPage #the-edit .bottleneck-heading h2{max-width:22ch;margin-bottom:0;line-height:1.03;text-transform:uppercase;text-wrap:balance}
+#the-edit .bottleneck-heading{position:relative}
+#the-edit .bottleneck-heading .bottleneck-motion{position:absolute;right:0;top:0;display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 12px;border:1px solid #5a615b;border-radius:0;background:transparent;color:#d4d9d1;font:12px/1.3 var(--sans,Arial,sans-serif);cursor:pointer}
+#the-edit .bottleneck-motion[hidden]{display:none!important}
+#the-edit .bottleneck-motion:focus-visible{outline:2px solid #d4d9d1;outline-offset:4px}
+@media(max-width:720px){#the-edit .bottleneck-heading .bottleneck-motion{position:static;margin-top:10px}}
 .bottleneck-stage-name{display:inline-block}
 #mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li:nth-child(2):before{display:none}
 @media(prefers-reduced-motion:reduce){#mainPage #the-edit[data-bottleneck] *{scroll-behavior:auto}}

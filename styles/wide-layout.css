@@ -54,6 +54,7 @@
  html #the-edit .bottleneck-stages small{font-size:calc(11 * var(--wide-unit));margin-bottom:calc(12 * var(--wide-unit))}
  html #mainPage #the-edit .bottleneck-annotation{font-size:calc(14 * var(--wide-unit));padding-left:calc(14 * var(--wide-unit))}
  html #mainPage #the-edit .bottleneck-sticky{gap:calc(18 * var(--wide-unit));padding-bottom:calc(22 * var(--wide-unit))}
+ html #the-edit .bottleneck-heading .bottleneck-motion{font-size:calc(12 * var(--wide-unit));min-height:calc(36 * var(--wide-unit));padding:calc(8 * var(--wide-unit)) calc(12 * var(--wide-unit))}
  html #mainPage #thinking .thinking-sticky{gap:calc(10 * var(--wide-unit));padding-bottom:calc(24 * var(--wide-unit))}
 
  html #mainPage #services:not(.is-open) .service-direction{font-size:clamp(28px,min(9vw,calc((var(--scene-height) - 2*var(--chapter-top) - var(--chapter-title) - 62 * var(--wide-unit))/6)),calc(130 * var(--wide-unit)))}

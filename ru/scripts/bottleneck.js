@@ -98,13 +98,13 @@
    if(width<600){const text=label.getBoundingClientRect(),box=row.getBoundingClientRect(),start=height*.035;row.style.top=(start+(height-start+2)*stagePositions[i]-(text.top+text.height/2-box.top))+'px';}
   });
   labelAnchors=labels.map(label=>{const box=label.getBoundingClientRect();return {right:box.right-r.left,x:box.left+box.width/2-r.left,y:box.top+box.height/2-r.top,bottom:box.bottom-r.top};});
-  button.textContent=moving()?button.dataset.pause:button.dataset.play;button.setAttribute('aria-pressed',String(moving()));queue();
+  button.hidden=!media.matches;button.textContent=moving()?button.dataset.pause:button.dataset.play;button.setAttribute('aria-pressed',String(moving()));queue();
  }
  controls.forEach((b,i)=>{
   b.addEventListener('click',()=>{const p=[0,.42,1][i],top=root.DTViewport?.top?.()||0,target=scrollY+section.getBoundingClientRect().top-top+(section.offsetHeight-sticky.offsetHeight)*p;if(reduced()){lastStage=-1;caption.textContent=copies[i].textContent;controls.forEach((c,j)=>c.setAttribute('aria-pressed',String(j===i)));return;}if(root.DTScenes)root.DTScenes.goTo(target);else scrollTo({top:target,behavior:'instant'});});
   b.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();const next=(i+(e.key==='ArrowRight'?1:2))%3;controls[next].focus();controls[next].click();});
  });
- button.addEventListener('click',()=>{if(reduced()){override=true;paused=false;}else paused=!paused;stop();measure();});
+ button.addEventListener('click',()=>{if(media.matches){override=!override;paused=false;}else paused=!paused;stop();measure();});
  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)queue();else stop();}).observe(sticky);
  new ResizeObserver(measure).observe(visual);
  root.addEventListener('scroll',queue,{passive:true});root.addEventListener('resize',measure,{passive:true});root.addEventListener('hashchange',measure);
