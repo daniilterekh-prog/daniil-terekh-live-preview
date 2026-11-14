@@ -36,7 +36,8 @@
  if(document.body.dataset.page)return;
  function activate(key){
   for(const link of links){
-   if(['work','services'].includes(link.dataset.navTarget)){link.removeAttribute('aria-current');continue;}
+   if(link.dataset.navTarget==='work'){if(main.hidden)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');continue;}
+   if(link.dataset.navTarget==='services'){link.removeAttribute('aria-current');continue;}
    if(link.dataset.navTarget===key)link.setAttribute('aria-current',main.hidden?'page':'location');
    else link.removeAttribute('aria-current');
   }

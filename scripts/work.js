@@ -178,7 +178,7 @@ function renderDetail(c){
  byId('detailExternal').hidden=!c.url;if(c.url)byId('detailExternal').href=c.url;
  const next=allProjects[(allProjects.indexOf(c)+1)%allProjects.length];
  byId('caseNext').href='#experience/'+next.id;byId('caseNextName').textContent=next.name;
- byId('backBtn').lastElementChild.textContent=detailReturn==='all'?'BACK TO ALL CASES':cameFromWork?'BACK TO WORK':'BACK TO SELECTED WORK';
+ byId('backBtn').lastElementChild.textContent=detailReturn==='all'||cameFromWork?'BACK TO ALL CASES':'BACK TO SELECTED WORK';
  document.title=c.name+' — Daniil Terekh';
 }
 function revealCasePage(page){if(matchMedia('(prefers-reduced-motion:reduce)').matches||typeof page.animate!=='function')return;page.getAnimations().forEach(animation=>animation.cancel());page.animate([{opacity:0},{opacity:1}],{duration:380,easing:'cubic-bezier(.22,.72,.18,1)'});}
@@ -190,7 +190,7 @@ function applyRoute(){
  window.DTCaseFilm?.show(hash==='#experience/barnes'?'barnes':null);
  main.hidden=false;detail.hidden=true;all.hidden=true;detail.classList.remove('is-open');all.classList.remove('is-open');
  if(hash==='#experience/all'){
-  main.hidden=true;all.hidden=false;all.classList.add('is-open');renderAll();revealCasePage(all);document.title='Selected Cases — Daniil Terekh';scrollInstant(archiveScroll);focusTitle(all);
+  main.hidden=true;all.hidden=false;all.classList.add('is-open');renderAll();revealCasePage(all);document.title='Cases & Experience — Daniil Terekh';scrollInstant(archiveScroll);focusTitle(all);
  }else if(hash.startsWith('#experience/')){
   const id=hash.slice('#experience/'.length),c=allProjects.find(x=>x.id===id);
   if(!c){history.replaceState(null,'',window.location.pathname+window.location.search+'#experience/all');return applyRoute();}
@@ -236,7 +236,7 @@ function updateMobileClass(){document.documentElement.classList.toggle('mobile-a
 byId('storyPrev').addEventListener('click',()=>goToProject(active-1));
 byId('storyNext').addEventListener('click',()=>goToProject(active+1));
 byId('allBtn').addEventListener('click',event=>{if(event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;lastRouteScroll=scrollY;lastRouteFocus=document.activeElement;detailReturn='work';});
-byId('backBtn').addEventListener('click',()=>{if(cameFromWork&&detailReturn!=='all'){location.href='work/';return;}window.location.hash=detailReturn==='all'?'#experience/all':'#work'});
+byId('backBtn').addEventListener('click',()=>{window.location.hash=detailReturn==='all'||cameFromWork?'#experience/all':'#work'});
 byId('backAllBtn').addEventListener('click',()=>{window.location.hash='#work'});
 window.addEventListener('hashchange',applyRoute);
 window.addEventListener('scroll',schedulePaint,{passive:true});
