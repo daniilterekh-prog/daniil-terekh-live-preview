@@ -31,7 +31,7 @@
  const moving=()=>!paused&&!reduced();
  const progress=()=>reduced()?1:clamp(((root.DTViewport?.top?.()||0)-section.getBoundingClientRect().top)/Math.max(1,section.offsetHeight-sticky.offsetHeight));
  function draw(state){
-  ctx.clearRect(0,0,width,height);const mobile=width<600,axis=mobile?width*.79:height*.55,start=mobile?height*.035:width*.03,L=mobile?height*.93:width*.94;
+  ctx.clearRect(0,0,width,height);const mobile=width<600,axis=mobile?width*.79:height*.55,start=mobile?height*.035:width*.03,L=mobile?height-start+2:width*.94;
   const wide=mobile?Math.min(width*.115,48):Math.min(height*.19,70),G=L*.365,throat=wide*(.28+.72*state.opening);
   const point=(s,y)=>mobile?[axis+y,start+s]:[start+s,axis+y];
   const path=(pts,color,lineWidth)=>{ctx.beginPath();pts.forEach((v,i)=>{const p=point(v[0],v[1]);i?ctx.lineTo(...p):ctx.moveTo(...p);});ctx.strokeStyle=color;ctx.lineWidth=lineWidth;ctx.lineCap='round';ctx.stroke();};
