@@ -7,7 +7,7 @@
   {id:'the-edit',label:"Только главное"},
   {id:'skills',label:"Навыки"},
   {id:'human',label:'Still curious'},
-  {id:'cycle',label:"Я задаю курс. Мы создаём."},
+  {id:'cycle',label:"Сложное делаем командой."},
   {id:'services',label:"Чем могу помочь?"},
   {id:'contact',label:"Обсудим задачу?"},
   {id:'site-footer',label:'Footer'}
