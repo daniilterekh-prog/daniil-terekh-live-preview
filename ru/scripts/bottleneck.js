@@ -25,7 +25,8 @@
  const sticky=section.querySelector('.bottleneck-sticky'),visual=section.querySelector('.bottleneck-visual'),canvas=visual.querySelector('canvas'),ctx=canvas.getContext('2d');if(!ctx)return;
  const main=document.getElementById('mainPage'),media=matchMedia('(prefers-reduced-motion:reduce)'),button=section.querySelector('.bottleneck-motion');
  const caption=section.querySelector('.bottleneck-caption'),copies=Array.from(section.querySelectorAll('[data-bottleneck-copy]')),controls=Array.from(section.querySelectorAll('[data-bottleneck-stage]'));
- const flow=createFlow();let width=0,height=0,dpr=1,frame=0,lastTime=null,opening=null,visible=false,paused=false,override=false,lastStage=-1;
+ const labels=Array.from(visual.querySelectorAll?.('.bottleneck-stage-name')||[]),stagePositions=[.08,.365,.62,.87];
+ const flow=createFlow();let width=0,height=0,dpr=1,frame=0,lastTime=null,opening=null,visible=false,paused=false,override=false,lastStage=-1,labelAnchors=[];
  const reduced=()=>media.matches&&!override;
  const active=()=>visible&&!document.hidden&&!main?.hidden;
  const moving=()=>!paused&&!reduced();
@@ -50,6 +51,16 @@
    ctx.strokeStyle='rgba(240,241,234,.4)';ctx.lineWidth=.6;ctx.strokeRect(x+.5,y+.5,w-1,h-1);
    const a=point(G-L*.018,sign*(throat+extent*.5));path([[G-L*.018,sign*(throat+extent*.5)],[G-L*.01,sign*(throat+extent*.5)]],'rgba(237,238,231,'+(state.focus*.7)+')',1.2);
   }
+  // Leaders join the actual text bounds to the glass; Offer follows the moving gate.
+  labelAnchors.forEach((label,i)=>{
+   const distance=i===1?throat+wide*.82:wide,s=stagePositions[i]*L;
+   const end=point(s,-distance),from=mobile?[label.right+10,label.y]:[label.x,label.bottom+10];
+   const elbow=mobile?[end[0]-10,from[1]]:[from[0],end[1]-10];
+   if(mobile&&from[0]>=end[0]-4)return;
+   ctx.beginPath();ctx.moveTo(...from);ctx.lineTo(...elbow);ctx.lineTo(...end);
+   ctx.strokeStyle='rgba(222,224,215,'+(i===1?.58-.16*state.opening:.24)+')';ctx.lineWidth=i===1?1:.7;ctx.stroke();
+   ctx.beginPath();ctx.arc(...end,i===1?2:1.5,0,Math.PI*2);ctx.fillStyle=i===1?'#c0c3b9':'#777c75';ctx.fill();
+  });
   const radius=mobile?Math.max(2.7,Math.min(4,width*.009)):Math.max(2.4,Math.min(4,width*.0035));
   for(let i=Math.floor(flow.flux)-14;i<=Math.ceil(flow.flux)+18;i++){
    const p=particleState(flow,i,state.opening);if(!p||!p.opacity)continue;
@@ -80,6 +91,12 @@
   dpr=Math.min(devicePixelRatio||1,2,Math.sqrt(2200000/(width*height)));canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
   section.style.minHeight=(sticky.offsetHeight+(reduced()?0:scrollTravel(root.DTViewport?.height?.()||innerHeight)))+'px';
   section.dataset.bottleneckReady='true';section.dataset.bottleneckStatic=String(reduced());
+  // Keep each mobile label level with its stage, including the throat at 36.5%.
+  labels.forEach((label,i)=>{
+   const row=label.parentElement;row.style.top='';
+   if(width<600){const text=label.getBoundingClientRect(),box=row.getBoundingClientRect(),start=height*.035;row.style.top=(start+(height-start+2)*stagePositions[i]-(text.top+text.height/2-box.top))+'px';}
+  });
+  labelAnchors=labels.map(label=>{const box=label.getBoundingClientRect();return {right:box.right-r.left,x:box.left+box.width/2-r.left,y:box.top+box.height/2-r.top,bottom:box.bottom-r.top};});
   button.textContent=moving()?button.dataset.pause:button.dataset.play;button.setAttribute('aria-pressed',String(moving()));queue();
  }
  controls.forEach((b,i)=>{

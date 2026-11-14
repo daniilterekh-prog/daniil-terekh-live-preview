@@ -35,5 +35,8 @@
 /* A natural-height reading layout remains available without Canvas/JavaScript. */
 #mainPage #the-edit[data-bottleneck]:not([data-bottleneck-ready]) .bottleneck-sticky{height:auto;min-height:0;overflow:visible;position:relative}
 #mainPage #the-edit[data-bottleneck]:not([data-bottleneck-ready]) .bottleneck-controls{display:none}
+#mainPage #the-edit .bottleneck-heading h2{max-width:22ch;margin-bottom:0;line-height:1.03;text-transform:uppercase;text-wrap:balance}
+.bottleneck-stage-name{display:inline-block}
+#mainPage #the-edit[data-bottleneck-ready] .bottleneck-stages li:nth-child(2):before{display:none}
 @media(prefers-reduced-motion:reduce){#mainPage #the-edit[data-bottleneck] *{scroll-behavior:auto}}
 @media(max-width:720px) and (max-height:650px){#mainPage #the-edit[data-bottleneck-ready] .bottleneck-annotation{display:none}.bottleneck-caption{font-size:12px}.bottleneck-controls{gap:4px 9px}}
