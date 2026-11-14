@@ -114,6 +114,17 @@
 }
 
 /* Focus on the selected service and keep the catalogue one click away. */
+#skills .skills-card-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px}
+#skills .skills-card-controls .skills-pagination{margin:0}
+#skills .skills-card-arrows{display:flex;gap:8px}
+#skills .skills-card-arrows button{display:grid;place-items:center;width:44px;height:44px;padding:10px;border:1px solid #6a766966;border-radius:0;background:transparent;color:#e6ebe4;cursor:pointer}
+#skills .skills-card-arrows button[hidden]{display:none}
+#skills .skills-card-arrows button:disabled{opacity:.28;cursor:default}
+#skills .skills-card-arrows button:not(:disabled):hover{background:#ffffff0c;border-color:#a1aca1}
+#skills .skills-card-arrows button:focus-visible{outline:2px solid #e6ebe4;outline-offset:3px}
+#skills .skills-card-arrows svg{display:block;width:22px;height:22px}
+
+/* Focus on the selected service and keep the catalogue one click away. */
 #services:not(.is-open) .services-type{row-gap:10px}
 @media(max-width:800px){
  #services:not(.is-open) .services-type{flex:.9;row-gap:8px}

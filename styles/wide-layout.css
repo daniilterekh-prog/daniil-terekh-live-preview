@@ -49,6 +49,10 @@
  html #skills .skills-cube[data-kind="topic"] .sk-label{font-size:calc(18 * var(--wide-unit));padding:calc(5 * var(--wide-unit))}
  html #skills .skills-cube[data-kind="tool"] .sk-label{font-size:calc(11 * var(--wide-unit));padding:calc(3 * var(--wide-unit))}
  html #skills .skills-pagination button{width:calc(36 * var(--wide-unit));height:calc(32 * var(--wide-unit))}
+ html #skills .skills-card-controls{gap:calc(12 * var(--wide-unit));margin-top:calc(8 * var(--wide-unit))}
+ html #skills .skills-card-arrows{gap:calc(8 * var(--wide-unit))}
+ html #skills .skills-card-arrows button{width:calc(44 * var(--wide-unit));height:calc(44 * var(--wide-unit));padding:calc(10 * var(--wide-unit))}
+ html #skills .skills-card-arrows svg{width:calc(22 * var(--wide-unit));height:calc(22 * var(--wide-unit))}
 
  html #the-edit .bottleneck-stages li{font-size:calc(36 * var(--wide-unit))}
  html #the-edit .bottleneck-stages small{font-size:calc(11 * var(--wide-unit));margin-bottom:calc(12 * var(--wide-unit))}

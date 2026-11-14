@@ -52,16 +52,28 @@
  const root=document.getElementById('skills');if(!root)return;
  const M=globalThis.DTSkillsModel,$=id=>document.getElementById('skills-'+id),media=matchMedia('(prefers-reduced-motion: reduce)');
  let state=M.createState(),unit=60,entered=false,initialized=false,lastSelected=null,mobileFocus=null,lastView=null,cameraTimer=null;
- const stage=$('stage'),field=$('field'),story=$('solution'),cubeNodes=[],filters=[];
+ const stage=$('stage'),field=$('field'),story=$('solution'),cubeNodes=[];
  const cardDots=[...$('pagination').querySelectorAll('button')];
- let cardFrame=null;
+ const cardPrev=$('card-prev'),cardNext=$('card-next');
+ let cardFrame=null,cardIndex=0,cardTarget=null;
  function syncCardIndicator(){
   const cards=[...story.children],left=story.getBoundingClientRect().left;
   const at=cards.reduce((best,card,i)=>Math.abs(card.getBoundingClientRect().left-left)<Math.abs(cards[best].getBoundingClientRect().left-left)?i:best,0);
-  cardDots.forEach((dot,i)=>dot.setAttribute('aria-current',String(i===at)));
+  cardIndex=cardTarget??at;
+  cardDots.forEach((dot,i)=>dot.setAttribute('aria-current',String(i===cardIndex)));
+  cardPrev.disabled=cardIndex===0;cardNext.disabled=cardIndex===cards.length-1;
  }
+ function showCard(index){
+  cardTarget=Math.max(0,Math.min(story.children.length-1,index));
+  story.scrollTo({left:story.children[cardTarget].getBoundingClientRect().left-story.getBoundingClientRect().left+story.scrollLeft,behavior:media.matches?'instant':'smooth'});syncCardIndicator();
+ }
+ const releaseCardTarget=()=>{cardTarget=null;};
+ story.addEventListener('pointerdown',releaseCardTarget,{passive:true});story.addEventListener('wheel',releaseCardTarget,{passive:true});
+ story.addEventListener('scrollend',()=>{releaseCardTarget();syncCardIndicator();});
  story.addEventListener('scroll',()=>{if(cardFrame===null)cardFrame=requestAnimationFrame(()=>{cardFrame=null;syncCardIndicator();});},{passive:true});
- cardDots.forEach((dot,i)=>dot.addEventListener('click',()=>story.scrollTo({left:story.children[i].getBoundingClientRect().left-story.getBoundingClientRect().left+story.scrollLeft,behavior:media.matches?'instant':'smooth'})));
+ cardDots.forEach((dot,i)=>dot.addEventListener('click',()=>showCard(i)));
+ cardPrev.addEventListener('click',()=>showCard(cardIndex-1));cardNext.addEventListener('click',()=>showCard(cardIndex+1));
+ cardPrev.hidden=false;cardNext.hidden=false;
 
  function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
  function button(text,action){const e=el('button','',text);e.type='button';e.addEventListener('click',action);return e;}
@@ -94,7 +106,6 @@
    });
    field.append(cube);cubeNodes.push(cube);
   });
-  Object.entries({all:'All',...M.categories}).forEach(([key,name])=>{const b=button(name,()=>dispatch({type:'category',value:key}));b.dataset.category=key;$('filters').append(b);filters.push(b);});
  }
  function fitLabels(){
   const minimum=root.clientWidth>800?7:4;
@@ -155,7 +166,7 @@
   });
  }
  function render(){
-  camera();geometry();drawConnections();filters.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.category===state.category)));
+  camera();geometry();drawConnections();
   const visible=M.matches(state),picker=$('picker'),signature=visible.join(',');
   if(picker.dataset.options!==signature){picker.replaceChildren(...visible.map(i=>{const o=el('option','',state.items[i].name);o.value=i;return o;}));picker.dataset.options=signature;}
   picker.value=state.selected;picker.disabled=!visible.length;
@@ -166,7 +177,7 @@
   $('related').replaceChildren(...M.related(state).filter(i=>i!==state.selected).map(i=>{
    const b=button(state.items[i].name,()=>{dispatch({type:'select',value:i,reveal:true});$('detail-name').focus({preventScroll:true});});return b;
   }));
-  story.scrollTo({left:0,behavior:'instant'});syncCardIndicator();story.getAnimations().forEach(a=>a.cancel());
+  cardTarget=null;story.scrollTo({left:0,behavior:'instant'});syncCardIndicator();story.getAnimations().forEach(a=>a.cancel());
   if(animate&&!media.matches)story.animate([{opacity:.65,transform:'translateY(3px)'},{opacity:1,transform:'none'}],{duration:440,easing:'cubic-bezier(.22,.61,.36,1)'});
  }
  function resize(){
