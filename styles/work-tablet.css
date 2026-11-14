@@ -71,6 +71,7 @@
 
 /* Reuse the approved CYCLE wordmark on the white information panel. */
 .site.ref-mode #work .story-company-logo[src$="cycle-logo.svg"]{filter:invert(1)}
+.site.ref-mode #work .story-company-website img[src$="cycle-brand-white.svg"]{object-fit:contain;object-position:center;background:#fff}
 
 /* Selected company recognition, restored from the unfinished ChatGPT draft. */
 #work .story-company-website{position:relative}
