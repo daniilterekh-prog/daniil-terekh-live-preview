@@ -103,7 +103,15 @@
  #skills .skills-pagination [aria-current="true"] span{width:28px;background:#dce5df}
 }
 @media(min-width:801px) and (max-height:650px){#skills .skills-leaf,#skills .skills-leaf:last-child{min-height:132px;padding:16px;gap:16px}#skills .skills-leaf::before{right:16px;top:16px}#skills .skills-leaf::after{left:16px}#skills .skills-leaf p{font-size:15px}}
-@media(prefers-reduced-motion:no-preference){#skills .skills-cube{transition:transform 560ms cubic-bezier(.22,.72,.18,1),opacity 280ms}}
+@media(prefers-reduced-motion:no-preference){
+ #skills .skills-field{transition:transform 900ms cubic-bezier(.22,.61,.36,1);will-change:transform}
+ #skills .skills-cube{transition:transform 700ms cubic-bezier(.22,.61,.36,1),opacity 420ms ease}
+ #skills .skills-cube .sk-cap{transition:transform 440ms cubic-bezier(.22,.61,.36,1),background-color 440ms ease,border-color 440ms ease,box-shadow 440ms ease}
+ #skills .skills-cube .sk-side{transition:background-color 440ms ease,border-color 440ms ease}
+ #skills .skills-connections{transition:opacity 420ms ease}
+ #skills .skills-connections path{animation:skills-link-in 520ms cubic-bezier(.22,.61,.36,1) 80ms backwards}
+ #skills.skills-camera-moving .skills-cube:not(.is-outside):not(:disabled){pointer-events:auto}
+}
 
 /* Focus on the selected service and keep the catalogue one click away. */
 #services:not(.is-open) .services-type{row-gap:10px}
