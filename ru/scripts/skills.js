@@ -119,7 +119,7 @@
   root.classList.toggle('skills-compact',compact);root.classList.toggle('skills-focused',compact&&!!mobileFocus);
   $('overview').hidden=!compact||!mobileFocus;
   let zoom=1,px=0,py=0;
-  unit=compact?60:70;
+  unit=compact?60:70*(window.DTViewport?.scale?.()||1);
   zoom=compact?Math.min(stage.clientWidth/(unit*(M.columns+1.6)),stage.clientHeight/(unit*(M.rows+2))):Math.min(1,stage.clientWidth/(unit*(M.columns+1.2)),stage.clientHeight/(unit*(M.rows+1.2)));
   field.style.setProperty('--unit',unit+'px');field.style.setProperty('--depth',Math.max(7,unit*.24)+'px');
   $('sockets').querySelectorAll('.skills-socket').forEach((e,i)=>{const slot=M.slotFor(i);e.style.transform='translate('+(slot%M.columns*unit)+'px,'+(Math.floor(slot/M.columns)*unit)+'px)';});
@@ -172,7 +172,7 @@
  function resize(){
   M.configureLayout(12);
   field.style.setProperty('--columns',M.columns);field.style.setProperty('--rows',M.rows);
-  unit=Math.min(70,stage.clientWidth/(M.columns+(M.columns===12?1.2:1)),stage.clientHeight/(M.rows+1.2));
+  unit=Math.min(70*(window.DTViewport?.scale?.()||1),stage.clientWidth/(M.columns+(M.columns===12?1.2:1)),stage.clientHeight/(M.rows+1.2));
   field.style.setProperty('--unit',unit+'px');field.style.setProperty('--depth',Math.max(7,unit*.24)+'px');
   $('connections').setAttribute('viewBox','0 0 '+M.columns*100+' '+M.rows*100);
   cubeNodes.forEach((cube,i)=>{cube.dataset.slot=M.slotFor(i);});

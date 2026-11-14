@@ -2,10 +2,10 @@
  'use strict';
  const clamp=n=>Math.max(0,Math.min(1,Number.isFinite(n)?n:0));
  const smooth=(a,b,n)=>{const t=clamp((n-a)/(b-a));return t*t*(3-2*t);};
- function sceneState(width,height,progress,reduced=false){
+ function sceneState(width,height,progress,reduced=false,scale=1){
   const w=Math.max(0,Number.isFinite(width)?width:0),h=Math.max(0,Number.isFinite(height)?height:0);
   const p=reduced?1:clamp(progress),travel=smooth(.14,.72,p),focus=smooth(.48,.78,p);
-  const r=Math.min(w*.46,h*.46,500),start=-r*1.4-10;
+  const r=Math.min(w*.46,h*.46,500*scale),start=-r*1.4-10*scale;
   return {progress:p,cx:start+(w/2-start)*travel,cy:h/2+r*.06*(1-travel),
    rx:r*(.34+.66*travel),ry:r,radius:r,focus,
    questionOpacity:smooth(.32,.56,p),refractionOpacity:(1-smooth(.35,.55,p)),
@@ -26,7 +26,7 @@
  // Without masks or Canvas the complete, semantic HTML remains visible.
  if(!context||!CSS.supports('mask-image','radial-gradient(black,transparent)'))return;
  const refracted=request.cloneNode(true);refracted.classList.add('meaning-refraction');stage.insertBefore(refracted,question);
- let width=0,height=0,dpr=1,frame=0,visible=false,lastProgress=-1;
+ let width=0,height=0,dpr=1,frame=0,visible=false,lastProgress=-1,wideScale=1;
  function ellipse(s,inset=0,dx=0){
   context.beginPath();context.ellipse(s.cx+dx,s.cy,Math.max(.1,s.rx-inset),Math.max(.1,s.ry-inset),0,0,Math.PI*2);
  }
@@ -61,7 +61,7 @@
   const top=root.DTViewport?.top?.()||0,range=Math.max(1,section.offsetHeight-sticky.offsetHeight);
   const progress=reduced()?1:clamp((top-section.getBoundingClientRect().top)/range);
   if(progress===lastProgress)return;lastProgress=progress;
-  const s=sceneState(width,height,progress,reduced());
+  const s=sceneState(width,height,progress,reduced(),wideScale);
   const aperture='ellipse('+s.rx+'px '+s.ry+'px at '+s.cx+'px '+s.cy+'px)';
   const mask='radial-gradient(ellipse '+s.rx+'px '+s.ry+'px at '+s.cx+'px '+s.cy+'px,transparent calc(100% - 1px),#000 100%)';
   request.style.maskImage=mask;request.style.webkitMaskImage=mask;
@@ -85,11 +85,12 @@
   sticky.style.top=top+'px';
   const rect=stage.getBoundingClientRect();width=rect.width;height=rect.height;
   if(!width||!height)return;
-  const final=sceneState(width,height,1);
+  wideScale=root.DTViewport?.scale?.()||1;
+  const final=sceneState(width,height,1,false,wideScale);
   stage.style.setProperty('--meaning-type',final.radius*.16+'px');
   stage.style.setProperty('--meaning-radius',final.radius+'px');
   stage.style.setProperty('--meaning-copy-width',final.textWidth+'px');
-  dpr=Math.min(devicePixelRatio||1,2,Math.sqrt(2500000/Math.max(1,width*height)));
+  dpr=Math.min(devicePixelRatio||1,2,Math.sqrt(2500000*Math.min(4,wideScale*wideScale)/Math.max(1,width*height)));
   glass.width=Math.round(width*dpr);glass.height=Math.round(height*dpr);context.setTransform(dpr,0,0,dpr,0,0);
   const travel=reduced()?0:Math.round((root.DTViewport?.height?.()||innerHeight)*(width<600?1.55:1.8));
   section.style.minHeight=(sticky.offsetHeight+travel)+'px';

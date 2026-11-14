@@ -66,7 +66,8 @@ function measureStory(){
  const stageW=sticky.clientWidth;
  // Desktop keeps its navigation rail; mobile uses a wider, centred tablet.
  const landscape=matchMedia('(min-width:540px) and (max-height:500px)').matches;
- const targetW=landscape?Math.min(stageW*.70,Math.max(130,stageH-68)*1.9):mobile?Math.min(stageW*.88,(stageH-205)*.82):Math.min(stageW*.80,Math.max(300,stageH-250)*1.7);
+ const wideScale=window.DTViewport.scale?.()||1;
+ const targetW=landscape?Math.min(stageW*.70,Math.max(130,stageH-68)*1.9):mobile?Math.min(stageW*.88,(stageH-205)*.82):Math.min(stageW*.80,Math.max(300*wideScale,stageH-250*wideScale)*1.7);
  const initialW=mobile?Math.min(stageW*.81,targetW*.91):Math.min(stageW*.68,targetW*1.08);
  const startLeft=landscape?stageW*.04:mobile?(stageW-initialW)/2:stageW*.14;
  const endLeft=landscape?stageW*.04:mobile?(stageW-targetW)/2:(stageW-targetW)/2+28;
@@ -76,7 +77,7 @@ function measureStory(){
  const previousOffset=parseFloat(section.style.getPropertyValue('--story-offset'))||0;
  const naturalTop=section.getBoundingClientRect().top+scrollY-previousOffset;
  const heroBottom=Math.max(byId('heroName').getBoundingClientRect().bottom,document.querySelector('#hero .signature').getBoundingClientRect().bottom)+scrollY;
- const heroGap=mobile?24:40;
+ const heroGap=mobile?24:40*wideScale;
  const offset=Math.ceil(heroBottom+heroGap-naturalTop-startTop+initialW*.04);
  if(offset!==previousOffset)section.style.setProperty('--story-offset',offset+'px');
  const top=section.getBoundingClientRect().top+window.scrollY;

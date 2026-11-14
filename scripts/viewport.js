@@ -3,7 +3,8 @@
  function resolveHeight(smallViewport,fallback){
   return Math.round(Number.isFinite(smallViewport)&&smallViewport>0?smallViewport:fallback);
  }
- if(typeof module==='object'&&module.exports){module.exports={resolveHeight};return;}
+ function desktopScale(width,height){return width>=1600&&height>=900?Math.min(width/1600,height/900,2.4):1;}
+ if(typeof module==='object'&&module.exports){module.exports={resolveHeight,desktopScale};return;}
  // 100svh does not grow when Safari retracts its browser controls mid-gesture.
  const probe=document.createElement('div');probe.setAttribute('aria-hidden','true');
  probe.style.cssText='position:fixed;left:0;top:0;width:0;height:100svh;visibility:hidden;pointer-events:none;contain:strict;';
@@ -16,5 +17,5 @@
  }
  measureHeader();root.addEventListener('resize',measureHeader,{passive:true});
  if(header)new ResizeObserver(measureHeader).observe(header);
- root.DTViewport={height,top:()=>headerInset,contentHeight:()=>Math.max(1,height()-headerInset)};
+ root.DTViewport={height,top:()=>headerInset,contentHeight:()=>Math.max(1,height()-headerInset),scale:()=>desktopScale(root.innerWidth,height())};
 })(globalThis);

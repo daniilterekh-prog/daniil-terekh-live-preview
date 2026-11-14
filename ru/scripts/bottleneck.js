@@ -26,14 +26,14 @@
  const main=document.getElementById('mainPage'),media=matchMedia('(prefers-reduced-motion:reduce)'),button=section.querySelector('.bottleneck-motion');
  const caption=section.querySelector('.bottleneck-caption'),copies=Array.from(section.querySelectorAll('[data-bottleneck-copy]')),controls=Array.from(section.querySelectorAll('[data-bottleneck-stage]'));
  const labels=Array.from(visual.querySelectorAll?.('.bottleneck-stage-name')||[]),stagePositions=[.08,.365,.62,.87];
- const flow=createFlow();let width=0,height=0,dpr=1,frame=0,lastTime=null,opening=null,visible=false,paused=false,override=false,lastStage=-1,labelAnchors=[];
+ const flow=createFlow();let width=0,height=0,dpr=1,frame=0,lastTime=null,opening=null,visible=false,paused=false,override=false,lastStage=-1,labelAnchors=[],wideScale=1;
  const reduced=()=>media.matches&&!override;
  const active=()=>visible&&!document.hidden&&!main?.hidden;
  const moving=()=>!paused&&!reduced();
  const progress=()=>reduced()?1:clamp(((root.DTViewport?.top?.()||0)-section.getBoundingClientRect().top)/Math.max(1,section.offsetHeight-sticky.offsetHeight));
  function draw(state){
   ctx.clearRect(0,0,width,height);const mobile=width<600,axis=mobile?width*.79:height*.55,start=mobile?height*.035:width*.03,L=mobile?height-start+2:width*.94;
-  const wide=mobile?Math.min(width*.115,48):Math.min(height*.19,70),G=L*.365,throat=wide*(.28+.72*state.opening);
+  const wide=mobile?Math.min(width*.115,48):Math.min(height*.19,70*wideScale),G=L*.365,throat=wide*(.28+.72*state.opening);
   const point=(s,y)=>mobile?[axis+y,start+s]:[start+s,axis+y];
   const path=(pts,color,lineWidth)=>{ctx.beginPath();pts.forEach((v,i)=>{const p=point(v[0],v[1]);i?ctx.lineTo(...p):ctx.moveTo(...p);});ctx.strokeStyle=color;ctx.lineWidth=lineWidth;ctx.lineCap='round';ctx.stroke();};
   // A substantial clear conduit: body shading and separated polished edges.
@@ -43,9 +43,9 @@
   bodyShade.addColorStop(0,'rgba(225,226,222,.10)');bodyShade.addColorStop(.12,'rgba(225,226,222,.035)');bodyShade.addColorStop(.5,'rgba(225,226,222,.012)');bodyShade.addColorStop(.88,'rgba(225,226,222,.03)');bodyShade.addColorStop(1,'rgba(225,226,222,.12)');ctx.fillStyle=bodyShade;ctx.fill();
   for(const sign of [-1,1]){
    const pts=[[0,sign*wide],[G-L*.09,sign*wide],[G,sign*throat],[G+L*.09,sign*wide],[L,sign*wide]];
-   path(pts,'rgba(227,228,224,.025)',15);path(pts,'rgba(227,228,224,.08)',5);path(pts,'rgba(227,228,224,.65)',1.1);
-   const back=pts.map(v=>[v[0],v[1]+sign*4]);path(back,'rgba(190,192,185,.16)',.6);
-   const extent=wide*.82,center=throat+extent/2,at=point(G,sign*center),thick=mobile?11:13;
+   path(pts,'rgba(227,228,224,.025)',15*wideScale);path(pts,'rgba(227,228,224,.08)',5*wideScale);path(pts,'rgba(227,228,224,.65)',1.1*wideScale);
+   const back=pts.map(v=>[v[0],v[1]+sign*4*wideScale]);path(back,'rgba(190,192,185,.16)',.6*wideScale);
+   const extent=wide*.82,center=throat+extent/2,at=point(G,sign*center),thick=mobile?11:13*wideScale;
    const x=at[0]-(mobile?extent:thick)/2,y=at[1]-(mobile?thick:extent)/2,w=mobile?extent:thick,h=mobile?thick:extent;
    const metal=ctx.createLinearGradient(x,y,x+w,y+h);metal.addColorStop(0,'#4b4d47');metal.addColorStop(.13,'#e5e6df');metal.addColorStop(.22,'#7f8278');metal.addColorStop(.72,'#353831');metal.addColorStop(.90,'#aeb3a5');metal.addColorStop(1,'#575b51');ctx.fillStyle=metal;ctx.fillRect(x,y,w,h);
    ctx.strokeStyle='rgba(240,241,234,.4)';ctx.lineWidth=.6;ctx.strokeRect(x+.5,y+.5,w-1,h-1);
@@ -54,14 +54,14 @@
   // Leaders join the actual text bounds to the glass; Offer follows the moving gate.
   labelAnchors.forEach((label,i)=>{
    const distance=i===1?throat+wide*.82:wide,s=stagePositions[i]*L;
-   const end=point(s,-distance),from=mobile?[label.right+10,label.y]:[label.x,label.bottom+10];
-   const elbow=mobile?[end[0]-10,from[1]]:[from[0],end[1]-10];
+   const end=point(s,-distance),from=mobile?[label.right+10,label.y]:[label.x,label.bottom+10*wideScale];
+   const elbow=mobile?[end[0]-10,from[1]]:[from[0],end[1]-10*wideScale];
    if(mobile&&from[0]>=end[0]-4)return;
    ctx.beginPath();ctx.moveTo(...from);ctx.lineTo(...elbow);ctx.lineTo(...end);
-   ctx.strokeStyle='rgba(222,224,215,'+(i===1?.58-.16*state.opening:.24)+')';ctx.lineWidth=i===1?1:.7;ctx.stroke();
-   ctx.beginPath();ctx.arc(...end,i===1?2:1.5,0,Math.PI*2);ctx.fillStyle=i===1?'#c0c3b9':'#777c75';ctx.fill();
+   ctx.strokeStyle='rgba(222,224,215,'+(i===1?.58-.16*state.opening:.24)+')';ctx.lineWidth=(i===1?1:.7)*wideScale;ctx.stroke();
+   ctx.beginPath();ctx.arc(...end,(i===1?2:1.5)*wideScale,0,Math.PI*2);ctx.fillStyle=i===1?'#c0c3b9':'#777c75';ctx.fill();
   });
-  const radius=mobile?Math.max(2.7,Math.min(4,width*.009)):Math.max(2.4,Math.min(4,width*.0035));
+  const radius=mobile?Math.max(2.7,Math.min(4,width*.009)):Math.max(2.4*wideScale,Math.min(4*wideScale,width*.0035));
   for(let i=Math.floor(flow.flux)-14;i<=Math.ceil(flow.flux)+18;i++){
    const p=particleState(flow,i,state.opening);if(!p||!p.opacity)continue;
    const at=point(p.s*L,p.lane*wide*.35*p.spread),halo=ctx.createRadialGradient(...at,0,...at,radius*3.1);
@@ -88,7 +88,8 @@
  function measure(){
   if(main?.hidden)return;sticky.style.top=(root.DTViewport?.top?.()||0)+'px';
   const r=visual.getBoundingClientRect();width=r.width;height=r.height;if(!width||!height)return;
-  dpr=Math.min(devicePixelRatio||1,2,Math.sqrt(2200000/(width*height)));canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+  wideScale=root.DTViewport?.scale?.()||1;
+  dpr=Math.min(devicePixelRatio||1,2,Math.sqrt(2200000*Math.min(4,wideScale*wideScale)/(width*height)));canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
   section.style.minHeight=(sticky.offsetHeight+(reduced()?0:scrollTravel(root.DTViewport?.height?.()||innerHeight)))+'px';
   section.dataset.bottleneckReady='true';section.dataset.bottleneckStatic=String(reduced());
   // Keep each mobile label level with its stage, including the throat at 36.5%.
