@@ -28,6 +28,17 @@
  #cycle .cycle-team{left:var(--iwe-team-anchor,76.1667%);transform:translate(-50%,calc(10px * (1 - var(--iwe-result,0))))}
  #cycle .cycle-signatures span{margin-inline:auto}
  #cycle .cycle-iwe-logo{margin-inline:auto}
+/* Mobile copy may grow; the WE artwork and its two signatures keep their size. */
+@media(max-width:800px) and (orientation:portrait){
+ #mainPage #cycle.cycle-iwe{height:auto;min-height:var(--scene-height)}
+ #mainPage #cycle.cycle-iwe .cycle-composition{position:relative;top:auto;height:auto;min-height:var(--scene-height);overflow:visible;grid-template-rows:repeat(5,auto);gap:24px}
+ #cycle.cycle-iwe .cycle-type-scene{display:block;align-self:start;max-height:none}
+ #cycle .cycle-letters{display:block;flex:none;height:auto}
+ #cycle.cycle-iwe .cycle-letter-art{height:auto;max-height:none;aspect-ratio:3/2}
+ #cycle .cycle-signatures{min-height:88px;margin-top:8px}
+ #cycle .cycle-person,#cycle .cycle-team{width:40%}
+ html:lang(ru) #mainPage #cycle-title{font-size:clamp(28px,9vw,40px)}
+}
 @media(max-width:800px){
  #skills[data-variant="5"] .skills-field{--rx:28deg;--rz:-11deg}
  #skills .skills-cube[data-kind="tool"] .sk-label{font-size:12px;line-height:1.15;padding:3px}
