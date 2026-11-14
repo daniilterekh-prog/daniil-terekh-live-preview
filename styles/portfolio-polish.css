@@ -20,13 +20,14 @@
 @media(hover:hover) and (pointer:fine){#skills .skills-cube:not(:disabled):not(.is-selected):hover .sk-cap{background:#1b1b1b;border-color:#baccc0}}
 @media(min-width:801px){
  #skills .skills-related{display:none}
+}
+/* Both signatures share the exact SVG letter anchors on every screen size. */
  #cycle .cycle-signatures{position:relative;display:block;min-height:88px}
  #cycle .cycle-person,#cycle .cycle-team{position:absolute;top:0;width:44%;text-align:center}
  #cycle .cycle-person{left:var(--iwe-person-anchor,48.6667%);transform:translateX(-50%)}
  #cycle .cycle-team{left:var(--iwe-team-anchor,76.1667%);transform:translate(-50%,calc(10px * (1 - var(--iwe-result,0))))}
  #cycle .cycle-signatures span{margin-inline:auto}
  #cycle .cycle-iwe-logo{margin-inline:auto}
-}
 @media(max-width:800px){
  #skills[data-variant="5"] .skills-field{--rx:28deg;--rz:-11deg}
  #skills .skills-cube[data-kind="tool"] .sk-label{font-size:12px;line-height:1.15;padding:3px}
