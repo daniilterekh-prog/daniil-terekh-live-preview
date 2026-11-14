@@ -24,7 +24,7 @@ function renderScreens(){
   const role=element('h3','story-company-role',c.role);
   const position=element('div','story-company-position');position.append(role);
   if(c.period)position.append(element('p','story-company-period',c.period));
-  const link=element('a','story-company-case');link.href='#experience/'+c.id;link.innerHTML="<span>СМОТРЕТЬ КЕЙС</span>"+arrow;link.setAttribute('aria-label',"Смотреть:"+c.name+" — кейс");
+  const link=element('a','story-company-case');link.href='#experience/'+c.id;link.innerHTML="<span>ОТКРЫТЬ КЕЙС</span>"+arrow;link.setAttribute('aria-label',"Открыть:"+c.name+" — кейс");
   link.addEventListener('click',()=>{lastRouteScroll=window.scrollY;lastRouteFocus=document.activeElement;detailReturn='work';});
   info.append(logo,position,link);
   const website=element('div','story-company-website'),img=element('img');img.src=c.homepageScreen;img.alt=c.homepageAlt||c.name+" — сайт компании";img.loading=i<2?'eager':'lazy';img.decoding='async';website.append(img);
@@ -203,7 +203,7 @@ function applyRoute(){
 function renderAll(){
  const featured=byId('allList'),more=byId('moreList');featured.replaceChildren();more.replaceChildren();
  for(const c of allProjects){
-  const link=element('a',c.featured?'archive-card':'experience-row');link.href='#experience/'+c.id;link.dataset.projectId=c.id;link.setAttribute('aria-label',"Смотреть:"+c.name+' — '+[c.role,c.period].filter(Boolean).join(' · '));
+  const link=element('a',c.featured?'archive-card':'experience-row');link.href='#experience/'+c.id;link.dataset.projectId=c.id;link.setAttribute('aria-label',"Открыть:"+c.name+' — '+[c.role,c.period].filter(Boolean).join(' · '));
   link.addEventListener('click',()=>{archiveScroll=window.scrollY;lastRouteFocus=document.activeElement;detailReturn='all';});
   if(c.featured){
    const visual=element('div','archive-card-visual'),img=element('img');img.src=c.image;img.alt=c.imageAlt||c.name+" — сайт компании";img.loading='lazy';img.decoding='async';
