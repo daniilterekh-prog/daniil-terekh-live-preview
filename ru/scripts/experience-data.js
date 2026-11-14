@@ -148,7 +148,7 @@
     "id": "cycle",
     "name": "CYCLE",
     "featured": false,
-    "role": "Руководитель агентства",
+    "role": "Генеральный директор",
     "period": "2026",
     "location": "Европа · Весь мир",
     "sector": "Стратегия, креатив и digital",
