@@ -3,7 +3,7 @@
  const CHAPTERS=[
   {id:'hero',label:'DANIIL TEREKH'},
   {id:'work',label:'Selected work'},
-  {id:'thinking',label:'Find the signal'},
+  {id:'thinking',label:'Find the real problem'},
   {id:'the-edit',label:'Leave room for what matters'},
   {id:'skills',label:'Skills'},
   {id:'human',label:'Still curious'},
