@@ -4,9 +4,8 @@
  const buttons=Array.from(section.querySelectorAll('[data-service]'));
  const panels=Array.from(section.querySelectorAll('.service-panel'));
  const directions=buttons.filter(button=>button.classList.contains('service-direction'));
- const close=section.querySelector('.services-close'),area=section.querySelector('.services-panel-area');let selected=null;
+ const close=section.querySelector('.services-close');let selected=null;
  function select(key,restoreFocus=false){
-  if(key!==selected)area.scrollTop=0;
   selected=key;section.dataset.selection=key||'';section.classList.toggle('is-open',key!==null);
   buttons.forEach(button=>{const active=button.dataset.service===key;button.classList.toggle('is-active',active);button.setAttribute('aria-expanded',String(active));});
   directions.forEach(button=>{button.hidden=key!==null&&button.dataset.service!==key;});
