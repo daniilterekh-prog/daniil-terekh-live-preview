@@ -70,7 +70,7 @@
   const content=question.firstElementChild;
   content.style.filter=s.focus<1?'blur('+((1-s.focus)*3.2)+'px)':'none';
   content.style.transform='scale('+(1+(1-s.focus)*.045)+')';
-  caption.style.opacity=String(s.caption);caption.style.transform='translateY('+((1-s.caption)*8)+'px)';
+  if(caption){caption.style.opacity=String(s.caption);caption.style.transform='translateY('+((1-s.caption)*8)+'px)';}
   hint.style.opacity=String(1-smooth(.08,.24,progress));
   section.dataset.orbit=progress<.14?'inputs':progress<.4?'focus':progress<.84?'passage':'clarity';
   section.dataset.meaningProgress=progress.toFixed(4);
