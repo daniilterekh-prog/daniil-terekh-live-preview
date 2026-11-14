@@ -13,6 +13,7 @@
  #services[data-selection="team"] .services-type{display:none}
 }
 @media(max-width:800px){
+ #services.is-open .services-white-field{clip-path:ellipse(150% 150% at 100% 100%)}
  #services:not(.is-open) .services-type{padding-bottom:0}
  #services .service-role-card{position:relative;left:auto;right:auto;bottom:auto;width:calc(100% - 2*var(--page-gutter));margin:32px var(--page-gutter);padding-top:20px}
  #services .service-role-card>.service-role-title{font-size:clamp(24px,7vw,30px);line-height:1.1;gap:12px}
