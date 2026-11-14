@@ -8,6 +8,7 @@ const cameFromWork=(()=>{try{const u=new URL(document.referrer);return u.origin=
 let detailReturn='work',archiveScroll=0,archiveFilter=window.DTWorkCatalog.normalizeFilter(new URLSearchParams(location.search).get('discipline')),recognitionTarget=null;
 const arrow='<svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 function element(tag,className,text){const el=document.createElement(tag);if(className)el.className=className;if(text)el.textContent=text;return el;}
+function caseHighlights(c){const list=element('ul','case-highlights');for(const tag of c.highlights||[])list.append(element('li','',tag));return list;}
 const byId=id=>document.getElementById(id);
 const site=byId('site'), section=byId('work'), sticky=byId('storySticky'), frame=byId('storyFrame'), track=byId('storyScreens');
 let lastPaintLocal=null;
@@ -24,6 +25,7 @@ function renderScreens(){
   const role=element('h3','story-company-role',c.role);
   const position=element('div','story-company-position');position.append(role);
   if(c.period)position.append(element('p','story-company-period',c.period));
+  position.append(caseHighlights(c));
   const link=element('a','story-company-case');link.href='#experience/'+c.id;link.innerHTML='<span>EXPLORE THE CASE</span>'+arrow;link.setAttribute('aria-label','View '+c.name+' case study');
   link.addEventListener('click',()=>{lastRouteScroll=window.scrollY;lastRouteFocus=document.activeElement;detailReturn='work';});
   info.append(logo,position,link);
@@ -64,7 +66,7 @@ function measureStory(){
  const stageW=sticky.clientWidth;
  // Desktop keeps its navigation rail; mobile uses a wider, centred tablet.
  const landscape=matchMedia('(min-width:540px) and (max-height:500px)').matches;
- const targetW=landscape?Math.min(stageW*.70,Math.max(130,stageH-68)*1.9):mobile?Math.min(stageW*.88,(stageH-205)*.88):Math.min(stageW*.80,Math.max(300,stageH-250)*1.7);
+ const targetW=landscape?Math.min(stageW*.70,Math.max(130,stageH-68)*1.9):mobile?Math.min(stageW*.88,(stageH-205)*.82):Math.min(stageW*.80,Math.max(300,stageH-250)*1.7);
  const initialW=mobile?Math.min(stageW*.81,targetW*.91):Math.min(stageW*.68,targetW*1.08);
  const startLeft=landscape?stageW*.04:mobile?(stageW-initialW)/2:stageW*.14;
  const endLeft=landscape?stageW*.04:mobile?(stageW-targetW)/2:(stageW-targetW)/2+28;
@@ -138,6 +140,7 @@ function focusTitle(page){const heading=page.querySelector('h1');heading.setAttr
 function renderDetail(c){
  byId('detailName').textContent=c.name;byId('detailHeadline').textContent=c.headline;
  byId('detailRole').replaceChildren(...[c.role,c.period,c.location,c.sector].filter(Boolean).map(t=>element('span','',t)));
+ byId('detailHighlights').replaceChildren(...(c.highlights||[]).map(tag=>element('li','',tag)));
  byId('detailImage').parentElement.hidden=!c.image;
  if(c.image){byId('detailImage').src=c.image;byId('detailImage').alt=c.imageAlt||c.name+' — company homepage';}
  byId('detailDesc').textContent=c.intro;
@@ -208,9 +211,9 @@ function renderAll(){
   if(c.featured){
    const visual=element('div','archive-card-visual'),img=element('img');img.src=c.image;img.alt=c.imageAlt||c.name+' — company homepage';img.loading='lazy';img.decoding='async';
    const icon=element('span','case-arrow');icon.innerHTML=arrow;visual.append(img,icon);
-   const copy=element('div','archive-card-copy');copy.append(element('h3','',c.name),element('span','archive-card-sector',c.sector),element('p','archive-card-note',c.workNote),element('div','archive-disciplines',c.disciplines.map(k=>window.DTWorkCatalog.disciplines[k]).join(' · ')),element('span','archive-card-role',[c.role,c.period,c.location].filter(Boolean).join(' · ')));link.append(visual,copy);featured.append(link);
+   const copy=element('div','archive-card-copy');copy.append(element('h3','',c.name),element('span','archive-card-sector',c.sector),caseHighlights(c),element('p','archive-card-note',c.workNote),element('div','archive-disciplines',c.disciplines.map(k=>window.DTWorkCatalog.disciplines[k]).join(' · ')),element('span','archive-card-role',[c.role,c.period,c.location].filter(Boolean).join(' · ')));link.append(visual,copy);featured.append(link);
   }else{
-   const title=element('div');title.append(element('h3','',c.name),element('span','experience-row-role',[c.role,c.period,c.location].filter(Boolean).join(' · ')));const note=element('div','experience-row-note');note.append(element('p','',c.workNote),element('div','archive-disciplines',c.disciplines.map(k=>window.DTWorkCatalog.disciplines[k]).join(' · ')));link.append(title,note);link.insertAdjacentHTML('beforeend',arrow);more.append(link);
+   const title=element('div');title.append(element('h3','',c.name),element('span','experience-row-role',[c.role,c.period,c.location].filter(Boolean).join(' · ')));const note=element('div','experience-row-note');note.append(element('p','',c.workNote),caseHighlights(c),element('div','archive-disciplines',c.disciplines.map(k=>window.DTWorkCatalog.disciplines[k]).join(' · ')));link.append(title,note);link.insertAdjacentHTML('beforeend',arrow);more.append(link);
   }
  }
  applyArchiveFilter();

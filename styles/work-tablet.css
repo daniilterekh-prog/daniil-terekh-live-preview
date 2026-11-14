@@ -1,4 +1,12 @@
 /* One self-contained company spread inside the persistent hero-to-work tablet. */
+.case-highlights{display:flex;flex-wrap:wrap;gap:5px;list-style:none;padding:0;margin:0 0 22px;color:#b6bcb3}
+.case-highlights>li{margin:0;padding:4px 7px;border:1px solid #737b7066;font:11px/1.3 var(--sans,Arial,sans-serif);letter-spacing:0;white-space:normal}
+#work .case-highlights{margin:10px 0 0;color:#4c514b}
+#work .case-highlights>li{border-color:#d0d3cd;font-size:10px;padding:3px 6px}
+#allPage .case-highlights{grid-column:1/-1;margin:8px 0 12px}
+.work-page .case-highlights{margin:0 0 16px;color:#50574b}
+#detailRole{margin-bottom:14px}
+@media(max-width:720px){#work .case-highlights{gap:4px;margin-top:8px}#work .case-highlights>li{font-size:9px;padding:3px 5px}}
 #work .work-sr-title{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important}
 .site.ref-mode #work .story-sticky{overflow:visible}
 .site.ref-mode #work .story-frame{padding:10px;border:1px solid #656765!important;border-radius:23px;background:#151616;box-shadow:0 35px 90px #0008;cursor:default}
@@ -29,7 +37,7 @@
 }
 @media(max-width:720px){
  .mobile-actual .site.ref-mode #work .story-frame{padding:7px;border-radius:17px}
- .mobile-actual .site.ref-mode #work .story-screens{aspect-ratio:.88;border-radius:10px}
+ .mobile-actual .site.ref-mode #work .story-screens{aspect-ratio:.82;border-radius:10px}
  #work .story-layer{grid-template-columns:1fr;grid-template-rows:56% 44%}
  #work .story-company-info{padding:14px;display:grid;grid-template-columns:1fr;grid-template-rows:36px auto 44px;gap:6px;align-content:space-between}
  .mobile-actual .site.ref-mode #work .story-company-logo{height:36px;max-height:36px;max-width:145px;width:auto;object-position:left center;margin:0;object-fit:contain;background:transparent}
@@ -44,7 +52,7 @@
  .mobile-actual .site.ref-mode #work .story-controls{display:none}
  #work .story-controls button{width:44px;height:60px;min-height:44px;padding:5px}#work .story-controls button .ui-arrow{width:35px;height:44px}
  /* Limit the lift to the space below the final tablet; width/ratio match measureStory(). */
- .mobile-actual .site.ref-mode #work .story-caption{--work-final-width:min(88vw,calc((var(--stage-h) - 205px)*.88));--work-caption-room:calc(var(--stage-h)*.91 - (var(--work-final-width) - 16px)*1.136364 - 106px);left:6%;right:6%;bottom:min(88px,max(40px,var(--work-caption-room)));display:flex;gap:0}
+ .mobile-actual .site.ref-mode #work .story-caption{--work-final-width:min(88vw,calc((var(--stage-h) - 205px)*.82));--work-caption-room:calc(var(--stage-h)*.91 - (var(--work-final-width) - 16px)*1.219512 - 112px);left:6%;right:6%;bottom:min(68px,max(24px,var(--work-caption-room)));display:flex;gap:0}
  #work .work-archive-link{width:100%;min-height:60px;padding:18px 20px;font-size:12px;gap:25px}
 }
 @media(max-height:650px) and (min-width:721px){
@@ -113,4 +121,9 @@
  .mobile-actual .site.ref-mode #work .story-company-info .story-company-logo{height:24px;max-height:24px}
  .mobile-actual #work .story-company-role{font-size:20px}
  .mobile-actual #work .story-company-period{font-size:10px}
+}
+/* Let short phones borrow image space before the role or tags are clipped. */
+@media(max-width:720px) and (orientation:portrait){
+ .mobile-actual .site.ref-mode #work .story-layer{grid-template-rows:max(56%,min(205px,75%)) minmax(0,1fr)}
+ .mobile-actual .site.ref-mode #work .story-company-info{min-height:0;overflow-y:auto;scrollbar-width:thin}
 }

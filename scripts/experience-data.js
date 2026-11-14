@@ -42,7 +42,12 @@
       "analytics",
       "crm"
     ],
-    "workNote": "Digital strategy, property landing pages, paid acquisition, tracking and CRM connections."
+    "workNote": "Digital strategy, property landing pages, paid acquisition, tracking and CRM connections.",
+    "highlights": [
+      "Rebranding",
+      "Websites & landing pages",
+      "Anti-fraud"
+    ]
   },
   {
     "id": "barnes",
@@ -132,7 +137,12 @@
       "websites",
       "analytics"
     ],
-    "workNote": "Digital marketing for the Moscow team: property campaigns, landing pages and lead-quality reviews."
+    "workNote": "Digital marketing for the Moscow team: property campaigns, landing pages and lead-quality reviews.",
+    "highlights": [
+      "Property campaigns",
+      "Performance campaigns",
+      "Lead quality"
+    ]
   },
   {
     "id": "cycle",
@@ -173,7 +183,12 @@
       "creative",
       "leadership"
     ],
-    "workNote": "Project and creative direction, specialist teams and connected digital delivery."
+    "workNote": "Project and creative direction, specialist teams and connected digital delivery.",
+    "highlights": [
+      "Creative direction",
+      "Specialist team",
+      "Project delivery"
+    ]
   },
   {
     "id": "mk-elit",
@@ -346,7 +361,12 @@
       "crm",
       "creative"
     ],
-    "workNote": "Yandex Direct, launch pages, client reactivation, CRM journeys and marketing–sales analytics."
+    "workNote": "Yandex Direct, launch pages, client reactivation, CRM journeys and marketing–sales analytics.",
+    "highlights": [
+      "CRM funnels",
+      "AI call analysis",
+      "Client reactivation"
+    ]
   },
   {
     "id": "eva",
@@ -461,7 +481,12 @@
       "analytics",
       "websites"
     ],
-    "workNote": "Google Ads and YouTube, international audiences, landing-page tests, GTM and GA4."
+    "workNote": "Google Ads and YouTube, international audiences, landing-page tests, GTM and GA4.",
+    "highlights": [
+      "Google Ads",
+      "International markets",
+      "YouTube campaigns"
+    ]
   },
   {
     "id": "setevie",
@@ -595,7 +620,12 @@
       "crm",
       "leadership"
     ],
-    "workNote": "Led PPC, SEO and analytics teams; planned media, monitored KPIs and improved funnels."
+    "workNote": "Led PPC, SEO and analytics teams; planned media, monitored KPIs and improved funnels.",
+    "highlights": [
+      "Team leadership",
+      "Media planning",
+      "Marketing ROI"
+    ]
   },
   {
     "id": "alexander",
@@ -632,7 +662,12 @@
       "analytics",
       "leadership"
     ],
-    "workNote": "Technical SEO, website improvement briefs, Yandex Direct, call tracking and team coordination."
+    "workNote": "Technical SEO, website improvement briefs, Yandex Direct, call tracking and team coordination.",
+    "highlights": [
+      "Technical SEO",
+      "Call tracking",
+      "Website improvements"
+    ]
   },
   {
     "id": "unitec-legal",
@@ -667,7 +702,12 @@
       "websites",
       "analytics"
     ],
-    "workNote": "Technical SEO, service-page structure, local search and analytics coordination."
+    "workNote": "Technical SEO, service-page structure, local search and analytics coordination.",
+    "highlights": [
+      "Service-page SEO",
+      "Local search",
+      "Technical audit"
+    ]
   },
   {
     "id": "tivat-gardens",
@@ -698,7 +738,12 @@
       "creative",
       "ppc"
     ],
-    "workNote": "Property catalogues, outdoor advertising materials and digital campaign support."
+    "workNote": "Property catalogues, outdoor advertising materials and digital campaign support.",
+    "highlights": [
+      "Property catalogues",
+      "Outdoor advertising",
+      "Digital campaigns"
+    ]
   },
   {
     "id": "unitec-marine",
@@ -729,7 +774,12 @@
     "disciplines": [
       "websites"
     ],
-    "workNote": "WordPress content, technical website audits and mobile usability reviews."
+    "workNote": "WordPress content, technical website audits and mobile usability reviews.",
+    "highlights": [
+      "WordPress",
+      "Mobile usability",
+      "Website content"
+    ]
   },
   {
     "id": "euro-ag",
@@ -760,7 +810,12 @@
     "disciplines": [
       "ppc"
     ],
-    "workNote": "Operational data, team task coordination, contextual advertising and email activity."
+    "workNote": "Operational data, team task coordination, contextual advertising and email activity.",
+    "highlights": [
+      "Advertising",
+      "Email campaigns",
+      "Team coordination"
+    ]
   },
   {
     "id": "independent",
@@ -792,7 +847,12 @@
       "websites",
       "strategy"
     ],
-    "workNote": "SEO and website reviews, acquisition recommendations and marketing consultation."
+    "workNote": "SEO and website reviews, acquisition recommendations and marketing consultation.",
+    "highlights": [
+      "SEO audits",
+      "Website reviews",
+      "Marketing consulting"
+    ]
   }
 ];
  const data={projects,featured:projects.filter(p=>p.featured)};
