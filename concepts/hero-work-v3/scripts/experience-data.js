@@ -1,0 +1,907 @@
+(function(root){
+ 'use strict';
+ // Work periods are shown only where confirmed by the owner.
+ // Disputed performance figures remain omitted pending verification.
+ const projects=[
+  {
+    "id": "barn-estate",
+    "name": "BARN ESTATE",
+    "featured": true,
+    "role": "Head of Digital",
+    "period": "2026",
+    "location": "Moscow · Russia",
+    "sector": "Premium real estate",
+    "tags": "STRATEGY / PERFORMANCE / TECHNOLOGY",
+    "image": "assets/companies/barnes-home.jpg",
+    "url": "https://barn-estate.ru/",
+    "headline": "A new chapter. A connected digital foundation.",
+    "summary": "ex BARNES Russia. Digital direction, acquisition and website infrastructure for the Moscow real estate business.",
+    "intro": "BARN Estate — ex BARNES Russia. Digital direction in Moscow, connecting the property offer, acquisition channels and website infrastructure with the enquiry journey.",
+    "challenge": "Bring a changing premium property brand, a growing landing-page library and several website platforms into one coherent acquisition journey.",
+    "approach": "Connect the property offer, campaign brief, reusable page components, tracking and sales follow-up. Keep prepared designs, developer handoffs and published changes distinct so that delivery can be verified.",
+    "contribution": [
+      "Digital strategy, campaign priorities and lead-quality reviews",
+      "Property landing pages, regional direction pages and reusable UI kits",
+      "Website structure, copy and interface reviews for buyers, owners and brokers",
+      "Analytics, conversion tracking, CRM connections and sales feedback",
+      "Mobile and SEO checks across Tilda and separately hosted websites",
+      "Developer handoff packages with separate HTML, CSS, JavaScript and assets"
+    ],
+    "delivered": [
+      "A reusable system of property and regional landing pages",
+      "Consistent page components and developer-ready exports",
+      "Connected campaign, enquiry and reporting workflows"
+    ],
+    "collaboration": "Worked with the business, sales team and implementation specialists across digital delivery.",
+    "logo": "assets/companies/barn-estate-logo.svg",
+    "homepageScreen": "assets/companies/barn-estate-spread.png",
+    "companyBrief": "ex BARNES Russia. Premium real estate brokerage in Moscow.",
+    "disciplines": [
+      "strategy",
+      "ppc",
+      "websites",
+      "analytics",
+      "crm"
+    ],
+    "workNote": "Digital strategy, property landing pages, paid acquisition, tracking and CRM connections.",
+    "highlights": [
+      "Rebranding",
+      "Websites & landing pages",
+      "Anti-fraud"
+    ]
+  },
+  {
+    "id": "barnes",
+    "name": "BARNES INTERNATIONAL",
+    "featured": true,
+    "role": "Head of Digital · Russia team",
+    "period": "2025–2026",
+    "location": "Russia · Luxury real estate",
+    "sector": "Premium real estate",
+    "tags": "STRATEGY / PERFORMANCE / TECHNOLOGY",
+    "image": "assets/companies/barnes-international-home.jpg",
+    "url": "https://www.barnes-international.com/",
+    "headline": "International brand. Local market focus.",
+    "summary": "Digital marketing leadership for the Russia team, connecting acquisition, property pages, analytics and sales.",
+    "intro": "I led digital marketing for the BARNES International team in Russia. The work connected the standards of an international luxury brand with local property offers, paid acquisition and the path from enquiry to sale.",
+    "challenge": "Translate a luxury brand into relevant local campaigns while giving the team a clear view of lead quality, channel costs and sales follow-up.",
+    "approach": "Start with the property offer and audience, build the campaign and landing-page journey, then connect web analytics, CRM data and sales feedback. Coordinate specialists and contractors around shared priorities and reporting.",
+    "contribution": [
+      "Digital strategy, budget planning and multidisciplinary team coordination",
+      "Paid acquisition, property launch campaigns and landing-page delivery",
+      "Lead qualification, CRM journeys and marketing–sales alignment",
+      "Channel reporting, full-funnel analytics and performance reviews",
+      "Website and brand-development work with designers, developers and contractors"
+    ],
+    "delivered": [
+      "Property marketing journeys for the Moscow market",
+      "Campaign and landing page workflows",
+      "A clearer view of enquiries and channel performance"
+    ],
+    "collaboration": "Led the Russia digital team and worked with sales, internal specialists and external partners. The international website and brand film provide company context; they are separate from my own work.",
+    "logo": "assets/companies/barnes-international-logo.svg",
+    "homepageScreen": "assets/companies/barnes-international-spread.png",
+    "companyBrief": "International luxury real estate network. Moscow team.",
+    "awards": [
+      {
+        "title": "Luxury Lifestyle Awards",
+        "year": "2020",
+        "detail": "Best Luxury Real Estate Brokerage in Portugal.",
+        "source": "https://barnes-portugal.com/en/2020/09/17/barnes-international-realty-portugal-luxury-real/",
+        "status": "Winner",
+        "recipient": "BARNES International Realty Portugal",
+        "basis": "Office publication"
+      },
+      {
+        "title": "Best Multi Family Office",
+        "year": "2024",
+        "detail": "Multi family office category for teams of 5–15 people.",
+        "source": "https://www.barnes-international.com/fr/a-propos-de-barnes/actualites/2024/trophee-du-meilleur-family-office-2024-2996.html",
+        "status": "Winner",
+        "recipient": "Côme Le Family Office, partner in BARNES Family Office by Côme",
+        "basis": "BARNES International publication"
+      },
+      {
+        "title": "Luxury Lifestyle Awards — TOP 100 Real Estate Brokers",
+        "year": "2025",
+        "detail": "Selected among the TOP 100 Real Estate Brokers of the World.",
+        "source": "https://luxurylifestyleawards.com/news/top-100-real-estate-brokers-2025",
+        "status": "Personal recognition",
+        "recipient": "Charles Howard Morgen, BARNES – Private Office, Switzerland",
+        "basis": "Organizer source"
+      },
+      {
+        "title": "Luxury Lifestyle Awards — TOP 100 Real Estate Brokers",
+        "year": "2025",
+        "detail": "Selected among the TOP 100 Real Estate Brokers of the World.",
+        "source": "https://luxurylifestyleawards.com/news/top-100-real-estate-brokers-2025",
+        "status": "Personal recognition",
+        "recipient": "Rachel Bennett, BARNES Miami, USA",
+        "basis": "Organizer source"
+      }
+    ],
+    "awardsIntro": "Recognition across the international BARNES network. Each entry names the office, partner or individual recipient.",
+    "tabletRecognition": [
+      {
+        "index": 0,
+        "label": "Luxury Lifestyle Awards",
+        "scope": "BARNES Portugal"
+      },
+      {
+        "index": 2,
+        "label": "TOP 100 Real Estate Brokers",
+        "scope": "Charles H. Morgen · Switzerland"
+      }
+    ],
+    "disciplines": [
+      "strategy",
+      "ppc",
+      "websites",
+      "analytics"
+    ],
+    "workNote": "Digital marketing for the Moscow team: property campaigns, landing pages and lead-quality reviews.",
+    "highlights": [
+      "Property campaigns",
+      "Performance campaigns",
+      "Lead quality"
+    ]
+  },
+  {
+    "id": "cycle",
+    "name": "CYCLE",
+    "featured": true,
+    "role": "Founder & CEO",
+    "period": "2026",
+    "location": "Europe · Worldwide",
+    "sector": "Strategy, creative & digital",
+    "tags": "STRATEGY / CREATIVE / DELIVERY",
+    "image": "assets/companies/cycle-brand-white.svg",
+    "imageAlt": "CYCLE — real estate marketing agency",
+    "url": "",
+    "headline": "One direction. The right team.",
+    "summary": "My agency. Bringing the right specialists together around a shared direction.",
+    "intro": "CYCLE is my Europe-based marketing agency. I combine company-side digital leadership with agency delivery, bringing strategy, acquisition, websites, creative work and automation into one scope.",
+    "challenge": "Give a business one accountable marketing lead while assembling the specialists needed for a specific project or a broader marketing function.",
+    "approach": "Define the task, assemble the right specialists, and connect their work through a shared brief, priorities and a clear review process.",
+    "contribution": [
+      "Business discovery, positioning and marketing strategy",
+      "Scope, budgets, priorities and delivery milestones",
+      "Recruitment, team assembly and contractor management",
+      "Websites, paid acquisition, analytics and CRM automation",
+      "Creative direction, quality reviews and client communication"
+    ],
+    "delivered": [
+      "A shared direction for the team",
+      "A coordinated scope across disciplines",
+      "A single point of contact for the client"
+    ],
+    "collaboration": "I remain responsible for direction, decisions and delivery. Larger scopes are delivered with a team of specialists and project-based partners; the agency presentation is an original brand asset.",
+    "logo": "assets/companies/cycle-logo.svg",
+    "homepageScreen": "assets/companies/cycle-brand-white.svg",
+    "homepageAlt": "CYCLE — real estate marketing agency",
+    "companyBrief": "My agency. A team for projects that need more than one specialist.",
+    "disciplines": [
+      "strategy",
+      "websites",
+      "creative",
+      "leadership"
+    ],
+    "workNote": "Project and creative direction, specialist teams and connected digital delivery.",
+    "highlights": [
+      "Creative direction",
+      "Specialist team",
+      "Project delivery"
+    ]
+  },
+  {
+    "id": "mk-elit",
+    "name": "MK ELIT",
+    "featured": true,
+    "role": "Digital Marketing Lead",
+    "period": "2022–2023",
+    "location": "Saint Petersburg · Russia",
+    "sector": "Luxury real estate",
+    "tags": "FUNNELS / CRM / PARTNERSHIPS",
+    "image": "assets/companies/mk-elit-home.jpg",
+    "url": "https://www.mkelite.ru/",
+    "headline": "Make every touchpoint work together.",
+    "summary": "Property launches, client reactivation and a connected marketing funnel.",
+    "intro": "Marketing for a luxury real estate agency, combining new property launches with the potential of an established client base.",
+    "challenge": "Rebuild the marketing operation of a luxury brokerage: launch new properties, qualify enquiries consistently and make an established client base useful for repeat business.",
+    "approach": "Plan in three-month cycles. Focus paid campaigns and Tilda pages on new property launches, agree lead criteria with sales, and support the next conversation through CRM, email, WhatsApp and Telegram journeys.",
+    "contribution": [
+      "Marketing strategy, media planning and a coordinated content calendar",
+      "Yandex Direct and Telegram Ads for new property launches",
+      "Tilda launch pages on dedicated domains, developed with design support",
+      "Lead qualification based on a meaningful second contact with sales",
+      "CRM handoffs, email, SMS, WhatsApp Business API and Telegram journeys",
+      "AI-assisted call analysis and lead-handling reports for sales managers",
+      "Client club, closed events and developer partnerships with Element and Fizika",
+      "Content collaborations with architects, designers, SMM and video partners"
+    ],
+    "delivered": [
+      "Launch funnels linking paid campaigns, dedicated pages and sales follow-up",
+      "Reactivation journeys for contacts who had stopped moving through the CRM",
+      "A client-club programme and a structured calendar of content and partner activity",
+      "Call-analysis reporting that reduced manual listening for sales managers"
+    ],
+    "results": [
+      {
+        "value": "−37%",
+        "label": "Cost per lead",
+        "detail": "1.5× the lead volume at the same advertising budget."
+      },
+      {
+        "value": "+25%",
+        "label": "Share of repeat enquiries",
+        "detail": "After introducing CRM journeys across email and messengers."
+      },
+      {
+        "value": "15%",
+        "label": "Lost leads reactivated",
+        "detail": "Recovered through CRM follow-up."
+      }
+    ],
+    "collaboration": "Worked with SMM, design, video production and sales. Contributed to collaborations with developers and design studios.",
+    "logo": "assets/companies/mk-elit-logo.svg",
+    "homepageScreen": "assets/companies/mk-elit-spread.png",
+    "companyBrief": "Luxury real estate agency in Saint Petersburg.",
+    "awards": [
+      {
+        "title": "European Property Awards",
+        "year": "2021–2022",
+        "detail": "Company laureate at the European stage of the International Property Awards.",
+        "source": "https://www.mkelite.ru/articles/104",
+        "status": "Laureate",
+        "recipient": "MK ELIT",
+        "basis": "Company publication"
+      },
+      {
+        "title": "Urban Awards",
+        "year": "2018",
+        "detail": "Award win listed in the company history; category not specified.",
+        "source": "https://www.mkelite.ru/company/",
+        "status": "Winner",
+        "recipient": "MK ELIT",
+        "basis": "Company history"
+      },
+      {
+        "title": "CREDO",
+        "year": "2024",
+        "detail": "Best luxury real estate brokerage in Saint Petersburg and the Leningrad region.",
+        "source": "https://realcongress.ru/images/credo/Credo-2024.pdf",
+        "status": "Laureate",
+        "recipient": "MK ELIT",
+        "basis": "Organizer source"
+      },
+      {
+        "title": "KAISSA",
+        "year": "2023",
+        "detail": "Recognition for a client-focused real estate service.",
+        "source": "https://www.mkelite.ru/company/",
+        "status": "Award",
+        "recipient": "MK ELIT",
+        "basis": "Company history"
+      },
+      {
+        "title": "KAISSA",
+        "year": "2023",
+        "detail": "Recognition for dynamic business development.",
+        "source": "https://www.mkelite.ru/company/",
+        "status": "Award",
+        "recipient": "MK ELIT",
+        "basis": "Company history"
+      },
+      {
+        "title": "Consumer Trust",
+        "year": "2023",
+        "detail": "Consumer trust in a Saint Petersburg real estate agency.",
+        "source": "https://www.mkelite.ru/company/",
+        "status": "Winner",
+        "recipient": "MK ELIT",
+        "basis": "Company history"
+      },
+      {
+        "title": "WebRealtor",
+        "year": "2024",
+        "detail": "Agency Telegram channel.",
+        "source": "https://www.mkelite.ru/company/",
+        "status": "Winner",
+        "recipient": "MK ELIT",
+        "basis": "Company history"
+      },
+      {
+        "title": "KAISSA",
+        "year": "2014",
+        "detail": "Recognition in luxury real estate; precise category not specified in the history.",
+        "source": "https://www.mkelite.ru/company/",
+        "status": "Award",
+        "recipient": "MK ELIT",
+        "basis": "Company history"
+      },
+      {
+        "title": "RBI — Successful Broker",
+        "year": "2012",
+        "detail": "Developer recognition listed in the company history.",
+        "source": "https://www.mkelite.ru/company/",
+        "status": "Award",
+        "recipient": "MK ELIT",
+        "basis": "Company history"
+      },
+      {
+        "title": "Consumer Trust",
+        "year": "2025",
+        "detail": "Best full-service real estate agency in Saint Petersburg and the Leningrad region.",
+        "source": "https://doveriekonkurs.ru/news/finalisty-doverie-potrebitelja-25-mir-kvartir-jelit/",
+        "status": "Finalist",
+        "recipient": "MK ELIT",
+        "basis": "Organizer source"
+      },
+      {
+        "title": "European Property Awards — Five Stars",
+        "year": "2021",
+        "detail": "Personal recognition in an individual category.",
+        "source": "https://www.mkelite.ru/articles/104",
+        "status": "Personal award",
+        "recipient": "Anton Fedorov, MK ELIT",
+        "basis": "Company publication"
+      }
+    ],
+    "tabletRecognition": [
+      {
+        "index": 0,
+        "label": "European Property Awards"
+      },
+      {
+        "index": 1,
+        "label": "Urban Awards"
+      }
+    ],
+    "disciplines": [
+      "strategy",
+      "ppc",
+      "websites",
+      "analytics",
+      "crm",
+      "creative"
+    ],
+    "workNote": "Yandex Direct, launch pages, client reactivation, CRM journeys and marketing–sales analytics.",
+    "highlights": [
+      "CRM funnels",
+      "AI call analysis",
+      "Client reactivation"
+    ]
+  },
+  {
+    "id": "eva",
+    "name": "EVA REAL ESTATE",
+    "featured": true,
+    "role": "Head of PPC · Project work",
+    "period": "2025",
+    "location": "Dubai · International audiences",
+    "sector": "Real estate",
+    "tags": "GOOGLE ADS / YOUTUBE / ANALYTICS",
+    "image": "assets/companies/eva-home.jpg",
+    "url": "https://www.eva.realestate/",
+    "headline": "One offer. Multiple markets.",
+    "summary": "Google Ads and YouTube acquisition for Dubai real estate across international markets.",
+    "intro": "Project-based responsibility for PPC at a Dubai real estate agency. I managed Google Ads and YouTube acquisition for property offers across the UAE, North America, Europe and selected Asian markets.",
+    "challenge": "Present property offers to different markets while keeping campaign structure, measurement and lead quality in view.",
+    "approach": "Separate campaigns by geography and buyer intent, including investors and end users. Align search, display, video and Performance Max with the property offer, landing page and lead feedback; use GTM and GA4 to check measurement.",
+    "contribution": [
+      "Google Ads Search, Display, Video and Performance Max",
+      "Campaign segmentation for the UAE, US, Canada, Europe, Hong Kong and Singapore",
+      "Investment and residential buyer audiences for Dubai property offers",
+      "Creative, landing-page and audience tests with lead-quality feedback",
+      "GTM, GA4, remarketing and audience-list segmentation",
+      "Media plans, daily budget control and acquisition reporting"
+    ],
+    "delivered": [
+      "An international PPC campaign structure",
+      "Audience and creative testing workflows",
+      "Measurement across acquisition and landing pages"
+    ],
+    "collaboration": "Project-based PPC responsibility, coordinating with the agency on property offers, lead feedback and campaign priorities.",
+    "logo": "assets/companies/eva-logo.svg",
+    "homepageScreen": "assets/companies/eva-spread.png",
+    "companyBrief": "Dubai real estate agency working with international buyers.",
+    "awards": [
+      {
+        "title": "EMAAR Sales Awards",
+        "year": "Quarterly",
+        "detail": "Quarterly sales recognition; exact years and tiers not specified.",
+        "source": "https://evadxb.com/ru/elvira-sharshenalieva/",
+        "status": "Company-listed award",
+        "recipient": "EVA Real Estate",
+        "basis": "Company publication"
+      },
+      {
+        "title": "DAMAC Broker Award",
+        "year": "",
+        "detail": "Broker recognition; year and tier not specified.",
+        "source": "https://evadxb.com/ru/elvira-sharshenalieva/",
+        "status": "Company-listed award",
+        "recipient": "EVA Real Estate",
+        "basis": "Company publication"
+      },
+      {
+        "title": "Sobha Stars",
+        "year": "2022",
+        "detail": "Developer recognition listed by EVA.",
+        "source": "https://evadxb.com/ru/elvira-sharshenalieva/",
+        "status": "Company-listed award",
+        "recipient": "EVA Real Estate",
+        "basis": "Company publication"
+      },
+      {
+        "title": "Regalia Performance",
+        "year": "",
+        "detail": "Performance recognition; year not specified.",
+        "source": "https://evadxb.com/ru/elvira-sharshenalieva/",
+        "status": "Company-listed award",
+        "recipient": "EVA Real Estate",
+        "basis": "Company publication"
+      },
+      {
+        "title": "Dubai Holding Agents",
+        "year": "",
+        "detail": "Agent recognition; year not specified.",
+        "source": "https://evadxb.com/ru/elvira-sharshenalieva/",
+        "status": "Company-listed award",
+        "recipient": "EVA Real Estate",
+        "basis": "Company publication"
+      },
+      {
+        "title": "MAG Top Broker of the Month",
+        "year": "2022",
+        "detail": "Monthly broker recognition; month not specified.",
+        "source": "https://evadxb.com/ru/elvira-sharshenalieva/",
+        "status": "Company-listed award",
+        "recipient": "EVA Real Estate",
+        "basis": "Company publication"
+      },
+      {
+        "title": "Prime Global Achievement Award",
+        "year": "2023",
+        "detail": "Real Estate Sales — personal award to the founder.",
+        "source": "https://www.primeglobalawards.com/post/interview-ms-elvira-sharshenalieva-winner-prime-global-achievement-award-real-estate-sales",
+        "status": "Personal award",
+        "recipient": "Elvira Sharshenalieva, founder of EVA Real Estate",
+        "basis": "Organizer source"
+      }
+    ],
+    "tabletRecognition": [
+      {
+        "index": 2,
+        "label": "Sobha Stars"
+      },
+      {
+        "index": 5,
+        "label": "MAG Top Broker"
+      }
+    ],
+    "disciplines": [
+      "ppc",
+      "analytics",
+      "websites"
+    ],
+    "workNote": "Google Ads and YouTube, international audiences, landing-page tests, GTM and GA4.",
+    "highlights": [
+      "Google Ads",
+      "International markets",
+      "YouTube campaigns"
+    ]
+  },
+  {
+    "id": "setevie",
+    "name": "SETEVIE",
+    "featured": true,
+    "role": "Head of Projects",
+    "period": "2023–2025",
+    "location": "Saint Petersburg · Multi-project agency",
+    "sector": "Marketing agency",
+    "tags": "TEAM / STRATEGY / OPERATIONS",
+    "image": "assets/companies/setevie-hero-v74.jpg",
+    "imageAlt": "Setevie — company website hero with architectural photography",
+    "url": "https://setevie.com/",
+    "headline": "Bring the team around the outcome.",
+    "summary": "Team leadership, media planning and performance oversight across agency projects.",
+    "intro": "Digital marketing leadership at Setevie / Interestate, aligning specialists, project priorities and client reporting.",
+    "challenge": "Coordinate a multidisciplinary team across several real estate projects, replace fragmented channel work with shared media plans and make delivery visible to clients and management.",
+    "approach": "Translate each client goal into channel KPIs, a media plan and specialist briefs. Review delivery in BI dashboards, assign corrective actions and connect campaign decisions with CRM and sales-funnel feedback.",
+    "contribution": [
+      "Leadership across PPC, SEO, targeted advertising, media buying and analytics",
+      "Client strategies, media plans and clear responsibilities by channel",
+      "BI dashboards, KPI reviews and reporting for clients and management",
+      "Implementation briefs for Yandex Direct, SEO, VK and property classifieds",
+      "CRM journeys, automated follow-up and funnel improvement",
+      "Coordination of delivery across multiple agency projects"
+    ],
+    "delivered": [
+      "A shared process for media plan reviews",
+      "Clearer responsibilities across channels",
+      "Reporting connecting specialists and stakeholders"
+    ],
+    "results": [
+      {
+        "value": ">50%",
+        "label": "Reduction in cost per lead",
+        "detail": "CPL more than halved through campaign optimisation."
+      },
+      {
+        "value": "Up to 500%",
+        "label": "Return on marketing investment",
+        "detail": "ROMI achieved through campaign optimisation."
+      }
+    ],
+    "collaboration": "Led a multidisciplinary digital team and coordinated delivery with clients and project stakeholders.",
+    "logo": "assets/companies/setevie-logo.svg",
+    "homepageScreen": "assets/companies/setevie-architecture-v74.jpg",
+    "homepageAlt": "Setevie — architectural detail from the company website",
+    "companyBrief": "Marketing agency specialising in property and development.",
+    "awards": [
+      {
+        "title": "Perspectum Awards",
+        "year": "2024",
+        "detail": "Bronze, Best B2B Event — launch of the Well apart-hotel in Saint Petersburg.",
+        "source": "https://perspectum.ru/winners/",
+        "status": "Bronze",
+        "recipient": "SETEVIE Agency",
+        "basis": "Organizer source"
+      },
+      {
+        "title": "Silver Mercury",
+        "year": "2025",
+        "detail": "K09 Best Private Event — launch of Well.",
+        "source": "https://silvermercury.ru/winners/torzhestvennoe-otkrytie-pervogo-v-rossii-apart-otelya-v-kontseptsii-well-being-well-v-sankt-peterburge-2025-6292",
+        "status": "Shortlist",
+        "recipient": "SETEVIE Agency",
+        "basis": "Organizer source"
+      },
+      {
+        "title": "Runet Rating — Digital / Real Estate",
+        "year": "2026",
+        "detail": "1st place in the real estate industry category.",
+        "source": "https://ratingruneta.ru/digital-agencies/real-estate/",
+        "status": "Ranking · #1",
+        "recipient": "SETEVIE Agency",
+        "basis": "Organizer source"
+      },
+      {
+        "title": "Runet Rating — Digital / Russia",
+        "year": "2026",
+        "detail": "17th place among digital agencies in Russia.",
+        "source": "https://ratingruneta.ru/digital-agencies/russia/",
+        "status": "Ranking · #17",
+        "recipient": "SETEVIE Agency",
+        "basis": "Organizer source"
+      },
+      {
+        "title": "Runet Rating — PR / Real Estate",
+        "year": "2026",
+        "detail": "3rd place in the real estate PR category.",
+        "source": "https://ratingruneta.ru/pr/real-estate/",
+        "status": "Ranking · #3",
+        "recipient": "SETEVIE Agency",
+        "basis": "Organizer source"
+      },
+      {
+        "title": "Runet Rating — Digital / Saint Petersburg",
+        "year": "2026",
+        "detail": "3rd place in the Saint Petersburg category.",
+        "source": "https://ratingruneta.ru/digital-agencies/st-petersburg/",
+        "status": "Ranking · #3",
+        "recipient": "SETEVIE Agency",
+        "basis": "Organizer source"
+      },
+      {
+        "title": "MRA — Best Marketing Agency",
+        "year": "2025",
+        "detail": "Finalist recognition listed on the agency website.",
+        "source": "https://setevie.com/",
+        "status": "Finalist",
+        "recipient": "SETEVIE Agency",
+        "basis": "Company publication"
+      }
+    ],
+    "tabletRecognition": [
+      {
+        "index": 0,
+        "label": "Perspectum Awards",
+        "status": "Bronze · Best B2B Event"
+      },
+      {
+        "index": 1,
+        "label": "Silver Mercury",
+        "status": "Shortlist · Best Private Event"
+      }
+    ],
+    "disciplines": [
+      "strategy",
+      "ppc",
+      "seo",
+      "analytics",
+      "crm",
+      "leadership"
+    ],
+    "workNote": "Led PPC, SEO and analytics teams; planned media, monitored KPIs and improved funnels.",
+    "highlights": [
+      "Team leadership",
+      "Media planning",
+      "Marketing ROI"
+    ]
+  },
+  {
+    "id": "hansa",
+    "name": "HANSA GROUP",
+    "featured": false,
+    "period": "2024–2025",
+    "image": "",
+    "disciplines": [
+      "strategy",
+      "ppc",
+      "seo",
+      "analytics",
+      "crm",
+      "leadership"
+    ],
+    "role": "Head of Digital Marketing",
+    "location": "Property development",
+    "sector": "Real estate development and construction",
+    "tags": "STRATEGY / TEAM / ANALYTICS",
+    "headline": "Connect marketing investment with the sales funnel.",
+    "summary": "Digital strategy, team and budget management, full-funnel analytics and CRM integration.",
+    "intro": "Digital marketing leadership for a property development and construction group, combining strategy and team management with hands-on channel and analytics work.",
+    "challenge": "Make advertising, websites, CRM and sales data work together so that budget decisions reflect acquisition cost and lead quality.",
+    "approach": "Plan budgets and channel priorities, set specialist KPIs and connect advertising sources, website enquiries and CRM stages in end-to-end reporting. Review findings with sales and adjust campaigns accordingly.",
+    "collaboration": "Managed the digital team and external partners, working with sales on qualification, follow-up and performance reviews.",
+    "workNote": "Digital strategy, advertising budgets, team management, end-to-end analytics and CRM–sales integration.",
+    "contribution": [
+      "Digital strategy, budget allocation and team leadership",
+      "Advertising budget responsibility up to RUB 10 million per month",
+      "Paid advertising, SEO, websites and marketing automation",
+      "End-to-end analytics linking advertising, enquiries, CRM and sales",
+      "Specialist KPIs, contractor briefs and delivery reviews"
+    ],
+    "delivered": [
+      "A coordinated digital marketing plan and budget process",
+      "Reporting across acquisition sources and CRM stages",
+      "Shared campaign and sales-feedback reviews"
+    ],
+    "highlights": [
+      "Team & budgets",
+      "Full-funnel analytics",
+      "CRM & sales"
+    ]
+  },
+  {
+    "id": "alexander",
+    "name": "ALEXANDER REAL ESTATE",
+    "featured": false,
+    "role": "Marketer → Marketing Team Lead",
+    "location": "Saint Petersburg · Russia",
+    "sector": "Real estate",
+    "tags": "SEO / ACQUISITION / TEAM",
+    "image": "",
+    "url": "https://anspb.ru/",
+    "headline": "Build a system around existing potential.",
+    "summary": "SEO for a large property website and a more centralised marketing operation.",
+    "intro": "A large property agency needed to recover organic demand and centralise acquisition. Its approximately 10,000-page portal used Vue and a custom CMS, while developers were occupied with a new CRM.",
+    "challenge": "Recover search performance and enquiries without a major frontend rebuild, then reduce dependence on decentralised external lead-generation providers.",
+    "approach": "Audit the portal, rebuild semantic clusters and remove competing search pages. Prioritise metadata, internal linking and practical listing-page improvements. Test in-house paid campaigns alongside existing acquisition before consolidating channel management.",
+    "contribution": [
+      "Technical crawl, semantic research and page-cannibalisation analysis",
+      "Metadata, SEO copy, structured data and internal linking",
+      "Prioritised developer briefs for the Vue portal and custom CMS",
+      "In-house Yandex Direct campaigns, creative production and campaign consolidation",
+      "Call tracking, full-funnel reporting and channel-performance reviews",
+      "Marketing team development, SMM planning and coordination with sales"
+    ],
+    "delivered": [
+      "A prioritised SEO programme for a large property portal",
+      "An in-house acquisition workflow replacing fragmented channel management",
+      "A five-person marketing team and regular management reporting"
+    ],
+    "collaboration": "Worked with developers, sales leaders and marketing specialists.",
+    "disciplines": [
+      "seo",
+      "ppc",
+      "websites",
+      "analytics",
+      "leadership"
+    ],
+    "workNote": "Technical SEO, website improvement briefs, Yandex Direct, call tracking and team coordination.",
+    "highlights": [
+      "Technical SEO",
+      "Call tracking",
+      "Website improvements"
+    ]
+  },
+  {
+    "id": "unitec-legal",
+    "name": "UNITEC LEGAL",
+    "featured": false,
+    "role": "SEO Specialist",
+    "location": "Saint Petersburg · Russia",
+    "sector": "Legal services",
+    "tags": "SEO / CONTENT / LOCAL SEARCH",
+    "image": "",
+    "url": "",
+    "headline": "Turn expertise into findable services.",
+    "summary": "Technical SEO, service-page structure and local search for a legal practice.",
+    "intro": "Part-time SEO work for a legal-services business in Saint Petersburg and the Leningrad region, on a MODX website in a competitive local market.",
+    "challenge": "Make individual legal services easier to find in a competitive local search environment.",
+    "approach": "Build around service intent, resolve technical issues and improve the content and commercial information on key pages.",
+    "contribution": [
+      "Technical crawl and a complete on-page SEO audit of the MODX website",
+      "Service-led keyword research, page structure, metadata and copy briefs",
+      "Structured data, internal linking and local search visibility",
+      "Search reputation work, call tracking and end-to-end analytics",
+      "Development briefs and regular performance reporting"
+    ],
+    "delivered": [
+      "A service-led SEO structure",
+      "Technical and content improvement briefs",
+      "A search visibility and reporting workflow"
+    ],
+    "collaboration": "Worked with the legal business and website developers.",
+    "disciplines": [
+      "seo",
+      "websites",
+      "analytics"
+    ],
+    "workNote": "Technical SEO, service-page structure, local search and analytics coordination.",
+    "highlights": [
+      "Service-page SEO",
+      "Local search",
+      "Technical audit"
+    ]
+  },
+  {
+    "id": "tivat-gardens",
+    "name": "TIVAT GARDENS",
+    "featured": false,
+    "role": "Marketing · Project work",
+    "location": "Montenegro",
+    "sector": "Property development",
+    "tags": "CATALOGUES / OUTDOOR / DIGITAL",
+    "image": "",
+    "url": "",
+    "headline": "Give a development a clear presentation.",
+    "summary": "Property presentation materials and digital advertising support.",
+    "intro": "Project-based marketing for Bellemond and Tivat Gardens, apartment-hotel development in Montenegro. The scope combined sales materials, outdoor advertising and Meta acquisition for European audiences.",
+    "challenge": "Translate a property development into clear sales materials and campaign touchpoints.",
+    "approach": "Bring project information and visual materials together for printed and digital communication.",
+    "contribution": [
+      "Property catalogues and branded sales materials",
+      "Outdoor advertising layouts and project presentations",
+      "Meta advertising and campaign organisation for European audiences"
+    ],
+    "delivered": [
+      "Property presentation assets",
+      "Materials for marketing and sales"
+    ],
+    "collaboration": "Project-based collaboration with the development business.",
+    "disciplines": [
+      "creative",
+      "ppc"
+    ],
+    "workNote": "Property catalogues, outdoor advertising materials and digital campaign support.",
+    "highlights": [
+      "Property catalogues",
+      "Outdoor advertising",
+      "Digital campaigns"
+    ]
+  },
+  {
+    "id": "unitec-marine",
+    "name": "UNITEC MARINE",
+    "featured": false,
+    "role": "Website Content Editor",
+    "location": "Russia · Maritime services",
+    "sector": "Maritime services",
+    "tags": "WORDPRESS / CONTENT / UX",
+    "image": "",
+    "url": "",
+    "headline": "Make the website easier to use.",
+    "summary": "Content, website audits and mobile usability improvements.",
+    "intro": "Part-time website content and usability work for a marine-services business on WordPress. The role focused on service information, mobile presentation and practical technical corrections.",
+    "challenge": "Keep service information accessible and the website usable across devices.",
+    "approach": "Review content and mobile usability, identify technical issues and coordinate practical website corrections.",
+    "contribution": [
+      "Website content editing",
+      "Technical website audits",
+      "Mobile usability reviews",
+      "WordPress updates"
+    ],
+    "delivered": [
+      "Updated website content",
+      "A prioritised set of website improvements"
+    ],
+    "collaboration": "Worked with the business on content and practical site maintenance.",
+    "disciplines": [
+      "websites"
+    ],
+    "workNote": "WordPress content, technical website audits and mobile usability reviews.",
+    "highlights": [
+      "WordPress",
+      "Mobile usability",
+      "Website content"
+    ]
+  },
+  {
+    "id": "euro-ag",
+    "name": "EURO-AG",
+    "featured": false,
+    "role": "Director’s Assistant · Part-time",
+    "location": "Russia · Logistics",
+    "sector": "Logistics",
+    "tags": "OPERATIONS / DATA / MARKETING",
+    "image": "",
+    "url": "",
+    "headline": "An operational foundation.",
+    "summary": "Documentation, customer coordination and logistics support for the director.",
+    "intro": "Part-time operational support for the director of a marine and logistics business, covering documentation, customer coordination, supplies and logistics.",
+    "challenge": "Support day-to-day business coordination and work with substantial volumes of operational information.",
+    "approach": "Keep documents, customer communications and supply tasks organised, and make operational information usable for the director and team.",
+    "contribution": [
+      "Documentation and coordination with international customers",
+      "Supplies, logistics and operational task coordination",
+      "Excel, operational information and reporting support"
+    ],
+    "delivered": [
+      "Business and reporting support",
+      "Hands-on experience connecting operations and marketing"
+    ],
+    "collaboration": "Part-time operational work supporting the director and team.",
+    "disciplines": [
+      "analytics"
+    ],
+    "workNote": "Documentation, international customer coordination, supplies, logistics and operational reporting.",
+    "highlights": [
+      "Documentation",
+      "Customer coordination",
+      "Logistics"
+    ]
+  },
+  {
+    "id": "independent",
+    "name": "INDEPENDENT PROJECTS",
+    "featured": false,
+    "role": "Digital Marketing Consultant",
+    "location": "Project-based collaborations",
+    "sector": "Beauty · HR · Other services",
+    "tags": "AUDITS / SEO / ACQUISITION",
+    "image": "",
+    "url": "",
+    "headline": "A method that travels across sectors.",
+    "summary": "Selected SEO, website and acquisition work beyond property.",
+    "intro": "Independent SEO, website and acquisition consulting for service businesses, including beauty and recruitment.",
+    "challenge": "Adapt digital marketing work to different business models and resource levels.",
+    "approach": "Start with the task, review the existing journey and prioritise changes that the business can implement.",
+    "contribution": [
+      "SEO and website reviews",
+      "Acquisition and content recommendations",
+      "Marketing consultation"
+    ],
+    "delivered": [
+      "Prioritised improvement plans",
+      "Ongoing specialist support"
+    ],
+    "collaboration": "Direct collaboration with business owners and specialist contractors.",
+    "disciplines": [
+      "seo",
+      "websites",
+      "strategy"
+    ],
+    "workNote": "SEO and website reviews, acquisition recommendations and marketing consultation.",
+    "highlights": [
+      "SEO audits",
+      "Website reviews",
+      "Marketing consulting"
+    ]
+  }
+];
+ const data={projects,featured:projects.filter(p=>p.featured)};
+ if(typeof module==='object'&&module.exports)module.exports=data;else root.DTExperience=data;
+})(typeof window==='undefined'?globalThis:window);

@@ -1,0 +1,80 @@
+/* Scoped chapter materials. The Hero and its entering tablet retain their layout. */
+#mainPage{--chapter-surface:#050505}
+#mainPage :is(#thinking,#the-edit,#skills,#human,#cycle),
+#mainPage #thinking[data-meaning-lens] .thinking-sticky,
+#mainPage #the-edit[data-bottleneck] .bottleneck-sticky,
+#mainPage #skills .skills-showcase{background:var(--chapter-surface)}
+#thinking[data-meaning-lens] .meaning-motion-control{background:var(--chapter-surface)}
+
+/* The five project spreads explain personal contribution after entering Work. */
+#work .story-company-contribution{display:none;margin:8px 0 18px;font:12px/1.45 var(--sans);color:#404040;text-wrap:pretty;max-width:34ch}
+#work[data-work-open=true] .story-company-contribution{display:block}
+#work[data-work-open=true] .story-company-brief{margin-block:16px 12px;font-size:clamp(13px,1.3vw,18px)}
+#work[data-work-open=true] .story-company-position{padding-top:12px;border-top:1px solid #18181833;width:100%}
+#work .story-position{display:none;font:12px/1.4 var(--sans);letter-spacing:.12em;color:#aaa;min-width:65px}
+#work[data-work-open=true] .story-position{display:block}
+#work[data-work-open=true] .story-caption{gap:24px}
+@media(max-height:700px) and (min-width:721px){#work[data-work-open=true] .story-company-contribution{font-size:10px;line-height:1.35;margin-block:5px 10px}#work[data-work-open=true] .story-company-brief{font-size:13px;margin-block:10px}#work[data-work-open=true] .story-company-position{padding-top:8px}}
+@media(max-width:720px){#work[data-work-open=true] .story-company-contribution{display:none}#work[data-work-open=true] .story-company-position{padding:0;border:0}#work[data-work-open=true] .story-caption{gap:12px}#work .story-position{font-size:10px;min-width:42px}#work[data-work-open=true] .work-archive-link{flex:1;min-width:0;gap:8px;padding-inline:16px}}
+
+/* One typographic system, polished aperture leaves and a readable diagnostic cue. */
+#mainPage #the-edit .bottleneck-heading h2{font-family:ThinkingNarrow,Impact,sans-serif;font-size:var(--chapter-title);font-weight:400;line-height:1;letter-spacing:0;margin-bottom:18px}
+#mainPage #the-edit .bottleneck-heading p{color:#a5a5a5;font-size:clamp(14px,1.35vw,20px)}
+#mainPage #the-edit[data-bottleneck] .bottleneck-sticky{padding-top:var(--chapter-top)}
+#mainPage #the-edit .bottleneck-stages li{font-family:ThinkingNarrow,Impact,sans-serif;font-weight:400;color:#e8e8e8}
+#mainPage #the-edit .bottleneck-stages small{color:#7a7a7a;letter-spacing:.13em}
+#mainPage #the-edit .bottleneck-stages li:nth-child(2){color:#fff}
+#mainPage #the-edit .bottleneck-stages li:nth-child(2):before{border-color:#e5e5e5}
+#mainPage #the-edit .bottleneck-annotation{color:#cccccc;font-size:clamp(10px,1.03vw,14px);letter-spacing:.04em;padding-left:14px;border-left:1px solid #9f9f9f}
+#mainPage #the-edit .bottleneck-caption{color:#bebebe}
+#mainPage #the-edit .bottleneck-controls button{color:#8f8f8f}
+#mainPage #the-edit .bottleneck-controls button[aria-pressed=true]{color:#eeeeee;border-color:#c5c5c5}
+#mainPage #the-edit .bottleneck-motion{color:#d7d7d7;border-color:#4f4f4f;background:#ffffff03}
+
+/* HARD SKILLS: a machined field with a ceramic active piece. */
+#mainPage #skills .skills-showcase{position:relative;padding-top:var(--chapter-top)}
+#skills .skills-kicker{margin:0 0 12px;font:10px/1.4 var(--sans);letter-spacing:.13em;color:#8d8d8d}
+#mainPage #skills-heading{font-family:ThinkingNarrow,Impact,sans-serif;font-weight:400;line-height:.98;letter-spacing:0;font-size:var(--chapter-title);max-width:none}
+#skills .skills-subtitle{max-width:49ch;color:#a9a9a9}
+#skills .skills-detail h3{font-size:clamp(36px,3.4vw,52px);color:#ededed;line-height:1.08}
+#skills .skills-filters{border-top:1px solid #ffffff20;padding-top:8px}
+#skills .skills-filters button{color:#8a8a8a}
+#skills .skills-filters button[aria-pressed=true]{color:#f0f0f0;border-color:#e4e4e4}
+#skills[data-variant="5"] .skills-field{--rx:33deg;--rz:-12deg}
+#skills[data-variant="5"] .skills-cube{--depth:calc(var(--unit)*.42)}
+#skills[data-variant="5"] .skills-cube .sk-cap{background:linear-gradient(135deg,#363636,#141414 75%);border-color:#6d6d6d;box-shadow:inset 0 1px #ffffff38,inset -1px -1px #000b}
+#skills .skills-cube .sk-front{background:linear-gradient(#3b3b3b,#1c1c1c);border-color:#606060;box-shadow:inset 0 1px #ffffff12}
+#skills .skills-cube .sk-right{background:linear-gradient(90deg,#242424,#0c0c0c);border-color:#3f3f3f}
+#skills .skills-cube[data-kind=topic] .sk-cap{background:linear-gradient(135deg,#454545,#232323 80%);border-color:#9b9b9b}
+#skills .skills-cube.is-related:not(.is-selected) .sk-cap{background:linear-gradient(135deg,#4f4f4f,#2c2c2c);border-color:#b3b3b3}
+#skills[data-variant="5"] .skills-cube.is-selected .sk-cap{background:linear-gradient(135deg,#f8f8f8,#d3d3d3);border-color:#fcfcfc;box-shadow:inset 0 1px #fff,inset -1px -1px #a0a0a0,0 7px 14px #0009}
+#skills .skills-cube.is-selected .sk-label{color:#161616;text-shadow:none;font-weight:700}
+#skills .skills-cube.is-selected .sk-front{background:linear-gradient(#9a9a9a,#545454);border-color:#b3b3b3}
+#skills .skills-cube.is-selected .sk-right{background:linear-gradient(90deg,#666666,#3c3c3c);border-color:#808080}
+#skills .skills-connections{transform:translateZ(calc(var(--unit)*.81))}
+#skills .skills-connections path{stroke:#d3d3d3;stroke-width:1.2;opacity:.9}
+#skills .skills-socket{border-color:#393939;background:#090909;box-shadow:inset 1px 2px 4px #000c}
+#skills .skills-leaf,#skills .skills-leaf:last-child{border-color:#5a5a5a44;background:linear-gradient(145deg,#202020,#101010);box-shadow:inset 0 1px #ffffff0b}
+#skills .skills-leaf:last-child{background:linear-gradient(135deg,#e5e5e5,#c3c3c3);border-color:#d8d8d8}
+#skills .skills-leaf p{color:#ebebeb}
+#skills .skills-leaf:last-child p{color:#1c1c1c}
+#skills .skills-leaf h4{color:#a7a7a7}
+#skills .skills-leaf:last-child h4{color:#4c4c4c}
+@media(min-width:801px){#skills[data-variant="5"] .skills-field{transform:translate(-50%,-50%) scale(calc(var(--camera-zoom,1)*.92)) rotateX(var(--rx)) rotateZ(var(--rz))}}
+@media(max-width:800px){
+ #skills[data-variant="5"] .skills-field{--rx:31deg;--rz:-12deg}
+ #skills .skills-kicker{font-size:9px;margin-bottom:10px}
+ #skills .skills-detail h3{font-size:34px}
+ #skills .skills-stage{height:clamp(250px,32svh,315px)}
+ #skills .skills-subtitle{font-size:14px;line-height:1.45;max-width:32ch}
+ #mainPage #the-edit .bottleneck-heading h2{margin-bottom:12px}
+ #mainPage #the-edit .bottleneck-heading p{font-size:14px}
+ #mainPage #the-edit .bottleneck-annotation{padding-left:10px;font-size:9px;max-width:62%}
+}
+@media(max-height:580px) and (min-width:721px){#mainPage #the-edit[data-bottleneck] .bottleneck-sticky{padding-block:12px}#mainPage #the-edit .bottleneck-heading h2{font-size:30px;margin-bottom:5px}#mainPage #the-edit .bottleneck-heading p{font-size:13px}}
+@media(prefers-reduced-motion:reduce){#skills .skills-cube,#skills .skills-cube *{transition:none!important}}
+
+#mainPage #thinking[data-meaning-lens],#mainPage #the-edit[data-bottleneck]{background:var(--chapter-surface)}
+
+@media(min-width:721px){#work[data-work-open=true] .story-company-brief{display:none}#work[data-work-open=true] .story-company-info{padding:24px}#work[data-work-open=true] .story-company-logo{height:40px;max-height:40px}#work[data-work-open=true] .story-company-role{font-size:clamp(25px,2.1vw,32px);line-height:1.06}#work[data-work-open=true] .story-company-case{min-height:46px;padding:12px 14px;font-size:11px}#work[data-work-open=true] .story-company-contribution{font-size:12px;margin:8px 0 16px;line-height:1.4}}
+@media(max-height:580px) and (min-width:721px){#work[data-work-open=true] .story-company-contribution{display:none}#work[data-work-open=true] .story-company-info{padding:14px}#work[data-work-open=true] .story-company-logo{height:30px;max-height:30px}#work[data-work-open=true] .story-company-role{font-size:24px}#work[data-work-open=true] .story-company-case{min-height:36px;padding:8px 10px;font-size:10px}}
