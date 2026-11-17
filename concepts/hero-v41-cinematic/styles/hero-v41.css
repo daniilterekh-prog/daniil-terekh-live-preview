@@ -1,0 +1,48 @@
+/* V4.1: additive visual direction. V4 core HTML, behavior, typography files, and Work interactions remain unchanged. */
+
+/* C — CINEMATIC: deepen the already-existing light, never replace its mechanism. */
+.site.ref-mode #hero {
+  background:radial-gradient(ellipse at 79% 25%,#1a1c1c 0%,#101212 36%,#060707 80%) !important;
+}
+.site.ref-mode #hero::after {
+  content:"";position:absolute;z-index:3;pointer-events:none;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.04),transparent 38%,rgba(0,0,0,.23) 100%);
+}
+#hero .hero-spotlight__pool {
+  left:-5%;top:5%;width:82%;height:50%;
+  background:radial-gradient(ellipse,rgba(255,255,255,.085),rgba(255,255,255,.024) 48%,transparent 75%);
+}
+#hero .hero-spotlight__beam {
+  right:-24%;top:-8%;width:118%;height:55%;
+  background:radial-gradient(ellipse at 62% 48%,rgba(255,255,255,.20),rgba(255,255,255,.075) 28%,rgba(255,255,255,.017) 53%,transparent 76%);
+}
+#hero .hero-spotlight.is-steady .hero-spotlight__light {opacity:.48}
+.site.ref-mode #hero .hero-name {
+  text-shadow:0 0 50px rgba(255,255,255,.055);
+}
+@media(min-width:721px) and (min-height:701px){
+  .site.ref-mode #hero .signature {
+    top:calc(5.21cqw + var(--hero-air) + 40px) !important;
+    left:56.8cqw !important;right:auto !important;width:40cqw !important;
+  }
+}
+@media (prefers-reduced-motion:no-preference) {
+  html:not([data-preloader="loading"]):not([data-preloader="closing"]) #hero .hero-name span {
+    animation:v41-cine-type .85s cubic-bezier(.16,.7,.18,1) both;
+  }
+  html:not([data-preloader="loading"]):not([data-preloader="closing"]) #hero .hero-name span:last-child {animation-delay:.13s}
+  #hero .hero-spotlight.is-steady .hero-spotlight__beam {
+    animation:v41-cine-light 17s ease-in-out infinite alternate;
+  }
+  @keyframes v41-cine-type {from{opacity:.50;filter:blur(3px);translate:0 9px}to{opacity:1;filter:blur(0);translate:0 0}}
+  @keyframes v41-cine-light {from{transform:translateX(-2%) rotate(-23deg)}to{transform:translateX(2%) rotate(-26deg)}}
+}
+@media(max-width:720px){
+  .site.ref-mode #hero {
+    background:radial-gradient(ellipse at 79% 19%,#181a1a 0%,#0d0f0f 48%,#050606 100%) !important;
+  }
+  #hero .hero-spotlight__beam {right:-42%;top:-7%;width:152%;height:43%}
+  #hero .hero-spotlight__pool {left:-18%;top:10%;width:125%;height:37%}
+  .mobile-actual .site.ref-mode #hero .hero-name {letter-spacing:.011em}
+  .mobile-actual .site.ref-mode #hero .signature {filter:drop-shadow(0 0 12px rgba(255,255,255,.07))}
+}

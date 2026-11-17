@@ -1,0 +1,38 @@
+/* V4.1: additive visual direction. V4 core HTML, behavior, typography files, and Work interactions remain unchanged. */
+
+/* A — MONUMENTAL: the original Italiana becomes the principal architectural element. */
+@media (min-width:721px) and (min-height:701px) {
+  .site.ref-mode #hero .hero-name {
+    font-size:13.17cqw;
+    top:calc(3.322cqw + var(--hero-air) + 32px);
+    line-height:.872;
+    letter-spacing:.008em;
+  }
+  .site.ref-mode #hero .signature {
+    left:57.3cqw !important;
+    top:calc(5.21cqw + var(--hero-air) + 41px) !important;
+    width:38.65cqw !important;
+    right:auto !important;
+  }
+}
+#hero .hero-spotlight.is-steady .hero-spotlight__light {opacity:.38}
+#hero .hero-spotlight__pool {
+  left:-2%;width:73%;
+  background:radial-gradient(ellipse,rgba(255,255,255,.078),rgba(255,255,255,.018) 43%,transparent 73%);
+}
+@media(max-width:720px) and (min-height:681px) {
+  .mobile-actual .site.ref-mode #hero .hero-name {
+    left:5.9%;top:93px;
+    font-size:24.42cqw !important;
+    letter-spacing:.011em;line-height:.922;
+  }
+  .mobile-actual .site.ref-mode #hero .signature {
+    left:6.7% !important;right:auto !important;
+    top:calc(153px + 39cqw) !important;
+    width:86% !important;
+  }
+}
+@media(max-width:720px) and (max-height:680px) {
+  .mobile-actual .site.ref-mode #hero .hero-name {font-size:24cqw !important;letter-spacing:.013em}
+  .mobile-actual .site.ref-mode #hero .signature {width:87% !important;left:6% !important}
+}

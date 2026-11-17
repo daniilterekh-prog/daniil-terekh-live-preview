@@ -1,0 +1,69 @@
+/* One evolving composition: possibilities, selection, hierarchy, clarity. */
+#the-edit.edit-four .edit-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:4%;align-items:center;padding:0;min-height:0}
+#the-edit.edit-four .edit-copy{min-width:0;position:relative;z-index:2}
+#the-edit.edit-four .edit-title{max-width:650px}
+#the-edit.edit-four .edit-explanation{font:clamp(19px,1.8vw,27px)/1.45 Georgia,serif;max-width:25ch;min-height:3em;color:#b9baba;letter-spacing:0;margin-bottom:26px}
+#the-edit.edit-four .edit-stages{display:flex;flex-wrap:wrap;gap:9px 22px;margin-top:0}
+#the-edit.edit-four .edit-stages button{font:11px/1.25 Arial,sans-serif;letter-spacing:.045em;min-height:44px;padding:10px 0;color:#8f9291;white-space:nowrap}
+#the-edit.edit-four .edit-stages button.is-selected{color:#f1f1ef}
+#the-edit.edit-four .edit-stages button:focus-visible{outline:1px solid #ddd;outline-offset:5px}
+#the-edit.edit-four .edit-art{position:relative;container-type:inline-size;height:clamp(380px,67svh,650px);width:100%;margin:0;perspective:1100px;isolation:isolate}
+#the-edit.edit-four .edit-art:before{content:'';position:absolute;inset:22% -8% -7%;background:radial-gradient(ellipse at 50% 65%,#b7bbba0c,transparent 65%);pointer-events:none}
+#the-edit .edit-planes{position:absolute;inset:0;perspective:1000px}
+#the-edit .edit-plane{position:absolute;display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:4%;border:1px solid #777c7b;background:linear-gradient(120deg,#272b2b,#131616 75%);color:#efefec;box-shadow:3px 2px 0 #3a3e3d,12px 23px 30px #0009,inset 0 1px #ffffff1a;transform-origin:center;backface-visibility:hidden;text-align:center;z-index:4}
+#the-edit .edit-plane span{position:relative;display:block;font:700 clamp(18px,5.4cqw,40px)/.98 ThinkingNarrow,Impact,sans-serif;letter-spacing:0;max-width:100%;text-wrap:balance}
+#the-edit .edit-plane-goal span{font-size:clamp(32px,10cqw,70px)}
+#the-edit .edit-plane span:after{content:'';position:absolute;left:-7%;right:-7%;top:50%;height:2px;background:#d9dcd9;transform:rotate(-4deg) scaleX(var(--strike,0));transform-origin:left;opacity:var(--strike,0)}
+#the-edit [data-edit-plane="0"]{z-index:8}#the-edit [data-edit-plane="1"]{z-index:10}#the-edit [data-edit-plane="2"]{z-index:7}#the-edit [data-edit-plane="3"]{z-index:3}
+#the-edit[data-edit="2"] [data-edit-plane="0"],#the-edit[data-edit="3"] [data-edit-plane="0"]{z-index:12}
+#the-edit.edit-four .edit-resolved{left:10%;right:auto;top:12%;width:78%;height:76%;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;padding:8%;border:1px solid #e7e8e4;background:linear-gradient(115deg,#f3f3f0,#dcdedb);color:#080909;box-shadow:7px 2px 0 #717675,22px 27px 36px #0009;z-index:20;opacity:0;transition:none;transform-origin:center;overflow:visible}
+#the-edit.edit-four .edit-resolved:after{display:none}
+#the-edit.edit-four .edit-resolved h3{font:700 clamp(36px,13.6cqw,102px)/.95 ThinkingNarrow,Impact,sans-serif;letter-spacing:-.02em;margin:0;color:#080909}
+#the-edit.edit-four .edit-resolved p{display:block;font:clamp(7px,1.45cqw,12px)/1.4 Arial,sans-serif;letter-spacing:.09em;margin:6% 0 0;color:#202322}
+@media(max-width:720px){
+ #the-edit.edit-four .edit-layout{grid-template-columns:1fr;gap:0}
+ #the-edit.edit-four .edit-title{max-width:550px}
+ #the-edit.edit-four .edit-explanation{font-size:18px;line-height:1.35;min-height:2.7em;margin-top:18px;margin-bottom:12px}
+ #the-edit.edit-four .edit-stages{gap:0;justify-content:space-between}
+ #the-edit.edit-four .edit-stages button{font-size:10px;letter-spacing:0;min-height:40px}
+ #the-edit.edit-four .edit-art{height:clamp(240px,43svh,410px);margin-top:14px}
+}
+@media(max-height:580px) and (min-width:600px){
+ #the-edit.edit-four .edit-sticky{padding-block:24px}
+ #the-edit.edit-four .edit-layout{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:4%}
+ #the-edit.edit-four .edit-art{height:calc(var(--scene-height,100svh) - 58px);min-height:200px;margin-top:0}
+ #the-edit.edit-four .edit-explanation{font-size:16px;margin-top:12px;margin-bottom:10px}
+ #the-edit.edit-four .edit-stages{gap:0;justify-content:space-between}
+ #the-edit.edit-four .edit-stages button{font-size:9px;min-height:36px}
+}
+@media(prefers-reduced-motion:reduce){#the-edit.edit-four *{transition:none!important}}
+
+/* The example resolves as an ordered plan, rather than another abstract goal. */
+#the-edit.edit-four .edit-plane{padding:2.8%}
+#the-edit.edit-four .edit-plane span{font-size:clamp(12px,4.6cqw,28px);line-height:1.02}
+#the-edit.edit-four .edit-plane-goal span{font-size:clamp(20px,7cqw,48px)}
+#the-edit .edit-goal-label,#the-edit .edit-priority{position:absolute;top:8%;left:0;right:0;font:clamp(7px,1.8cqw,11px)/1.1 Arial,sans-serif;letter-spacing:.08em;text-align:center}
+#the-edit .edit-priority{opacity:var(--priority,0)}
+#the-edit.edit-four .edit-resolved{left:7%;top:7%;width:86%;height:86%;padding:5%}
+#the-edit .edit-plan{list-style:none;padding:0;margin:0;display:grid;gap:clamp(8px,2.4cqw,16px);width:100%}
+#the-edit .edit-plan li{padding:0 0 clamp(6px,2cqw,12px);border-bottom:1px solid #1113}
+#the-edit .edit-plan li:last-child{border:0;padding-bottom:0}
+#the-edit .edit-plan small{display:block;font:clamp(9px,2.4cqw,13px)/1.2 Arial,sans-serif;letter-spacing:.08em;margin-bottom:clamp(3px,1cqw,7px);color:#4c5150}
+#the-edit .edit-plan strong{display:block;font:700 clamp(20px,8.6cqw,52px)/1 ThinkingNarrow,Impact,sans-serif;letter-spacing:0;text-transform:uppercase;color:#080909}
+@media(max-height:580px) and (min-width:600px){
+ #the-edit.edit-four .edit-resolved{padding:min(4%,12px)}
+ #the-edit .edit-plan{gap:6px}
+ #the-edit .edit-plan li{padding-bottom:5px}
+ #the-edit .edit-plan small{font-size:8px;margin-bottom:3px}
+ #the-edit .edit-plan strong{font-size:clamp(16px,min(7cqw,calc((var(--scene-height) - 100px)*.11)),28px)}
+}
+
+/* Text follows each card's usable space throughout the four poses. */
+#the-edit.edit-four .edit-plane{container-type:inline-size;padding:3%}
+#the-edit.edit-four .edit-plane span{font-size:clamp(6px,12cqw,28px);line-height:1.1}
+#the-edit.edit-four .edit-plane-goal span{font-size:clamp(10px,16cqw,48px)}
+#the-edit.edit-four .edit-resolved{container-type:size}
+#the-edit .edit-plan{height:100%;grid-template-rows:repeat(3,minmax(0,1fr));gap:0}
+#the-edit .edit-plan li{container-type:size;min-height:0;display:flex;flex-direction:column;justify-content:center;padding-block:4px}
+#the-edit .edit-plan small{font-size:clamp(7px,min(2.6cqw,14cqh),13px);margin-bottom:clamp(2px,3cqh,7px)}
+#the-edit .edit-plan strong{font-size:clamp(8px,min(8cqw,22cqh),52px);line-height:1.08}

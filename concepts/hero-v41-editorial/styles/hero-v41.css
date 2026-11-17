@@ -1,0 +1,48 @@
+/* V4.1: additive visual direction. V4 core HTML, behavior, typography files, and Work interactions remain unchanged. */
+
+/* B — EDITORIAL: a quiet publication grid, added around the existing composition. */
+#hero::before,#hero::after {
+  position:absolute;z-index:7;pointer-events:none;
+  color:#bdbcb5;font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(9px,.7vw,11px);font-weight:500;
+  line-height:1.3;letter-spacing:.16em;
+}
+#hero::before {
+  content:"DANIIL TEREKH  /  DIGITAL DIRECTION";
+  left:5.34%;top:clamp(18px,2vw,32px);
+}
+#hero::after {
+  content:"PORTFOLIO  /  EDITION 001";
+  right:5.34%;top:clamp(18px,2vw,32px);
+  text-align:right;
+}
+.site.ref-mode #hero .hero-head::before {
+  content:"";display:block;position:absolute;z-index:3;
+  left:5.34%;right:5.34%;top:clamp(43px,4.2vw,60px);
+  height:1px;background:rgba(234,233,226,.23);pointer-events:none;
+}
+@media(min-width:721px) and (min-height:701px) {
+  .site.ref-mode #hero .hero-name {
+    font-size:12.50cqw;letter-spacing:.013em;
+    top:calc(3.322cqw + var(--hero-air) + 43px);
+  }
+  .site.ref-mode #hero .signature {
+    left:58cqw !important;right:auto !important;
+    width:37.8cqw !important;
+    top:calc(5.21cqw + var(--hero-air) + 42px) !important;
+  }
+}
+@media(max-width:720px){
+  #hero::before {left:6%;top:22px;content:"DT  /  DIGITAL DIRECTION";font-size:8px;letter-spacing:.1em}
+  #hero::after {right:6%;top:22px;content:"ISSUE 001";font-size:8px;letter-spacing:.1em}
+  .site.ref-mode #hero .hero-head::before {left:6%;right:6%;top:47px;background:rgba(234,233,226,.27)}
+}
+@media(max-width:720px) and (min-height:681px){
+  .mobile-actual .site.ref-mode #hero .hero-name {
+    top:102px;left:6%;font-size:23.7cqw !important;letter-spacing:.017em;line-height:.945;
+  }
+  .mobile-actual .site.ref-mode #hero .signature {
+    left:7% !important;right:auto !important;
+    top:calc(155px + 39cqw) !important;width:84.5% !important;
+  }
+}

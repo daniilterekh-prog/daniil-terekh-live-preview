@@ -1,0 +1,248 @@
+
+
+(function(){'use strict';
+const allProjects=window.DTExperience.projects;
+const companies=window.DTExperience.featured;
+const originalTitle=document.title;
+const cameFromWork=(()=>{try{const u=new URL(document.referrer);return u.origin===location.origin&&u.pathname.endsWith('/work/');}catch{return false;}})();
+let detailReturn='work',archiveScroll=0,archiveFilter=window.DTWorkCatalog.normalizeFilter(new URLSearchParams(location.search).get('discipline')),recognitionTarget=null;
+const arrow='<svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function element(tag,className,text){const el=document.createElement(tag);if(className)el.className=className;if(text)el.textContent=text;return el;}
+function caseHighlights(c){const list=element('ul','case-highlights');for(const tag of c.highlights||[])list.append(element('li','',tag));return list;}
+const byId=id=>document.getElementById(id);
+const site=byId('site'), section=byId('work'), sticky=byId('storySticky'), frame=byId('storyFrame'), track=byId('storyScreens');
+let lastPaintLocal=null;
+let active=0, metrics=null, lastRouteScroll=0, lastRouteFocus=null, animRaf=0;
+const clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n));
+const smooth=t=>t*t*(3-2*t);
+const lerp=(a,b,t)=>a+(b-a)*t;
+function renderScreens(){
+ track.replaceChildren();
+ companies.forEach((c,i)=>{
+  const layer=document.createElement('div');layer.className='story-layer';layer.dataset.index=String(i);layer.style.zIndex=i+1;
+  const info=element('div','story-company-info');
+  const logo=element('img','story-company-logo');logo.src=c.logo;logo.alt=c.name;logo.decoding='async';
+  const role=element('h3','story-company-role',c.role);
+  const position=element('div','story-company-position');position.append(role);
+  if(c.period)position.append(element('p','story-company-period',c.period));
+  position.append(caseHighlights(c));
+  const link=element('a','story-company-case');link.href='#experience/'+c.id;link.innerHTML='<span>EXPLORE THE CASE</span>'+arrow;link.setAttribute('aria-label','View '+c.name+' case study');
+  link.addEventListener('click',()=>{lastRouteScroll=window.scrollY;lastRouteFocus=document.activeElement;detailReturn='work';});
+  info.append(logo,position,link);
+  const website=element('div','story-company-website'),img=element('img');img.src=c.homepageScreen;img.alt=c.homepageAlt||c.name+' — company homepage';img.loading=i<2?'eager':'lazy';img.decoding='async';website.append(img);
+  const highlights=(c.tabletRecognition||[]).filter(item=>c.awards?.[item.index]);
+  if(highlights.length){
+   layer.classList.add('has-recognition');
+   const recognition=element('a','story-recognition');recognition.href='#experience/'+c.id;recognition.setAttribute('aria-label','View all '+c.awards.length+' recognition entries for '+c.name);
+   const more=element('span','','All '+c.awards.length+' ');more.insertAdjacentHTML('beforeend',arrow);
+   const heading=element('span','story-recognition-heading');heading.append(element('span','','Company recognition'),more);
+   const items=element('span','story-recognition-items');
+   for(const featured of highlights){
+    const award=c.awards[featured.index],item=element('span','story-recognition-item');
+    item.append(element('strong','',featured.label||award.title),element('span','story-recognition-meta',[featured.status||award.status,award.year].filter(Boolean).join(' · ')));
+    if(featured.scope)item.append(element('span','story-recognition-scope',featured.scope));
+    items.append(item);
+   }
+   recognition.append(heading,items);recognition.addEventListener('click',event=>{
+    if(event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
+    recognitionTarget=c.id;lastRouteScroll=window.scrollY;lastRouteFocus=recognition;detailReturn='work';
+   });website.append(recognition);
+  }
+  layer.append(info,website);layer.inert=i!==active;layer.setAttribute('aria-hidden',String(i!==active));track.append(layer);
+ });
+ requestAnimationFrame(()=>{measureStory();paintStory()});
+}
+function measureStory(){
+ if(byId('mainPage').hidden)return;
+ const labH=0;
+ document.documentElement.style.setProperty('--lab-h',labH+'px');
+ const realMobile=window.innerWidth<=720, simulated=false, mobile=realMobile||simulated;
+ document.documentElement.classList.toggle('mobile-actual',realMobile);
+ const stageH=window.DTViewport.contentHeight?.()||window.DTViewport.height();
+ document.documentElement.style.setProperty('--stage-h',stageH+'px');
+ const introDist=Math.round(stageH*(mobile?.42:.60)); const slideDist=Math.round(stageH*(document.documentElement.lang==='ru'?1:.82)); const outroDist=Math.round(stageH*(mobile?.12:.20));
+ section.style.height=(stageH+introDist+Math.max(0,companies.length-1)*slideDist+outroDist)+'px';
+ const stageTop=parseFloat(getComputedStyle(sticky).top)||0;
+ const stageW=sticky.clientWidth;
+ // Desktop keeps its navigation rail; mobile uses a wider, centred tablet.
+ const landscape=matchMedia('(min-width:540px) and (max-height:500px)').matches;
+ const wideScale=window.DTViewport.scale?.()||1;
+ const targetW=landscape?Math.min(stageW*.70,Math.max(130,stageH-68)*1.9):mobile?Math.min(stageW*.88,(stageH-205)*.82):Math.min(stageW*.80,Math.max(300*wideScale,stageH-250*wideScale)*1.7);
+ const initialW=mobile?Math.min(stageW*.81,targetW*.91):Math.min(stageW*.68,targetW*1.08);
+ const startLeft=landscape?stageW*.04:mobile?(stageW-initialW)/2:stageW*.14;
+ const endLeft=landscape?stageW*.04:mobile?(stageW-targetW)/2:(stageW-targetW)/2+28;
+ const startTop=landscape?Math.max(16,(stageH-targetW/1.9-16)/2):mobile?stageH*.235:stageH*.06;
+ const endTop=landscape?Math.max(16,(stageH-targetW/1.9-16)/2):mobile?stageH*.09:stageH*.095;
+ // Follow the compact Hero content instead of leaving a viewport-sized gap.
+ const previousOffset=parseFloat(section.style.getPropertyValue('--story-offset'))||0;
+ const naturalTop=section.getBoundingClientRect().top+scrollY-previousOffset;
+ const heroBottom=Math.max(byId('heroName').getBoundingClientRect().bottom,document.querySelector('#hero .signature').getBoundingClientRect().bottom)+scrollY;
+ const heroGap=mobile?24:40*wideScale;
+ const offset=Math.ceil(heroBottom+heroGap-naturalTop-startTop+initialW*.04);
+ if(offset!==previousOffset)section.style.setProperty('--story-offset',offset+'px');
+ const top=section.getBoundingClientRect().top+window.scrollY;
+ const start=top-stageTop;
+ lastPaintLocal=null;
+ metrics={mobile,start,stageH,stageW,labH,introDist,slideDist,outroDist,targetW,initialW,startLeft,endLeft,startTop,endTop};
+ section.dataset.restOffset=String(introDist+Math.max(0,companies.length-1)*slideDist);
+ section.dataset.scrollStops=JSON.stringify(companies.map((_,i)=>Math.round(start+(i===0?introDist*.94:introDist+((i-1)+.92)*slideDist))));
+}
+function paintStory(){
+ if(!metrics||byId('mainPage').hidden)return;
+ const m=metrics,local=clamp(window.scrollY-m.start,0,m.introDist+Math.max(0,companies.length-1)*m.slideDist);
+ section.dataset.workOpen=String(local>=m.introDist*.92);
+ if(local===lastPaintLocal)return;lastPaintLocal=local;
+ const enter=smooth(clamp(local/(m.introDist*.9)));
+ const screenW=lerp(m.initialW,m.targetW,enter);
+ const left=lerp(m.startLeft,m.endLeft,enter),top=lerp(m.startTop,m.endTop,enter);
+ const rotateY=lerp(m.mobile?-9:-14,0,enter),rotateZ=lerp(m.mobile?-4:6,0,enter);
+ frame.style.width=screenW+'px';frame.style.left=left+'px';frame.style.top=top+'px';
+ frame.style.transform=enter>=1?'none':'perspective(1300px) rotateY('+rotateY+'deg) rotateZ('+rotateZ+'deg)';
+ // Keep the same live tablet throughout the Hero entrance.
+ const metaOpacity=clamp((enter-.47)/.42);
+ byId('storyCaption').style.opacity=metaOpacity;
+ byId('storyCaption').style.transform='translateY('+lerp(14,0,metaOpacity)+'px)';
+ byId('storyCaption').style.pointerEvents=metaOpacity>.85?'auto':'none';
+ byId('storyControls').style.opacity=metaOpacity;
+ byId('storyControls').style.pointerEvents=metaOpacity>.85?'auto':'none';
+ byId('storyCaption').inert=metaOpacity<=.85;byId('storyControls').inert=metaOpacity<=.85;
+ // The visible card stays interactive during entry; inactive layers remain inert.
+ byId('storyAmbient').style.opacity=clamp((enter-.15)/.65)*.93;
+ // All images enter from the BOTTOM, one after another. Scrolling up reverses the motion.
+ const layers=track.children;let activeIndex=0;
+ for(let i=0;i<layers.length;i++){
+  let reveal=i===0?1:smooth(clamp((local-m.introDist-(i-1)*m.slideDist)/(m.slideDist*.9)));
+  let next=i<layers.length-1?smooth(clamp((local-m.introDist-i*m.slideDist)/m.slideDist)):0;
+  const y=(i===0?0:(1-reveal)*110)-next*11;
+  layers[i].style.transform='translateY('+y+'%)';
+  layers[i].style.visibility=(i===0||reveal>.0001)?'visible':'hidden';
+  if(i>0&&reveal>=.5)activeIndex=i;
+ }
+ if(activeIndex!==active)setActive(activeIndex);
+ byId('storyPrev').disabled=activeIndex===0;
+ byId('storyNext').disabled=activeIndex>=companies.length-1;
+}
+function setActive(i){
+ active=i;const c=companies[i];
+ byId('storyName').textContent=c.name;
+ frame.setAttribute('aria-label','Selected company: '+c.name);
+ [...track.children].forEach((layer,index)=>{layer.inert=index!==i;layer.setAttribute('aria-hidden',String(index!==i));});
+}
+function schedulePaint(){if(animRaf)return;animRaf=requestAnimationFrame(()=>{animRaf=0;paintStory()});}
+function goToProject(index){
+ if(!metrics)return;index=clamp(index,0,companies.length-1);
+ const m=metrics;
+ const offset=index===0?m.introDist*.94:m.introDist+((index-1)+.92)*m.slideDist;
+ const y=m.start+offset;
+ if(window.DTScenes)window.DTScenes.goTo(y);else window.scrollTo({top:Math.max(0,y),behavior:'instant'});
+}
+function scrollInstant(top){window.scrollTo({top:Math.max(0,top),behavior:'instant'});}
+function focusTitle(page){const heading=page.querySelector('h1');heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}
+function renderDetail(c){
+ byId('detailName').textContent=c.name;byId('detailHeadline').textContent=c.headline;
+ byId('detailRole').replaceChildren(...[c.role,c.period,c.location,c.sector].filter(Boolean).map(t=>element('span','',t)));
+ byId('detailHighlights').replaceChildren(...(c.highlights||[]).map(tag=>element('li','',tag)));
+ byId('detailImage').parentElement.hidden=!c.image;
+ if(c.image){byId('detailImage').src=c.image;byId('detailImage').alt=c.imageAlt||c.name+' — company homepage';}
+ byId('detailDesc').textContent=c.intro;
+ byId('caseVisualNote').textContent=c.id==='barnes'
+  ?'BARNES brand film · company context. My role covered digital marketing for the Russia team.'
+  :c.id==='cycle'?'CYCLE · agency presentation.':c.image?.includes('/companies/')?'Current company website · shown for context. My contribution is described below.':'Experience overview · my role and contribution below.';
+ const facts=byId('case-facts');facts.replaceChildren();
+ if(c.results?.length){
+  const section=element('section','case-results');section.append(element('h2','','Selected results.'));
+  const list=element('dl','case-result-list');
+  for(const result of c.results){
+   const card=element('div','case-result');
+   card.append(element('dt','',result.label),element('dd','case-result-value',result.value),element('dd','case-result-detail',result.detail));list.append(card);
+  }
+  section.append(list);facts.append(section);
+ }
+ for(const [heading,value] of [['The task.',c.challenge],['The approach.',c.approach],['My contribution.',c.contribution],['What took shape.',c.delivered]]){
+  const section=element('section');section.append(element('h2','',heading));
+  if(Array.isArray(value)){const list=element('ul');value.forEach(v=>list.append(element('li','',v)));section.append(list);}else section.append(element('p','',value));
+  facts.append(section);
+ }
+ if(c.awards?.length){
+  const recognition=element('details','case-recognition');recognition.append(element('summary','','Company recognition · '+c.awards.length+' entries'));
+  recognition.append(element('p','case-recognition-intro','Company context, separate from my contribution. '+(c.awardsIntro||'Each entry names its recipient and source.')));
+  const list=element('div','case-awards');
+  for(const award of c.awards){
+   const card=element('article','case-award');
+   card.append(element('span','case-award-meta',[award.year,award.status].filter(Boolean).join(' · ')),element('h3','',award.title),element('p','case-award-recipient',award.recipient||c.name),element('p','',award.detail));
+   const source=element('a','case-award-source',award.basis||'Original source');source.href=award.source;source.target='_blank';source.rel='noopener noreferrer';source.setAttribute('aria-label',award.title+' — '+(award.basis||'Original source'));card.append(source);list.append(card);
+  }
+  recognition.append(list);facts.append(recognition);
+ }
+ byId('caseCollaboration').textContent=c.collaboration;
+ byId('detailExternal').hidden=!c.url;if(c.url)byId('detailExternal').href=c.url;
+ const next=allProjects[(allProjects.indexOf(c)+1)%allProjects.length];
+ byId('caseNext').href='#experience/'+next.id;byId('caseNextName').textContent=next.name;
+ byId('backBtn').lastElementChild.textContent=detailReturn==='all'||cameFromWork?'BACK TO ALL CASES':'BACK TO SELECTED WORK';
+ document.title=c.name+' — Daniil Terekh';
+}
+function revealCasePage(page){if(matchMedia('(prefers-reduced-motion:reduce)').matches||typeof page.animate!=='function')return;page.getAnimations().forEach(animation=>animation.cancel());page.animate([{opacity:0},{opacity:1}],{duration:380,easing:'cubic-bezier(.22,.72,.18,1)'});}
+function applyRoute(){
+ const openRecognitionFor=recognitionTarget;recognitionTarget=null;
+ let hash;try{hash=decodeURIComponent(window.location.hash||'');}catch{history.replaceState(null,'',window.location.pathname+window.location.search);hash='';}
+ const main=byId('mainPage'),detail=byId('detailPage'),all=byId('allPage');
+ const prevMainHidden=main.hidden;
+ window.DTCaseFilm?.show(hash==='#experience/barnes'?'barnes':null);
+ main.hidden=false;detail.hidden=true;all.hidden=true;detail.classList.remove('is-open');all.classList.remove('is-open');
+ if(hash==='#experience/all'){
+  main.hidden=true;all.hidden=false;all.classList.add('is-open');renderAll();revealCasePage(all);document.title='Cases & Experience — Daniil Terekh';scrollInstant(archiveScroll);focusTitle(all);
+ }else if(hash.startsWith('#experience/')){
+  const id=hash.slice('#experience/'.length),c=allProjects.find(x=>x.id===id);
+  if(!c){history.replaceState(null,'',window.location.pathname+window.location.search+'#experience/all');return applyRoute();}
+  main.hidden=true;detail.hidden=false;detail.dataset.case=c.id;detail.classList.add('is-open');renderDetail(c);revealCasePage(detail);byId('detailVisual').hidden=c.id==='barnes'||!c.image;scrollInstant(0);focusTitle(detail);
+  if(openRecognitionFor===c.id){
+   const recognition=detail.querySelector('.case-recognition');
+   if(recognition){recognition.open=true;requestAnimationFrame(()=>{if(detail.hidden||detail.dataset.case!==c.id)return;recognition.querySelector('summary').focus({preventScroll:true});recognition.scrollIntoView({behavior:'instant',block:'start'});});}
+  }
+ }else{
+  document.title=originalTitle;
+  if(prevMainHidden)requestAnimationFrame(()=>{measureStory();if(hash==='#work'){scrollInstant(lastRouteScroll||metrics?.start+metrics?.introDist||0);}else{const target=hash.startsWith('#')?document.getElementById(hash.slice(1)):null;if(target)target.scrollIntoView({behavior:'instant',block:'start'});else scrollInstant(lastRouteScroll);}paintStory();if(lastRouteFocus?.isConnected&&!lastRouteFocus.closest('[inert]'))lastRouteFocus.focus({preventScroll:true});});
+ }
+}
+function renderAll(){
+ const featured=byId('allList'),more=byId('moreList');featured.replaceChildren();more.replaceChildren();
+ for(const c of allProjects){
+  const link=element('a',c.featured?'archive-card':'experience-row');link.href='#experience/'+c.id;link.dataset.projectId=c.id;link.setAttribute('aria-label','View '+c.name+' — '+[c.role,c.period].filter(Boolean).join(' · '));
+  link.addEventListener('click',()=>{archiveScroll=window.scrollY;lastRouteFocus=document.activeElement;detailReturn='all';});
+  if(c.featured){
+   const visual=element('div','archive-card-visual'),img=element('img');img.src=c.image;img.alt=c.imageAlt||c.name+' — company homepage';img.loading='lazy';img.decoding='async';
+   const icon=element('span','case-arrow');icon.innerHTML=arrow;visual.append(img,icon);
+   const copy=element('div','archive-card-copy');copy.append(element('h3','',c.name),element('span','archive-card-sector',c.sector),caseHighlights(c),element('p','archive-card-note',c.workNote),element('div','archive-disciplines',c.disciplines.map(k=>window.DTWorkCatalog.disciplines[k]).join(' · ')),element('span','archive-card-role',[c.role,c.period,c.location].filter(Boolean).join(' · ')));link.append(visual,copy);featured.append(link);
+  }else{
+   const title=element('div');title.append(element('h3','',c.name),element('span','experience-row-role',[c.role,c.period,c.location].filter(Boolean).join(' · ')));const note=element('div','experience-row-note');note.append(element('p','',c.workNote),caseHighlights(c),element('div','archive-disciplines',c.disciplines.map(k=>window.DTWorkCatalog.disciplines[k]).join(' · ')));link.append(title,note);link.insertAdjacentHTML('beforeend',arrow);more.append(link);
+  }
+ }
+ applyArchiveFilter();
+}
+function applyArchiveFilter(){
+ const matches=new Set(window.DTWorkCatalog.matchingProjects(allProjects,archiveFilter).map(p=>p.id));
+ for(const card of document.querySelectorAll('[data-project-id]'))card.hidden=!matches.has(card.dataset.projectId);
+ for(const group of [byId('featuredGroup'),byId('moreGroup')])group.hidden=![...group.querySelectorAll('[data-project-id]')].some(card=>!card.hidden);
+ document.querySelectorAll('[data-archive-filter]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.archiveFilter===archiveFilter)));
+ byId('archive-count').textContent=matches.size+' '+(matches.size===1?'project':'projects')+(archiveFilter==='all'?' across all disciplines':' · '+window.DTWorkCatalog.disciplines[archiveFilter]);
+}
+for(const [key,label]of Object.entries({all:'All work',...window.DTWorkCatalog.disciplines})){
+ const button=element('button','',label);button.type='button';button.dataset.archiveFilter=key;button.setAttribute('aria-pressed',String(key===archiveFilter));
+ button.addEventListener('click',()=>{archiveFilter=key;applyArchiveFilter();const url=new URL(location.href);if(key==='all')url.searchParams.delete('discipline');else url.searchParams.set('discipline',key);history.replaceState(null,'',url);});
+ byId('archive-filters').append(button);
+}
+function updateMobileClass(){document.documentElement.classList.toggle('mobile-actual',window.innerWidth<=720)}
+
+byId('storyPrev').addEventListener('click',()=>goToProject(active-1));
+byId('storyNext').addEventListener('click',()=>goToProject(active+1));
+byId('allBtn').addEventListener('click',event=>{if(event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;lastRouteScroll=scrollY;lastRouteFocus=document.activeElement;detailReturn='work';});
+byId('backBtn').addEventListener('click',()=>{window.location.hash=detailReturn==='all'||cameFromWork?'#experience/all':'#work'});
+byId('backAllBtn').addEventListener('click',()=>{window.location.hash='#work'});
+window.addEventListener('hashchange',applyRoute);
+window.addEventListener('scroll',schedulePaint,{passive:true});
+window.addEventListener('resize',()=>{measureStory();schedulePaint()},{passive:true});
+const ros=new ResizeObserver(()=>{measureStory();schedulePaint()});ros.observe(site);
+document.querySelectorAll('#hero .hero-name,#hero .signature').forEach(element=>ros.observe(element));
+setActive(0);renderScreens();updateMobileClass();applyRoute();requestAnimationFrame(()=>{measureStory();paintStory()});
+})();
+

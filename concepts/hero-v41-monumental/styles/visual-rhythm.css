@@ -1,0 +1,171 @@
+/* Shared composition for the main-page chapters. Hero and case layouts keep
+   their own art direction. Loaded last so these rules have one clear owner. */
+#mainPage {
+ --chapter-title:clamp(56px,5.4vw,80px);
+ --chapter-top:clamp(36px,5.5svh,64px);
+ --chapter-gap:clamp(28px,3.5vw,48px);
+ --chapter-line:#ffffff30;
+ --motion-quick:220ms;
+ --motion-scene:600ms;
+ --motion-ease:cubic-bezier(.22,.7,.15,1);
+}
+#mainPage>section:not(#hero):not(#work) { --page-gutter:clamp(40px,5.34vw,80px); }
+#mainPage :is(#thinking-title,#edit-title,#skills-heading,#services-title,#cycle-title,#evidence-title,#human-title,#contact-title) {
+ font-size:var(--chapter-title);
+ line-height:1;
+ letter-spacing:-.012em;
+ text-wrap:balance;
+}
+#mainPage :is(.edit-sticky,.skills-showcase,.proof-frame,.human-editorial-grid,.cycle-composition) {
+ padding-block:var(--chapter-top);
+ padding-inline:var(--page-gutter);
+}
+#mainPage :is(.edit-layout,.proof-layout,.cycle-composition) { column-gap:var(--chapter-gap); }
+#mainPage :is(.edit-copy,.proof-copy,.cycle-copy) { min-width:0; }
+#mainPage :is(.edit-explanation,.skills-subtitle,.proof-lead,.cycle-lead,.human-editorial-intro) {
+ font-size:clamp(21px,2vw,28px);
+ line-height:1.4;
+ margin-top:24px;
+ text-wrap:pretty;
+}
+#mainPage :is(.cycle-description,.human-editorial-background,.contact-context) { font-size:16px;line-height:1.65; }
+#mainPage :is(.thinking-title,.services-heading) { top:var(--chapter-top); }
+#mainPage .lens-orbit .thinking-title { left:var(--page-gutter); }
+
+/* A resolved composition is held inside the grid before the next chapter. */
+#the-edit .edit-layout { grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:0; }
+#the-edit .edit-copy { max-width:560px; }
+#the-edit .edit-art { margin-left:0; }
+#the-edit .edit-resolved { right:0;width:88%;border-color:#ffffff40;box-shadow:0 24px 56px #0006;transition:transform var(--motion-scene) var(--motion-ease); }
+#the-edit .discarded-list { padding-left:0; }
+#the-edit .discarded-list>span { border-color:#ffffff24;background:#161717e6;color:#b8baba;font-size:clamp(18px,1.65vw,24px);transition:opacity var(--motion-scene),transform var(--motion-scene) var(--motion-ease); }
+#the-edit .edit-stages { display:flex;gap:24px;flex-wrap:wrap;margin-top:32px; }
+#the-edit .edit-stages button { min-height:44px;padding:10px 0;font-size:12px;letter-spacing:.04em;transition:color var(--motion-quick),border-color var(--motion-quick); }
+#the-edit[data-edit="2"] .edit-resolved { transform:rotateY(0) rotateZ(0); }
+#the-edit[data-edit="2"] .discarded-list>span { opacity:0; }
+
+/* One heading, one selection, one readable explanation. */
+#mainPage #skills-heading { max-width:850px; }
+#skills .skills-showcase { justify-content:flex-start;background:radial-gradient(ellipse at 75% 60%,#1a1b1b,transparent 55%),#080909;overflow:hidden; }
+#skills .skills-subtitle { max-width:680px;margin-bottom:0;color:#bfc1bd;font:16px/1.6 var(--sans); }
+#skills .skills-bottom-controls { margin-top:28px;padding-top:12px;border-color:var(--chapter-line); }
+#skills .skills-filters { max-width:100%;gap:4px 24px; }
+#skills .skills-filters button { min-height:44px;font:12px/1.4 var(--sans);letter-spacing:.045em;color:#a4a6a4;transition:color var(--motion-quick),border-color var(--motion-quick); }
+#skills .skills-filters button[aria-pressed="true"] { color:#fff;border-color:#fff; }
+#skills .skills-filters button:hover { color:#fff; }
+#skills .skills-content { grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--chapter-gap);margin-top:32px;margin-bottom:0;flex:1; }
+#skills .skills-detail h3 { font:400 clamp(32px,3.2vw,46px)/1.05 ThinkingNarrow,Impact,sans-serif;margin:0 0 12px; }
+#skills .skills-detail>p#skills-detail-text { font:14px/1.6 var(--sans);color:#a9aba7;margin-bottom:22px; }
+#skills .skills-solution { margin:0;display:grid;grid-template-columns:1fr; }
+#skills .skills-leaf { display:grid;grid-template-columns:104px minmax(0,1fr);gap:16px;align-items:start;min-height:0;padding:18px 0;background:none;box-shadow:none;border-top:1px solid var(--chapter-line);transform:none; }
+#skills .skills-leaf h4 { margin:3px 0 0;font:12px/1.5 var(--sans);letter-spacing:.025em;color:#a9aba7; }
+#skills .skills-leaf p { font:16px/1.55 var(--sans);color:#efefec;overflow-wrap:normal;text-wrap:pretty; }
+#skills .skills-leaf:last-child { border-bottom:1px solid var(--chapter-line); }
+#skills .skills-stage { height:clamp(300px,42svh,440px); }
+#skills .skills-field { --rx:48deg;--rz:-24deg;top:52%;transition:transform var(--motion-scene) var(--motion-ease); }
+#skills .skills-cube.is-empty { opacity:.45; }
+#skills .skills-cube.is-empty .sk-label { visibility:hidden; }
+#skills .skills-cube .sk-label { font-size:clamp(8px,.8vw,11px);font-weight:500; }
+#skills .skills-cube.is-dim { opacity:.08; }
+#skills[data-variant="5"] .skills-cube.is-selected .sk-cap { background:#edede8;border-color:#fff;box-shadow:0 4px 18px #0005; }
+#skills .skills-cube.is-selected .sk-label { color:#171918;font-weight:700; }
+#skills .skills-cube.is-related:not(.is-selected) .sk-cap { background:#343737;border-color:#c4c7c1; }
+#skills .skills-connections path { stroke:#d5d8d0;stroke-width:1.25; }
+#skills .skills-picker { display:none; }
+
+/* Services keep their typographic reveal, with predictable reading spacing. */
+#mainPage #services { --section-title-size:var(--chapter-title);--section-title-top:var(--chapter-top);--services-drop:0px; }
+#services .services-type { gap:8px; }
+#services .service-direction { transition:color var(--motion-quick),font-size var(--motion-scene) var(--motion-ease),line-height var(--motion-scene); }
+#services .service-panel>p:not(.service-team) { line-height:1.5;max-width:38ch; }
+#services .service-groups { gap:24px; }
+#services .service-group h4 { font-size:13px;line-height:1.5;margin-bottom:12px; }
+#services .service-group li { font-size:15px;line-height:1.55; }
+#services .service-price { padding-top:22px;border-top:1px solid #1113;margin-top:28px; }
+#services .service-role-card { padding-top:24px;border-top:1px solid var(--chapter-line); }
+#services .service-role-card>span { font-size:clamp(32px,3.3vw,48px);line-height:1.08; }
+#mainPage :is(.service-project,.cycle-project) { min-height:52px;font:12px/1.5 var(--sans);letter-spacing:.035em;gap:24px; }
+#mainPage .service-project { padding:16px 20px; }
+#mainPage :is(.service-project,.cycle-project,.contact-intents a,.contact-address a) .ui-arrow { width:20px;height:20px;transition:transform var(--motion-quick) var(--motion-ease); }
+#mainPage :is(.service-project,.cycle-project,.contact-intents a,.contact-address a):hover .ui-arrow { transform:translate(3px,-3px); }
+#mainPage :is(a,button,select):focus-visible { outline:2px solid currentColor;outline-offset:5px; }
+
+/* The closing chapters use the same column and text rhythm. */
+#cycle .cycle-description { max-width:46ch; }
+#cycle .cycle-brand>p { font-size:16px;line-height:1.6; }
+#human .human-editorial-copy { display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:var(--chapter-gap);align-items:start; }
+#human #human-title { grid-column:1;grid-row:1 / 3; }
+#human .human-editorial-intro { grid-column:2;margin-top:0; }
+#human .human-editorial-background { grid-column:2;margin-top:20px; }
+#human .human-editorial-columns { grid-column:1 / -1;margin-top:56px;padding-top:32px;border-top:1px solid #1113;gap:var(--chapter-gap);grid-template-columns:repeat(3,minmax(0,1fr)); }
+#human .human-editorial-column h3 { font:400 28px/1.1 ThinkingNarrow,Impact,sans-serif;margin-bottom:20px; }
+#human .human-editorial-column li { font-size:16px;line-height:1.6; }
+#human .human-editorial-column li>span { font-size:13px;line-height:1.6; }
+#human .human-editorial-column li>a { min-height:44px; }
+#contact .contact-intents { gap:32px;margin-top:28px; }
+#contact .contact-intents a { padding:22px 0;transition:border-color var(--motion-quick); }
+#contact .contact-intents a>span { font-size:25px;line-height:1.3; }
+#contact .contact-intents small { font-size:14px;line-height:1.6; }
+#contact .contact-address a { display:inline-flex;align-items:center;gap:12px;min-height:44px;font-size:14px; }
+
+@media(max-width:1050px) {
+ #skills .skills-content { grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+ #skills .skills-leaf { grid-template-columns:1fr;gap:8px;padding-block:14px; }
+ #skills .skills-leaf h4 { margin:0; }
+}
+@media(max-width:800px) {
+ #mainPage { --chapter-title:clamp(40px,8.8vw,60px);--chapter-top:36px;--chapter-gap:28px; }
+ #mainPage>section:not(#hero):not(#work) { --page-gutter:clamp(20px,5.34vw,32px); }
+ #mainPage :is(.edit-explanation,.proof-lead,.cycle-lead,.human-editorial-intro) { font-size:21px;line-height:1.4;margin-top:20px; }
+ #the-edit .edit-layout { grid-template-columns:1fr;gap:28px; }
+ #the-edit .edit-art { height:clamp(240px,35svh,330px);margin:0; }
+ #the-edit .edit-resolved { width:78%; }
+ #the-edit .edit-stages { gap:24px;margin-top:20px; }
+ #skills .skills-showcase { justify-content:flex-start; }
+ #skills .skills-subtitle { margin-top:18px;font-size:16px; }
+ #skills .skills-bottom-controls { margin-top:24px; }
+ #skills .skills-filters { gap:0 18px; }
+ #skills .skills-content { display:flex;flex-direction:column;gap:24px;margin-top:24px; }
+ #skills .skills-scene { order:-1;width:100%; }
+ #skills .skills-stage { height:clamp(240px,34svh,310px); }
+ #skills .skills-field { --rx:44deg;--rz:-22deg; }
+ #skills .skills-detail { width:100%; }
+ #skills .skills-detail h3 { font-size:36px; }
+ #skills .skills-leaf { grid-template-columns:96px minmax(0,1fr);gap:16px;padding-block:18px; }
+ #skills .skills-leaf p { font-size:16px; }
+ #skills .skills-picker { display:grid;gap:10px;margin-top:20px;font:12px/1.4 var(--sans);color:#bfc1bd; }
+ #skills .skills-picker select { display:block;width:100%;min-height:48px;padding:12px 36px 12px 14px;border:1px solid #ffffff50;border-radius:0;background:#171919;color:#f3f3ef;font:16px/1.4 var(--sans);color-scheme:dark; }
+ #services .services-type { gap:6px; }
+ #services .service-panel-area { padding-bottom:36px; }
+ #services .service-group li { font-size:16px; }
+ #services .service-role-card { padding-top:20px; }
+ #human .human-editorial-copy { grid-template-columns:1fr; }
+ #human #human-title { grid-column:1;grid-row:auto; }
+ #human :is(.human-editorial-intro,.human-editorial-background) { grid-column:1; }
+ #human .human-editorial-intro { margin-top:28px; }
+ #human .human-editorial-columns { grid-template-columns:1fr 1fr;gap:28px 20px;margin-top:36px;padding-top:28px; }
+ #human .human-editorial-column:last-child { grid-column:1 / -1; }
+ #human .human-editorial-column:last-child ul { display:flex;flex-wrap:wrap;gap:8px 24px; }
+ #contact .contact-intents { gap:4px;grid-template-columns:1fr; }
+ #contact .contact-intents a>span { font-size:24px; }
+}
+@media(min-width:801px) and (max-height:760px) {
+ #mainPage { --chapter-title:clamp(48px,4.8vw,68px);--chapter-top:32px; }
+ #skills .skills-content { margin-top:24px; }
+ #skills .skills-stage { height:300px; }
+ #skills .skills-leaf { padding-block:14px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ #mainPage :is(.edit-resolved,.discarded-list>span,.edit-stages button,.skills-field,.skills-filters button,.service-direction,.ui-arrow,.contact-intents a) { transition:none; }
+}
+
+/* Scroll progress owns the editing composition; CSS never trails the gesture. */
+#the-edit[data-motion="continuous"] .edit-resolved,
+#the-edit[data-motion="continuous"] .discarded-list>span { transition:none; }
+#the-edit[data-motion="continuous"] .resolved-copy { left:var(--resolved-inset,9%);right:var(--resolved-inset,9%);bottom:var(--resolved-inset,9%); }
+#the-edit[data-motion="continuous"] .resolved-copy h3 { margin-bottom:18px; }
+#the-edit .edit-explanation { min-height:3em; }
+@media(max-width:800px) { #the-edit .edit-explanation { min-height:5.6em; } }
+
+/* Keep the existing service art direction; changing details must not anchor-scroll the page. */
+#services { overflow-anchor:none; }

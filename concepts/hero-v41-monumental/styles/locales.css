@@ -1,0 +1,76 @@
+.header-identity{position:relative;margin-right:auto;min-width:144px;flex-shrink:0}.header-identity .header-name{margin-right:0}.language-switch{position:absolute;right:0;top:8px;min-width:28px;min-height:26px;display:flex;justify-content:center;align-items:center;font:10px/1 Arial,sans-serif;letter-spacing:.04em;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:1050px) and (min-width:801px){.site-header{gap:16px}.header-navigation ul{gap:16px}.header-navigation .header-pages{gap:22px}}
+@media(max-width:800px){.header-identity{min-width:130px}.site-header{gap:14px}.language-switch{font-size:9px}.header-identity .header-role{font-size:9px}}
+@media(max-width:360px){.site-header{gap:10px}.header-contact{gap:5px;font-size:10px}.header-menu-toggle{gap:5px;font-size:10px}}
+@font-face{font-family:ThinkingNarrow;src:url('../assets/fonts/Oswald-Variable.ttf') format('truetype');font-weight:700;font-variation-settings:'wght' 700;font-display:swap;unicode-range:U+0400-052F}
+html:lang(ru) .site.ref-mode .signature-ru{filter:none;width:42%;transform:none!important}
+.signature-raster picture,.signature-raster img{display:block;width:100%}.signature-raster img{height:auto;filter:url('#hero-raster-ink-ru')}.signature-ink-defs{position:absolute;pointer-events:none}
+html:lang(ru) .human-editorial-copy h2{white-space:normal}
+html:lang(ru) .service-direction{font-size:clamp(42px,min(8.7vw,11svh),128px)}
+html:lang(ru) .header-contact{gap:10px}html:lang(ru) .header-role{letter-spacing:0}
+html:lang(ru) .service-package h3{overflow-wrap:anywhere}
+@media(max-width:720px){html:lang(ru) .site.ref-mode .signature-ru{width:86%!important;top:calc(102px + 39cqw + max(0px,5cqw - 24px))!important}html:lang(ru) .service-direction{font-size:clamp(38px,11.3vw,72px)}}
+
+html:lang(ru) .services-intro-grid{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+html:lang(ru) .services-intro-grid>*{min-width:0}
+html:lang(ru) .services-page-hero h1{font-size:clamp(58px,8.5vw,140px)}
+html:lang(ru) .service-sheet-title h2{min-width:0;overflow-wrap:anywhere}
+html:lang(ru) .services-page-contact{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+html:lang(ru) .services-page-contact>*{min-width:0}
+html:lang(ru) .services-page-contact h2{overflow-wrap:anywhere}
+@media(max-width:800px){html:lang(ru) .services-intro-grid{display:block}html:lang(ru) .services-page-hero h1{font-size:clamp(54px,14vw,100px)}}
+@media(max-width:600px){html:lang(ru) .services-page-contact{grid-template-columns:minmax(0,1fr)}}
+
+@media(max-width:360px){html:lang(ru) .site-header{gap:8px}html:lang(ru) .header-identity{min-width:124px}html:lang(ru) .header-contact{gap:5px;font-size:10px}html:lang(ru) .header-menu-toggle{font-size:10px;gap:5px}}
+
+/* The open reading surface must reach the top-left copy on narrow screens. */
+@media(max-width:800px){html:lang(ru) #services.is-open .services-white-field{clip-path:ellipse(150% 150% at 100% 100%)}}
+
+@media(max-width:720px){html:lang(ru) #services:not(.is-open) .services-type{min-height:min-content}html:lang(ru) #services:not(.is-open) .service-direction{font-size:clamp(24px,min(14.3vw,calc((var(--scene-height) - 2*var(--chapter-top) - var(--chapter-title) - 125px)/6)),96px)}}
+
+html:lang(ru) #services.is-open .service-direction.is-active{white-space:nowrap;font-size:clamp(28px,min(6vw,10svh),100px);line-height:1.16}
+@media(max-width:800px){html:lang(ru) #services.is-open .service-direction.is-active{font-size:clamp(28px,min(10vw,11svh),74px)}}
+@media(max-width:800px){html:lang(ru) #mainPage #services-title{font-size:clamp(26px,8.5vw,60px)}}
+@media(prefers-reduced-motion:reduce){@view-transition{navigation:none}}
+
+/* Match the available copy column after the portrait or landscape layout switches. */
+@media(max-width:590px){html:lang(ru) .connect-intro h2{font-size:clamp(28px,8.3vw,48px)}}
+@media(max-width:360px){html:lang(ru) #mainPage #human-title{font-size:36px}}
+
+@media(min-width:540px) and (max-height:650px),(min-width:480px) and (max-height:420px){
+ html:lang(ru) #mainPage #services-title{font-size:var(--chapter-title)}
+ html:lang(ru) #services.is-open .service-direction.is-active{font-size:clamp(24px,min(5vw,9svh),48px)}
+}
+.case-next{max-width:100%}.case-next>span{min-width:0}.case-next .ui-arrow{flex:none}
+#caseNextName{overflow-wrap:anywhere}
+
+/* Russian reading rhythm: separate hit areas and let long chapters breathe. */
+html:lang(ru) .header-identity{display:flex;align-items:center;gap:14px;min-width:0}
+html:lang(ru) .header-identity .header-name{flex:none}
+html:lang(ru) .header-identity .language-switch{position:static;flex:none}
+html:lang(ru) #mainPage :is(#thinking-title,#edit-title,#skills-heading,#services-title,#cycle-title,#human-title,#contact-title){line-height:1.16}
+html:lang(ru) .services-page-hero h1{line-height:1.16}
+html:lang(ru) #mainPage :is(#human.has-portrait,#contact),html:lang(ru) #contact .contact-shell{height:auto;min-height:var(--scene-height)}
+html:lang(ru) #mainPage #human.has-portrait .human-editorial-grid{height:auto;min-height:var(--scene-height);overflow:visible;padding-bottom:var(--chapter-top)}
+html:lang(ru) #mainPage #contact .contact-composition{height:auto;min-height:var(--scene-height);overflow:visible;padding-bottom:max(32px,env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;justify-content:center}
+html:lang(ru) #contact .contact-center{min-height:0}
+html:lang(ru) .connect-intro h2{line-height:1.16}
+html:lang(ru) .connect-intro .connect-description{margin-top:24px}
+@media(max-width:590px){html:lang(ru) .connect-intro .connect-description{margin-top:20px}}
+html:lang(ru) #services.is-open .services-panel-area{overscroll-behavior-y:auto;scroll-padding-block:12px}
+/* Wheel reading positions are controlled only at crossings, without snap-back. */
+html:lang(ru).reading-wheel:not(.chapter-navigating){scroll-snap-type:none}
+@media(max-width:800px){html:lang(ru) .case-header{row-gap:40px}}
+html:lang(ru) #services.is-open .service-panel>p:first-of-type{padding-right:56px}
+html:lang(ru) #contact .contact-context{margin-top:24px}
+@media(max-width:360px){
+ html:lang(ru) .site-header{padding-inline:5%;gap:6px}
+ html:lang(ru) .header-identity{gap:6px}
+ html:lang(ru) .header-identity .language-switch{min-width:24px}
+}
+
+/* Room between display lines; preserve hero lettering and compact navigation. */
+html #mainPage :is(#thinking-title,#edit-title,#skills-heading,#services-title,#cycle-title,#evidence-title,#human-title,#contact-title){line-height:1.16}
+html :is(.services-page-hero h1,.catalogue-intro h2,.service-sheet h2,.services-process h2,.services-page-contact h2,.pricing-overview h2,.work-entry-company h2,.case-header h1,.archive-intro h1,.case-facts h2,.archive-card-copy h3,.case-collaboration h2,.connect-intro h2){line-height:1.16}
+html #skills .skills-detail h3,html #services.is-open .service-direction.is-active,html #services .service-panel>h3{line-height:1.16}
+html .service-package h3{line-height:1.22}

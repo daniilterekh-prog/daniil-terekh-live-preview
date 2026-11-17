@@ -1,0 +1,32 @@
+/* A hidden source above the right edge. Light stays beneath the typography. */
+#hero .hero-spotlight {
+  position:absolute;inset:0;z-index:4;pointer-events:none;user-select:none;
+  overflow:hidden;
+}
+.hero-spotlight__light {position:absolute;opacity:0;pointer-events:none;}
+.hero-spotlight__beam {
+  right:-20%;top:-12%;width:115%;height:48%;
+  transform:rotate(-23deg);transform-origin:70% 50%;
+  background:radial-gradient(ellipse at 66% 50%,rgba(255,255,255,.13) 0%,rgba(255,255,255,.075) 24%,rgba(255,255,255,.025) 48%,transparent 72%);
+}
+.hero-spotlight__pool {
+  left:1%;top:12%;width:66%;height:42%;
+  background:radial-gradient(ellipse,rgba(255,255,255,.065),rgba(255,255,255,.02) 40%,transparent 72%);
+}
+.hero-spotlight.is-igniting .hero-spotlight__light {
+  animation:spotlight-ignite 2.4s cubic-bezier(.4,0,.2,1) both;
+}
+.hero-spotlight.is-steady .hero-spotlight__light {opacity:.34;}
+@keyframes spotlight-ignite {
+  0%,14% {opacity:0;}
+  43% {opacity:.75;}
+  66% {opacity:.20;}
+  100% {opacity:.34;}
+}
+@media (max-width:720px) {
+  .hero-spotlight__beam {right:-38%;top:-7%;width:150%;height:38%;transform:rotate(-30deg);}
+  .hero-spotlight__pool {left:-10%;top:13%;width:105%;height:28%;}
+}
+@media (prefers-reduced-motion:reduce) {
+  .hero-spotlight.is-igniting .hero-spotlight__light {animation:none;opacity:.34;}
+}
