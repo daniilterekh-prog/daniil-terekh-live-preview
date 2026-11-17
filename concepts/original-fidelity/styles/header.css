@@ -1,0 +1,66 @@
+:root{--header-height:calc(52px + env(safe-area-inset-top,0px));--scene-height:calc(100svh - var(--header-height))}
+html{scroll-padding-top:var(--header-height);scrollbar-gutter:stable}
+html.nav-open,html.nav-open body{overflow:hidden}
+#site{padding-top:var(--header-height)}
+.site-header{position:fixed;z-index:80;inset:0 0 auto;min-height:var(--header-height);display:flex;align-items:center;gap:28px;padding:env(safe-area-inset-top,0px) 5.34% 0;background:#fff;color:#141514;border-bottom:1px solid #deded9;font:12px/1.2 var(--sans);letter-spacing:.01em}
+.header-name{font-size:11px;font-weight:600;letter-spacing:.07em;margin-right:auto;white-space:nowrap;min-height:51px;display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px}
+.header-role{font-size:10px;font-weight:400;letter-spacing:.01em;color:#555652}
+.header-navigation ul{display:flex;gap:24px;align-items:center;list-style:none;margin:0;padding:0}
+.header-navigation .header-pages{position:absolute;top:env(safe-area-inset-top,0px);left:50%;transform:translateX(-50%);gap:32px}
+.header-pages a{font-weight:600}
+.header-navigation a{position:relative;display:flex;align-items:center;min-height:51px;color:#5a5b57;white-space:nowrap}
+.header-navigation a:hover,.header-navigation a[aria-current]{color:#111}
+.header-navigation a[aria-current]::after{content:'';position:absolute;bottom:9px;left:0;right:0;height:1px;background:currentColor}
+.header-contact{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;white-space:nowrap;font-weight:600}
+.header-contact span{font-size:18px}
+.header-menu-toggle{display:none;border:0;background:transparent;color:inherit;padding:0;min-height:44px;align-items:center;gap:8px}
+.header-menu-toggle svg{width:20px;height:20px}
+.site-header a:focus-visible,.site-header button:focus-visible{outline:2px solid #181916;outline-offset:3px}
+.site.ref-mode #work .story-sticky{top:var(--header-height)}
+.skip-link{z-index:100}
+@media(max-width:800px){
+ .site-header:not(.is-enhanced){position:relative}
+ .site-header:not(.is-enhanced)+:is(#site,main){padding-top:0}
+ .site-header{padding-inline:6%;gap:22px;flex-wrap:wrap}
+ .header-name{font-size:10px}
+ .header-contact{font-size:11px;gap:9px}
+ .header-menu-toggle{font-size:11px}
+ .site-header.is-enhanced .header-menu-toggle:not([hidden]){display:inline-flex}
+ .header-navigation{order:4;flex-basis:100%;padding:12px 0 24px;max-height:calc(100svh - var(--header-height));overflow-y:auto;overscroll-behavior:contain}
+ .header-navigation[hidden]{display:none}
+ .header-navigation ul{display:block}
+ .header-navigation .header-pages{position:static;transform:none;display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px}
+ .header-pages a{justify-content:center}
+ .header-navigation a{font-size:24px;min-height:52px;border-top:1px solid #deded9}
+ .header-navigation a[aria-current]::after{left:auto;bottom:24px;width:18px}
+ .site-header.is-enhanced[data-menu-open="true"]{box-shadow:0 12px 28px #0002}
+}
+@media(max-width:360px){.site-header{gap:16px}.header-name{letter-spacing:.025em}}
+
+/* A light disclosure panel: the page and header row keep their positions. */
+.header-menu-toggle svg path{transform-box:view-box;transform-origin:10px 10px;transition:transform 480ms cubic-bezier(.22,1,.36,1)}
+.header-menu-toggle svg path:first-child{transform:translateY(-3px)}
+.header-menu-toggle svg path:last-child{transform:translateY(3px)}
+.site-header[data-menu-open="true"] .header-menu-toggle svg path:first-child{transform:rotate(45deg)}
+.site-header[data-menu-open="true"] .header-menu-toggle svg path:last-child{transform:rotate(-45deg);transition-delay:30ms}
+@media(max-width:800px){
+ .site-header.is-enhanced .header-navigation{position:absolute;top:calc(100% - 1px);left:0;right:0;margin:0;padding:12px 6% 24px;box-sizing:border-box;background:#fff;border-bottom:1px solid #deded9;box-shadow:0 16px 28px #0002;transform-origin:top center}
+ .site-header.is-enhanced[data-menu-open="true"]{box-shadow:none}
+ .header-menu-toggle{cursor:pointer;transition:opacity 180ms ease}
+ .header-menu-toggle:active{opacity:.6}
+ .header-navigation[inert]{pointer-events:none}
+}
+@media(prefers-reduced-motion:reduce){.header-menu-toggle svg path,.header-menu-toggle{transition:none}}
+
+/* Native page changes share the same quiet arrival as the homepage chapters. */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:page-leave 200ms ease both}
+::view-transition-new(root){animation:page-arrive 420ms cubic-bezier(.22,.72,.18,1) 60ms both}
+@keyframes page-leave{to{opacity:0}}
+@keyframes page-arrive{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
+
+@media(max-width:800px){
+ .header-navigation .header-sections a{justify-content:center;text-align:center}
+ .header-navigation .header-sections a[aria-current]::after{left:50%;right:auto;bottom:8px;width:24px;transform:translateX(-50%)}
+}
