@@ -1,0 +1,46 @@
+name: Build approved CYCLE email logo
+on:
+  push:
+    paths:
+      - .github/workflows/build-cycle-email-logo.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Pillow
+        run: python -m pip install --quiet Pillow
+      - name: Convert approved artwork to transparent PNG
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          src=Path('assets/companies/cycle-approved-email.webp')
+          dst=Path('assets/companies/cycle-approved-transparent.png')
+          im=Image.open(src).convert('RGB')
+          # Approved canvas is 1536x1024. Crop only. Never change letter geometry.
+          im=im.crop((300,410,1245,575))
+          out=Image.new('RGBA',im.size)
+          pixels=[]
+          for r,g,b in im.getdata():
+              luminance=max(r,g,b)
+              alpha=max(0,min(255,round((luminance-13)*255/237)))
+              pixels.append((37,38,36,alpha))
+          out.putdata(pixels)
+          out.save(dst,optimize=True)
+          print('Saved',dst,out.size,dst.stat().st_size)
+          PY
+      - name: Commit approved email image
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/companies/cycle-approved-transparent.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Add transparent approved CYCLE email wordmark"
+            git push
+          fi
