@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#121212">
+  <meta name="robots" content="noindex,nofollow">
+  <title>The Cover Story — Daniil Terekh / Mobile Refined V2</title>
+  <meta name="description" content="An editorial cover concept for Daniil Terekh. Independent design preview, not the live portfolio.">
+  <link rel="icon" href="../../assets/76e3b5323863.webp" type="image/webp">
+  <link rel="preload" href="../../assets/fonts/Oswald-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <style>
+    @font-face{font-family:Oswald;src:url("../../assets/fonts/Oswald-Variable.ttf") format("truetype");font-weight:200 700;font-display:swap}
+    @font-face{font-family:Prata;src:url("../../assets/fonts/Prata-Regular.ttf") format("truetype");font-display:swap}
+    @font-face{font-family:Miama;src:url("../../assets/fonts/MiamaNueva.otf") format("opentype");font-display:swap}
+    :root{--ink:#141414;--paper:#edeee9;--milk:#f2f2ec;--muted:#a4a4a0;--grid:rgba(255,255,255,.14)}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--ink);color:var(--milk);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    ::selection{background:#e7e6dd;color:#171717}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .site-header{position:fixed;z-index:50;inset:0 0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:77px;padding:0 4.6vw;color:#f0f0e9;mix-blend-mode:difference;pointer-events:none}
+    .site-header a,.site-header button{pointer-events:auto}
+    .brand{font-family:Oswald,"Arial Narrow",sans-serif;font-weight:560;letter-spacing:-.04em;font-size:22px;display:inline-flex;align-items:baseline;gap:14px;width:max-content}
+    .brand span{font-family:Arial,sans-serif;font-weight:400;font-size:9px;letter-spacing:.16em}
+    .header-edition{font-size:10px;font-weight:700;letter-spacing:.19em;white-space:nowrap}
+    .header-nav{display:flex;justify-content:flex-end;gap:30px;font-size:10px;letter-spacing:.14em;font-weight:700}
+    .header-nav a{transition:opacity .2s}
+    .header-nav a:hover{opacity:.55}
+    .story-scroll{height:205svh;position:relative}
+    .story-stage{position:sticky;top:0;height:100svh;min-height:620px;background:#131313;overflow:hidden;isolation:isolate}
+    .story-stage::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(to right,transparent 0,transparent calc(25% - 1px),var(--grid) calc(25% - 1px),var(--grid) 25%);opacity:.25;z-index:1}
+    .story-stage::after{content:"";position:absolute;pointer-events:none;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(255,255,255,.027),transparent 60%);z-index:0}
+    .side-index{position:absolute;left:4.6vw;top:23%;font-size:10px;letter-spacing:.15em;color:#aaa;display:flex;align-items:center;gap:14px;z-index:7}
+    .side-index::before{content:"";display:block;width:34px;height:1px;background:#888}
+    .large-title{position:absolute;left:4vw;top:28%;z-index:6;pointer-events:none;width:91%;transform-origin:left top;will-change:transform,opacity}
+    .large-title h1{margin:0;font-family:Oswald,"Arial Narrow",Impact,sans-serif;font-stretch:condensed;font-weight:560;font-size:clamp(115px,16.25vw,310px);line-height:.82;letter-spacing:-.072em;white-space:nowrap}
+    .large-title h1 span{display:block}
+    .large-title h1 span:last-child{margin-left:9.5vw;letter-spacing:-.065em}
+    .concept-copy{position:absolute;top:27.5%;right:5%;z-index:7;max-width:195px;font-family:Arial,sans-serif;font-size:11px;line-height:1.65;letter-spacing:.05em;color:#bbb}
+    .concept-copy strong{display:block;color:#fff;font-size:10px;letter-spacing:.16em;margin-bottom:10px}
+    .signature{position:absolute;z-index:7;left:7.3%;top:73%;transform:rotate(-7deg);width:30%;max-width:440px;color:#f2f1e9;pointer-events:none;opacity:.94}
+    .signature em{display:block;font:normal clamp(20px,2.2vw,36px)/.9 Miama,"Brush Script MT",cursive;letter-spacing:.01em}
+    .signature em+em{margin-left:12%}
+    .signature::after{content:"";display:block;width:64%;height:1px;background:rgba(255,255,255,.4);margin:23px 0 0 26%;transform:rotate(-5deg)}
+    .folio{position:absolute;bottom:5.6%;left:4.6%;z-index:7;display:flex;align-items:center;gap:13px;font-size:10px;letter-spacing:.14em;font-weight:700;white-space:nowrap}
+    .folio-arrow{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.45);font-size:18px;transition:transform .35s,background .35s}
+    .folio:hover .folio-arrow{transform:translateY(5px);background:rgba(255,255,255,.1)}
+    .cover-no{position:absolute;bottom:4.9%;right:4.6%;z-index:7;display:flex;align-items:baseline;gap:8px;font-size:10px;letter-spacing:.12em;color:#dfdfd9}
+    .cover-no strong{font-family:Oswald,sans-serif;font-size:48px;letter-spacing:-.045em;font-weight:300;line-height:1}
+    .project-window{position:absolute;z-index:4;top:65%;left:46%;width:50%;height:55%;overflow:hidden;background:#333;will-change:top,left,width,height;box-shadow:0 40px 80px rgba(0,0,0,.35)}
+    .project-window img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 31%;filter:grayscale(1) contrast(1.06);transform:scale(1.04);transition:filter .4s}
+    .project-window::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.08) 32%,rgba(0,0,0,.67));pointer-events:none}
+    .project-window__top{position:absolute;top:28px;left:36px;right:36px;z-index:2;display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:.16em}
+    .project-window__bottom{position:absolute;bottom:6.5%;left:5.3%;right:5%;z-index:2;opacity:0;transform:translateY(26px);transition:opacity .18s linear,transform .18s linear}
+    .project-window__bottom .overline{font-size:11px;letter-spacing:.18em;font-weight:700}
+    .project-window__bottom h2{font:520 clamp(84px,16vw,250px)/.9 Oswald,sans-serif;letter-spacing:-.055em;margin:20px 0 8px}
+    .project-window__bottom .project-detail{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-top:16px;border-top:1px solid rgba(255,255,255,.5);font-size:11px;letter-spacing:.08em}
+    .project-window__bottom .project-link{display:flex;align-items:center;gap:22px;font-weight:700;white-space:nowrap}
+    .project-link:hover .arrow{transform:translate(4px,-4px)}
+    .arrow{transition:transform .24s;font-size:22px;font-weight:400;line-height:1}
+    .scroll-meter{position:absolute;z-index:7;right:2.15%;top:28%;height:38%;width:1px;background:rgba(255,255,255,.22);pointer-events:none}
+    .scroll-meter b{display:block;width:1px;height:calc(var(--phase,0) * 100%);background:#fff}
+    .story-stage[data-phase="open"] .large-title,.story-stage[data-phase="open"] .side-index{pointer-events:none}
+    .story-stage[data-phase="open"] .project-window{z-index:9}
+    .story-stage[data-phase="open"] .folio{opacity:0}
+    .chapter{background:var(--paper);color:var(--ink);padding:116px 5vw 110px;position:relative;z-index:11}
+    .chapter-top{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #171717;padding-top:17px;font-size:10px;letter-spacing:.17em;font-weight:700}
+    .chapter-head{display:grid;grid-template-columns:1.35fr 1fr;gap:7vw;padding-top:92px;padding-bottom:116px;align-items:end}
+    .chapter-head h2{font:520 clamp(84px,9.35vw,180px)/.86 Oswald,sans-serif;letter-spacing:-.065em;margin:0;text-transform:uppercase}
+    .chapter-head h2 span{display:block}
+    .chapter-right{max-width:460px;margin-left:auto;padding-bottom:4px}
+    .chapter-right .small-rule{width:70px;height:1px;background:#131313;margin-bottom:26px}
+    .chapter-right p{font:normal clamp(17px,1.45vw,24px)/1.54 Prata,Georgia,serif;letter-spacing:-.024em;margin:0 0 45px}
+    .case-attributes{display:grid;grid-template-columns:1fr 1fr;gap:17px 34px}
+    .attribute{border-top:1px solid #bbbdb6;padding-top:10px;font-size:11px;line-height:1.6}
+    .attribute label{font-size:9px;letter-spacing:.12em;display:block;color:#777a76;margin-bottom:4px}
+    .case-spread{display:grid;grid-template-columns:2.05fr .95fr;gap:12px;margin:0}
+    .case-spread .visual{min-height:480px;background:#ddd;overflow:hidden;display:flex;align-items:center}
+    .case-spread .visual img{display:block;width:100%;height:100%;object-fit:cover;max-height:650px}
+    .case-spread figcaption{background:#151515;color:#f3f2ed;display:flex;flex-direction:column;justify-content:space-between;padding:30px}
+    .case-spread figcaption .top{font-size:10px;letter-spacing:.17em;line-height:1.4}
+    .case-spread figcaption .middle{font:410 clamp(39px,5.5vw,90px)/1 Oswald,sans-serif;letter-spacing:-.045em}
+    .case-spread figcaption .bottom{font:14px/1.65 Arial,sans-serif;max-width:290px;color:#d7d7d0}
+    .case-bottom{display:flex;justify-content:space-between;gap:25px;align-items:flex-end;padding-top:34px;border-bottom:1px solid #222;padding-bottom:54px}
+    .case-bottom p{font:15px/1.6 Arial,sans-serif;max-width:600px;margin:0}
+    .outline-link{display:flex;align-items:center;gap:27px;font-size:11px;letter-spacing:.08em;font-weight:700;border-bottom:1px solid #222;padding:0 0 8px}
+    .outline-link:hover .arrow{transform:translate(4px,-4px)}
+    .closing{background:#121212;color:#ededeb;min-height:45vh;padding:65px 5vw 48px;display:flex;flex-direction:column;justify-content:space-between;gap:65px}
+    .closing-label{font-size:10px;letter-spacing:.18em;color:#999}
+    .closing a{font:500 clamp(64px,10vw,155px)/.96 Oswald,sans-serif;letter-spacing:-.055em;width:max-content;max-width:100%}
+    .closing a:hover{color:#a8a8a3}
+    .closing-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid #4a4a48;padding-top:20px;font-size:10px;letter-spacing:.1em;color:#aaa}
+    .closing-foot a{font:inherit;letter-spacing:inherit}
+    .reveal{opacity:0;transform:translateY(36px);transition:opacity .75s ease,transform .85s cubic-bezier(.2,.65,.2,1)}
+    .reveal.is-visible{opacity:1;transform:translateY(0)}
+    @media(max-width:1100px){
+      .large-title{top:30%}.large-title h1{font-size:17vw}.concept-copy{top:20%;right:5%}
+      .signature{top:73%;width:35%}
+      .chapter-head{grid-template-columns:1fr;gap:40px}.chapter-right{margin-left:0}
+      .chapter-head h2{font-size:clamp(85px,12vw,142px)}.chapter-head{padding-bottom:75px}
+    }
+    @media(max-width:740px){
+      .site-header{height:66px;padding:0 5%;grid-template-columns:1fr auto;align-items:center}
+      .header-edition{display:none}.brand{font-size:19px;gap:8px}.brand span{font-size:8px}
+      .header-nav{gap:18px;font-size:9px}
+      .header-nav a:nth-child(2){display:none}
+      .story-scroll{height:185svh}
+      .story-stage{min-height:0;height:100svh}
+      .story-stage::before{background:repeating-linear-gradient(to right,transparent 0,transparent calc(33.3333% - 1px),var(--grid) calc(33.3333% - 1px),var(--grid) 33.3333%)}
+      .side-index{left:5%;top:19%;font-size:9px}
+      .concept-copy{right:5%;top:18%;max-width:150px;font-size:10px;text-align:right;line-height:1.5}
+      .concept-copy strong{font-size:9px;margin-bottom:6px}
+      .large-title{left:3.9%;top:31%;width:100%}
+      .large-title h1{font-size:25.1vw;line-height:.88;letter-spacing:-.074em}
+      .large-title h1 span:last-child{margin-left:2.3vw}
+      .signature{left:7.5%;top:58.5%;width:83%;max-width:410px;transform:rotate(-6deg)}
+      .signature em{font-size:clamp(21px,6.6vw,33px);line-height:1}
+      .signature::after{margin-top:7px}
+      .folio{left:5%;bottom:3%;font-size:8px;gap:8px}
+      .folio-arrow{height:31px;width:31px}
+      .cover-no{right:5%;bottom:3%;font-size:8px}.cover-no strong{font-size:30px}
+      .scroll-meter{right:2%;top:29%;height:28%}
+      .project-window{left:5%;top:69%;width:90%;height:48%}
+      .project-window__top{top:15px;left:18px;right:18px;font-size:8px}
+      .project-window__bottom{left:6%;right:6%;bottom:9%}
+      .project-window__bottom h2{font-size:clamp(68px,21vw,130px);margin:12px 0 15px}
+      .project-window__bottom .overline{font-size:9px}
+      .project-window__bottom .project-detail{font-size:9px;align-items:flex-start}
+      .project-window__bottom .project-detail span:first-child{max-width:170px;line-height:1.5}
+      .project-window__bottom .project-link{gap:7px}
+      .chapter{padding:68px 5% 68px}
+      .chapter-top{font-size:9px}
+      .chapter-head{padding-top:74px;padding-bottom:55px;gap:38px}
+      .chapter-head h2{font-size:clamp(67px,13.5vw,105px)}
+      .chapter-right p{font-size:19px;line-height:1.55;margin-bottom:36px}
+      .case-spread{display:flex;flex-direction:column;gap:0}
+      .case-spread .visual{min-height:260px}
+      .case-spread .visual img{max-height:none}
+      .case-spread figcaption{min-height:265px;padding:23px;gap:17px}
+      .case-spread figcaption .middle{font-size:54px}
+      .case-bottom{align-items:flex-start;flex-direction:column;padding-bottom:40px}
+      .case-bottom p{font-size:14px}
+      .closing{padding:50px 5% 30px;min-height:38vh}
+      .closing a{font-size:clamp(54px,14vw,95px)}
+      .closing-foot{font-size:9px}
+    }
+    @media(max-height:700px) and (min-width:741px){.large-title{top:25%}.large-title h1{font-size:min(14vw,210px)}.signature{top:76%}.concept-copy{top:23%}}
+
+    /* Mobile art direction v2: own composition, not desktop content squeezed into a phone. */
+    .mobile-kicker,.mobile-signature{display:none}
+    @media(max-width:740px){
+      .site-header{height:60px;padding:0 5.5%;grid-template-columns:1fr auto;mix-blend-mode:normal}
+      .brand{font-size:22px}.brand span{font-size:8px}
+      .header-nav{font-size:9px;gap:21px;letter-spacing:.13em}
+      .header-nav a:nth-child(2){display:none}
+      .header-nav a:last-child{display:inline-flex;gap:5px;align-items:center}
+      .story-stage{height:100svh;min-height:0}
+      .story-stage::before{opacity:.08;background:repeating-linear-gradient(to right,transparent 0,transparent calc(50% - 1px),rgba(255,255,255,.26) calc(50% - 1px),rgba(255,255,255,.26) 50%)}
+      .story-stage::after{background:radial-gradient(ellipse 75% 45% at 50% 28%,rgba(255,255,255,.028),transparent 90%)}
+      .side-index,.concept-copy,.signature{display:none}
+      .mobile-kicker{position:absolute;z-index:7;display:flex;left:5.5%;right:5.5%;top:clamp(104px,17.5svh,140px);justify-content:space-between;align-items:flex-start;gap:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.38);font-size:9px;line-height:1.55;letter-spacing:.11em;font-weight:600;color:#d0d0cb}
+      .mobile-kicker b{font-weight:400;color:#77776f}
+      .mobile-kicker span:last-child{text-align:right;max-width:43%;color:#a9a9a4}
+      .large-title{left:5%;top:clamp(172px,28svh,232px);width:94%;max-width:none}
+      .large-title h1{font-size:clamp(70px,22.9vw,109px);line-height:.85;letter-spacing:-.071em;font-weight:540}
+      .large-title h1 span:last-child{margin-left:0;letter-spacing:-.076em}
+      .mobile-signature{display:block;position:absolute;left:7.2%;top:clamp(350px,54.5svh,510px);width:min(83.5%,350px);z-index:7;opacity:.96;pointer-events:none;will-change:opacity}
+      .mobile-signature img{display:block;width:100%;height:auto;mix-blend-mode:screen;filter:contrast(1.14)}
+      .folio{left:5.5%;top:auto;bottom:21%;gap:11px;font-size:9px;letter-spacing:.11em;color:#deded9;z-index:7;align-items:center}
+      .folio-arrow{height:28px;width:28px;font-size:15px;border-color:#77776f}
+      .cover-no{right:5.5%;top:auto;bottom:21%;align-items:center;font-size:9px;letter-spacing:.1em;gap:6px;color:#bbb}
+      .cover-no strong{font-size:29px;line-height:1}
+      .project-window{left:0;top:82%;width:100%;height:55%;box-shadow:none;border-top:1px solid #666;z-index:4}
+      .project-window img{object-position:50% 67%;transform:scale(1.12);filter:grayscale(1) contrast(1.08) brightness(.68)}
+      .project-window::after{background:linear-gradient(180deg,rgba(0,0,0,.57),rgba(0,0,0,.10) 50%,rgba(0,0,0,.70))}
+      .project-window__top{left:5.5%;right:5.5%;top:13px;letter-spacing:.12em;font-size:9px;opacity:1}
+      .project-window__bottom{left:6%;right:6%;bottom:8%}
+      .project-window__bottom h2{font-size:clamp(70px,19vw,115px);line-height:.93}
+      .project-window__bottom .project-detail{font-size:9px}
+      .scroll-meter{display:none}
+    }
+    @media(max-width:740px) and (max-height:670px){
+      .mobile-kicker{top:clamp(94px,15.5svh,112px)}
+      .large-title{top:clamp(150px,26.5svh,184px)}
+      .large-title h1{font-size:clamp(67px,21.8vw,94px)}
+      .mobile-signature{top:53.5svh;width:min(78%,300px)}
+      .folio,.cover-no{bottom:22%}
+      .project-window{top:83%}
+    }
+    @media(max-width:370px){
+      .large-title h1{font-size:22.2vw}
+      .mobile-kicker{font-size:8px}
+      .folio{font-size:8px;gap:7px}
+      .cover-no{font-size:8px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}.story-scroll{height:110svh}.story-stage{position:relative}.reveal{opacity:1;transform:none;transition:none}.large-title,.project-window,.project-window__bottom{will-change:auto}.folio-arrow,.arrow{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <a class="sr-only" href="#case">Skip intro and go to case</a>
+  <header class="site-header">
+    <a href="../../" class="brand" aria-label="Open original Daniil Terekh portfolio">DT<span>®</span></a>
+    <span class="header-edition">PERSONAL PORTFOLIO / ISSUE 001</span>
+    <nav class="header-nav" aria-label="Navigation">
+      <a href="../../#experience/all">WORK</a>
+      <a href="../../#thinking">APPROACH</a>
+      <a href="../../#contact">CONTACT ↗</a>
+    </nav>
+  </header>
+  <main>
+    <section class="story-scroll" id="intro" aria-label="Daniil Terekh portfolio cover">
+      <div class="story-stage" id="stage">
+        <div class="side-index">INDEPENDENT DIGITAL DIRECTION</div>
+        <div class="mobile-kicker" aria-hidden="true">
+          <span>PERSONAL PORTFOLIO <b> / 01</b></span>
+          <span>DIGITAL DIRECTION<br>REAL ESTATE & GROWTH</span>
+        </div>
+        <div class="concept-copy"><strong>WHAT I DO /</strong>Strategy.<br>Acquisition.<br>Technology.<br>Connected to growth.</div>
+        <div class="large-title" id="name">
+          <h1><span>DANIIL</span><span>TEREKH.</span></h1>
+        </div>
+        <div class="signature" id="signature" aria-label="Every audience is a character. Every character has a story.">
+          <em>Every audience is a character.</em>
+          <em>Every character has a story.</em>
+        </div>
+        <div class="mobile-signature" id="mobileSignature" aria-label="Every audience is a character. Every character has a story."><img src="../../assets/6e32f4c0a949.webp" alt="" width="626" height="218" decoding="async"></div>
+        <a href="#case" class="folio" id="scrollPrompt"><span class="folio-arrow" aria-hidden="true">↓</span><span>SCROLL TO OPEN THE STORY</span></a>
+        <div class="cover-no" aria-hidden="true"><span>ISSUE</span><strong>01</strong></div>
+        <div class="project-window" id="project-window">
+          <img src="../../assets/companies/barnes-international-home.jpg" alt="BARNES International luxury real estate visual, from Daniil Terekh’s portfolio" loading="eager" fetchpriority="high">
+          <div class="project-window__top"><span>01 / SELECTED WORK</span><span>2025–2026</span></div>
+          <div class="project-window__bottom" id="project-caption">
+            <span class="overline">HEAD OF DIGITAL / REAL ESTATE</span>
+            <h2>BARNES.</h2>
+            <div class="project-detail">
+              <span>STRATEGY · ACQUISITION · DIGITAL SYSTEMS</span>
+              <a href="../../#experience/barnes" class="project-link">EXPLORE CASE <span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="scroll-meter" aria-hidden="true"><b></b></div>
+      </div>
+    </section>
+    <section class="chapter" id="case" aria-labelledby="chapter-title">
+      <div class="chapter-top"><span>01 / SELECTED WORK</span><span>THE STORY BEHIND THE WORK</span></div>
+      <div class="chapter-head">
+        <h2 id="chapter-title" class="reveal"><span>BEYOND</span><span>THE AD.</span></h2>
+        <div class="chapter-right reveal">
+          <div class="small-rule"></div>
+          <p>Great digital work is not a collection of campaigns. It is a connected system, from the first impression to the conversation with a client.</p>
+          <div class="case-attributes">
+            <div class="attribute"><label>CLIENT</label>BARNES International<br>Moscow team</div>
+            <div class="attribute"><label>ROLE</label>Head of Digital</div>
+            <div class="attribute"><label>FOCUS</label>Luxury real estate</div>
+            <div class="attribute"><label>DISCIPLINES</label>Strategy · Websites<br>Performance · Analytics</div>
+          </div>
+        </div>
+      </div>
+      <figure class="case-spread reveal">
+        <div class="visual"><img src="../../assets/companies/barnes-international-spread.png" alt="Real BARNES International portfolio visual" loading="lazy"></div>
+        <figcaption>
+          <span class="top">DANIIL TEREKH / PROJECT 01<br>THE EDITORIAL CASE STUDY</span>
+          <span class="middle">A CLEARER<br>WAY<br>FORWARD.</span>
+          <span class="bottom">A portfolio built around actual work, real decisions and the context behind them. Not another gallery of anonymous mockups.</span>
+        </figcaption>
+      </figure>
+      <div class="case-bottom">
+        <p>Concept preview: this is how the Hero can flow directly into the first case. The full case remains on the original portfolio until we approve this design direction.</p>
+        <a class="outline-link" href="../../#experience/barnes">VIEW THE REAL CASE <span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+    <section class="closing">
+      <span class="closing-label">DANIIL TEREKH / AN EDITORIAL PORTFOLIO</span>
+      <a href="../../#experience/all">MORE WORK <span aria-hidden="true">↗</span></a>
+      <div class="closing-foot"><span>DESIGN STUDY 01 / THE COVER STORY</span><a href="../../">BACK TO CURRENT SITE ↑</a></div>
+    </section>
+  </main>
+  <script>
+    (function () {
+      "use strict";
+      var scroller=document.getElementById("intro");
+      var stage=document.getElementById("stage");
+      var project=document.getElementById("project-window");
+      var name=document.getElementById("name");
+      var signature=document.getElementById("signature");
+      var mobileSignature=document.getElementById("mobileSignature");
+      var caption=document.getElementById("project-caption");
+      var prompt=document.getElementById("scrollPrompt");
+      var reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
+      var ticking=false;
+      function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
+      function lerp(a,b,t){return a+(b-a)*t}
+      function update(){
+        ticking=false;
+        if(reduced.matches){return}
+        var mobile=window.innerWidth<=740;
+        var total=Math.max(1,scroller.offsetHeight-window.innerHeight);
+        var p=clamp((window.scrollY-scroller.offsetTop)/total,0,1);
+        var eased=p*p*(3-2*p);
+        stage.style.setProperty("--phase",p.toFixed(3));
+        project.style.top=lerp(mobile?(window.innerHeight<=670?83:82):65,0,eased)+"%";
+        project.style.left=lerp(mobile?0:46,0,eased)+"%";
+        project.style.width=lerp(mobile?100:50,100,eased)+"%";
+        project.style.height=lerp(mobile?55:55,100,eased)+"%";
+        name.style.transform="translate3d(0,"+(-p*(mobile?75:115))+"px,0)";
+        name.style.opacity=String(clamp(1-p*1.65,0,1));
+        signature.style.opacity=String(clamp(1-p*2.7,0,1));
+        mobileSignature.style.opacity=String(clamp(1-p*2.8,0,1));
+        caption.style.opacity=String(clamp((p-.48)*3,0,1));
+        caption.style.transform="translateY("+((1-clamp((p-.48)*3,0,1))*26)+"px)";
+        prompt.style.opacity=String(clamp(1-p*3.5,0,1));
+        stage.dataset.phase=p>(mobile?0.26:0.8)?"open":"intro";
+      }
+      function schedule(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
+      if(!reduced.matches){window.addEventListener("scroll",schedule,{passive:true});window.addEventListener("resize",schedule,{passive:true});schedule()}
+      var observer;
+      if("IntersectionObserver" in window){
+        observer=new IntersectionObserver(function(items){items.forEach(function(item){if(item.isIntersecting){item.target.classList.add("is-visible");observer.unobserve(item.target)}})},{threshold:.12});
+        document.querySelectorAll(".reveal").forEach(function(element){observer.observe(element)});
+      }else{document.querySelectorAll(".reveal").forEach(function(element){element.classList.add("is-visible")})}
+      prompt.addEventListener("click",function(ev){if(!reduced.matches){ev.preventDefault();window.scrollTo({top:scroller.offsetTop+(scroller.offsetHeight-window.innerHeight)*.9,behavior:"smooth"})}});
+    })();
+  </script>
+</body>
+</html>
