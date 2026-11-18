@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#151615">
+<title>Five Hero Directions — Daniil Terekh</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden}
+body{background:#151615;color:#eeede7;font-family:Arial,Helvetica,sans-serif}
+button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}
+.toolbar{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 18px;border-bottom:1px solid #444;background:#151615;min-height:67px}
+.title{display:flex;flex-direction:column;flex:0 0 auto;gap:2px}
+.title b{font-size:12px;letter-spacing:.08em}.title small{font-size:9px;letter-spacing:.09em;color:#999}
+.tabs{display:flex;align-items:center;gap:4px;overflow-x:auto;min-width:0}
+.tabs button{white-space:nowrap;border:1px solid transparent;color:#aaa;background:transparent;min-height:38px;padding:8px 12px;font-size:10px;letter-spacing:.04em}
+.tabs button[aria-pressed=true]{border:1px solid #ddd;color:#151615;background:#eee}
+.action{font-size:10px;letter-spacing:.07em;border-bottom:1px solid #888;white-space:nowrap;padding-bottom:5px}
+.viewer{height:calc(100dvh - 67px);position:relative;background:#e9e6de}
+iframe{border:0;display:block;width:100%;height:100%;background:#151615}
+@media(max-width:900px){.toolbar{flex-wrap:wrap;padding:9px 12px;min-height:99px;gap:9px}
+ .tabs{order:3;width:100%}.tabs button{min-width:max-content;padding:7px 10px}
+ .viewer{height:calc(100dvh - 99px)}.action{margin-left:auto}}
+@media(max-width:420px){.tabs button{font-size:9px}.title b{font-size:11px}}
+</style></head>
+<body>
+<header class="toolbar">
+<div class="title"><b>DANIIL TEREKH / HERO STUDIES</b><small>ПЯТЬ НОВЫХ ВИЗУАЛЬНЫХ НАПРАВЛЕНИЙ</small></div>
+<nav class="tabs" aria-label="Сравнить варианты">
+<button type="button" data-index="0" aria-pressed="true">01 SPLIT</button>
+<button type="button" data-index="1" aria-pressed="false">02 GENTLE</button>
+<button type="button" data-index="2" aria-pressed="false">03 MODERNIST</button>
+<button type="button" data-index="3" aria-pressed="false">04 AUTHOR</button>
+<button type="button" data-index="4" aria-pressed="false">05 TYPE</button>
+</nav>
+<a class="action" id="full" href="../hero-v5-01-editorial-split/" target="_blank" rel="noopener">ОТКРЫТЬ ОТДЕЛЬНО ↗</a>
+</header>
+<main class="viewer"><iframe id="preview" title="Интерактивная версия Hero" loading="eager" src="../hero-v5-01-editorial-split/"></iframe></main>
+<script>
+const ids=["hero-v5-01-editorial-split","hero-v5-02-gentle-authority","hero-v5-03-new-modernist","hero-v5-04-authors-issue","hero-v5-05-type-statement"];
+const frame=document.getElementById("preview"),link=document.getElementById("full"),buttons=[...document.querySelectorAll(".tabs button")];
+function activate(i){i=Math.max(0,Math.min(ids.length-1,i));const url="../"+ids[i]+"/";frame.src=url;link.href=url;buttons.forEach((b,n)=>{b.setAttribute("aria-pressed",String(n===i))});history.replaceState(null,"","#"+(i+1));}
+buttons.forEach((b,i)=>b.addEventListener("click",()=>activate(i)));
+const initial=Number((location.hash||"").slice(1));if(initial>=1&&initial<=5)activate(initial-1);
+</script></body></html>

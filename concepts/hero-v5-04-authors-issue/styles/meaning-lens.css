@@ -1,0 +1,54 @@
+/* AE v02: a request becomes a customer question through one moving aperture. */
+@font-face{font-family:MeaningDisplay;src:url('../assets/fonts/Oswald-Variable.ttf') format('truetype');font-weight:200 700;font-display:swap}
+#mainPage #thinking[data-meaning-lens]{background:#080909;position:relative;min-height:0}
+#mainPage #thinking[data-meaning-lens] .thinking-sticky{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;justify-content:stretch;gap:10px;height:var(--scene-height);min-height:400px;padding:var(--chapter-top,32px) var(--page-gutter,5%) 24px;box-sizing:border-box;overflow:hidden;background:#080909}
+#mainPage #thinking[data-meaning-lens] .thinking-title{position:static;max-width:none;margin:0;font-size:var(--chapter-title);line-height:1.16;z-index:2;pointer-events:none}
+#thinking[data-meaning-lens] .meaning-visual{position:relative;inset:auto;width:100%;height:100%;min-height:0;max-height:none;aspect-ratio:auto;margin:0;overflow:hidden;isolation:isolate;--meaning-type:clamp(20px,4vw,64px);--meaning-copy-width:75%}
+.meaning-plane{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;text-align:center}
+.meaning-copy{width:var(--meaning-copy-width);display:flex;flex-direction:column;align-items:center}
+.meaning-eyebrow{font:clamp(9px,calc(var(--meaning-type)*.27),15px)/1.3 var(--sans,Arial,sans-serif);letter-spacing:.1em;color:#8e9ca8;margin:0 0 calc(var(--meaning-type)*.72)}
+.meaning-request{display:none}
+.meaning-request .meaning-copy>strong{display:block;font:500 calc(var(--meaning-type)*1.8)/1.17 MeaningDisplay,Impact,sans-serif;color:#f2f2ef}
+.meaning-request .meaning-copy>strong:last-child{font-size:calc(var(--meaning-type)*2.45)}
+.meaning-question .meaning-copy>span{display:block;white-space:nowrap;font:400 calc(var(--meaning-type)*.94)/1.2 MeaningDisplay,Impact,sans-serif;color:#c4cdd5}
+.meaning-question .meaning-copy>strong{display:block;white-space:nowrap;font:500 var(--meaning-type)/1.2 MeaningDisplay,Impact,sans-serif;color:#eff1f3;margin-top:calc(var(--meaning-type)*.26)}
+.meaning-question .meaning-copy>.meaning-bridge{font-size:calc(var(--meaning-type)*.68);margin-top:calc(var(--meaning-type)*.34)}
+.meaning-question .meaning-copy>.meaning-choice{font-size:calc(var(--meaning-type)*1.39);margin-top:calc(var(--meaning-type)*.30)}
+html:lang(en) .meaning-question .meaning-copy>strong:not(.meaning-choice){font-size:calc(var(--meaning-type)*.82)}
+.meaning-glass{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+.meaning-question{z-index:1}
+.meaning-refraction{z-index:2}
+.meaning-refraction .meaning-copy{transform:scale(1.07);filter:blur(.4px);opacity:.76}
+.meaning-footer{text-align:center;position:relative;min-height:36px;display:grid;place-items:center}
+.meaning-caption{margin:0;font:clamp(13px,1.2vw,19px)/1.5 var(--sans,Arial,sans-serif);color:#a5afb7;grid-area:1/1}
+.meaning-hint{display:none;margin:0;font:11px/1.5 var(--sans,Arial,sans-serif);letter-spacing:.04em;color:#7d878e;grid-area:1/1}
+.meaning-motion-control{position:absolute;right:0;bottom:0;border:1px solid #47515a;border-radius:3px;background:#080909;color:#bbc5cc;font:11px/1.3 var(--sans,Arial,sans-serif);padding:10px 12px;min-height:40px;cursor:pointer}
+.meaning-motion-control:focus-visible{outline:2px solid #e9f0f8;outline-offset:4px}
+.meaning-motion-control[hidden]{display:none}
+#thinking[data-meaning-ready] .meaning-request,#thinking[data-meaning-ready] .meaning-hint{display:grid}
+#thinking[data-meaning-ready] .meaning-caption{opacity:0}
+#thinking[data-meaning-ready] .meaning-question{opacity:0}
+#thinking:not([data-meaning-ready]) .meaning-question{border:1px solid #36424d;border-radius:50%;inset:3% 6%}
+#thinking[data-meaning-static="true"] .meaning-request,#thinking[data-meaning-static="true"] .meaning-hint{display:none}
+#thinking[data-meaning-static="true"] .meaning-question,#thinking[data-meaning-static="true"] .meaning-caption{opacity:1}
+@media(max-width:600px){
+ #mainPage #thinking[data-meaning-lens] .thinking-sticky{gap:4px;padding-inline:4%;padding-bottom:max(22px,env(safe-area-inset-bottom));min-height:380px}
+ .meaning-caption{max-width:270px}
+ .meaning-footer:has(.meaning-motion-control:not([hidden])){padding-bottom:44px}
+ .meaning-motion-control{right:50%;transform:translateX(50%);white-space:nowrap}
+ .meaning-eyebrow{letter-spacing:.06em}
+}
+@media(max-height:500px) and (min-width:600px){
+ #mainPage #thinking[data-meaning-lens] .thinking-sticky{padding-block:8px;min-height:260px;gap:0}
+ .meaning-footer{min-height:24px}.meaning-caption{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ #mainPage #thinking[data-meaning-static="true"]{min-height:0!important}
+ #thinking[data-meaning-static="true"] .thinking-sticky{position:relative;top:0!important}
+ #thinking[data-meaning-static="true"] .meaning-hint{display:none!important}
+}
+/* No JS/Canvas/masks: natural document height keeps every line reachable. */
+#mainPage #thinking[data-meaning-lens]:not([data-meaning-ready]) .thinking-sticky{height:auto;min-height:var(--scene-height);grid-template-rows:auto auto auto;position:relative;top:0}
+#thinking[data-meaning-lens]:not([data-meaning-ready]) .meaning-visual{height:auto;min-height:0;overflow:visible;display:grid;place-items:center;--meaning-type:clamp(18px,5.5vw,36px)}
+#thinking[data-meaning-lens]:not([data-meaning-ready]) .meaning-question{position:relative;inset:auto;width:min(100%,500px);min-height:340px;padding:44px 8px;box-sizing:border-box;margin:12px 0}
+#thinking[data-meaning-lens]:not([data-meaning-ready]) .meaning-copy{width:90%}

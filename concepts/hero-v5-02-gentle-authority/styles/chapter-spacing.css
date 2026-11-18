@@ -1,0 +1,29 @@
+/* Shared spacing owner. Art geometry, type scale and chapter navigation stay local. */
+#mainPage{--chapter-copy-gap:24px;--section-title-top:var(--chapter-top)}
+#mainPage :is(.edit-sticky,.skills-showcase,.proof-frame,.human-editorial-grid,.cycle-composition,.contact-composition){padding-top:var(--chapter-top);padding-inline:var(--page-gutter)}
+#mainPage .lens-orbit .thinking-title,#mainPage #services .services-heading{top:var(--chapter-top)}
+#mainPage #the-edit .edit-sticky{align-items:flex-start}
+#mainPage #the-edit .edit-layout{align-items:start;min-height:calc(var(--scene-height) - 2*var(--chapter-top))}
+#mainPage #the-edit .edit-art{align-self:stretch;height:auto;min-height:clamp(380px,67svh,650px)}
+@media(max-width:720px){#mainPage #the-edit .edit-art{min-height:clamp(240px,43svh,410px)}}
+@media(max-height:580px) and (min-width:600px){#mainPage #the-edit .edit-art{min-height:200px}}
+#mainPage #evidence .proof-frame{justify-content:flex-start}
+#mainPage #evidence .proof-layout{align-items:start}
+#mainPage #evidence .proof-copy{padding-top:0}
+#mainPage :is(.human-editorial-grid,.cycle-composition){align-items:start;align-content:start}
+#mainPage :is(.edit-explanation,.skills-subtitle,.proof-lead,.cycle-lead,.human-editorial-intro){margin-top:var(--chapter-copy-gap)}
+#mainPage #the-edit .edit-explanation{margin-top:var(--chapter-copy-gap)}
+@media(max-width:800px){
+ #mainPage{--chapter-top:32px;--chapter-copy-gap:20px}
+ /* Give the agency chapter the same title entry; its brand stays below the title. */
+ #mainPage #cycle .cycle-composition{row-gap:24px}
+ #mainPage #cycle .cycle-copy{display:contents}
+ #mainPage #cycle #cycle-title{grid-row:1}
+ #mainPage #cycle .cycle-brand{grid-row:2}
+ #mainPage #cycle .cycle-lead{grid-row:3;margin-top:0}
+ #mainPage #cycle .cycle-description{grid-row:4;margin-top:0}
+ #mainPage #cycle .cycle-project{grid-row:5;margin-top:0}
+}
+@media(max-height:580px) and (min-width:600px){
+ #mainPage{--chapter-top:24px;--chapter-copy-gap:16px;--chapter-title:clamp(34px,4.8vw,60px)}
+}

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"><meta content="dark" name="color-scheme">
+<!-- Apply the initial responsive class before CSS can paint the desktop layout. -->
+<script>document.documentElement.classList.toggle('mobile-actual',innerWidth<=720);</script>
+<script>(function(){
+ 'use strict';
+ const root=document.documentElement,key='dt-name-intro-v2';
+ if(!['','#home','#hero'].includes(location.hash)||document.hidden||matchMedia('(prefers-reduced-motion:reduce)').matches||navigator.connection?.saveData)return;
+ try{if(sessionStorage.getItem(key))return;sessionStorage.setItem(key,'1')}catch{}
+ root.dataset.preloader='loading';
+ const boot={background:[],deadline:0,done(){
+  if(root.dataset.preloader==='complete')return;
+  clearTimeout(boot.deadline);root.dataset.preloader='complete';
+  const overlay=document.getElementById('siteIntro');
+  for(const [node,inert] of boot.background)node.inert=inert;
+  if(overlay){const hadFocus=overlay.contains(document.activeElement);overlay.hidden=true;if(hadFocus){const title=document.getElementById('heroName');title?.setAttribute('tabindex','-1');title?.focus({preventScroll:true})}}
+  document.dispatchEvent(new Event('site:preloader-complete'));
+ }};
+ window.DTIntro=boot;
+ boot.deadline=setTimeout(boot.done,2200);
+})();
+</script>
+<style>.site-intro{display:none}html[data-preloader="loading"]{overflow:hidden}html[data-preloader="loading"] .site-intro{display:grid;position:fixed;inset:0;z-index:10000;background:#000}</style>
+<link href="styles/preloader.css?v=hero-name-intro-v106" rel="stylesheet">
+<script src="scripts/preloader.js?v=name-intro-v105" defer></script>
+<link rel="icon" type="image/webp" href="assets/76e3b5323863.webp">
+<link rel="preload" href="assets/Italiana-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<title>Daniil Terekh · Editorial Split · Hero Study</title>
+<meta content="Daniil Terekh. Digital direction, from strategy to launch. Websites, acquisition and connected systems. Project collaboration and digital leadership, based in Montenegro and working worldwide." name="description"><link href="styles/site.css?v=profile-contact-v68" rel="stylesheet"><link href="styles/refinements.css?v=profile-contact-v68" rel="stylesheet"><link href="styles/experience.css?v=case-images-v76" rel="stylesheet"><link href="styles/work-tablet.css?v=cycle-featured-v168" rel="stylesheet">
+<link rel="canonical" href="https://terekh-martketing.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Daniil Terekh — Digital Direction">
+<meta property="og:description" content="From strategy to launch. Websites, acquisition and connected systems. Work with me on a project or bring me into your team.">
+<meta property="og:url" content="https://terekh-martketing.com/">
+<meta property="og:image" content="https://terekh-martketing.com/assets/social-preview.jpg">
+<meta property="og:image:alt" content="Daniil Terekh — digital direction, from strategy to launch">
+<meta name="twitter:card" content="summary_large_image">
+<link href="styles/edit-scene.css?v=state-fit-v118" rel="stylesheet">
+<link href="styles/editorial.css?v=work-split-restored-v81" rel="stylesheet">
+<link href="styles/contact.css?v=portrait-contact-v112" rel="stylesheet">
+<link href="styles/header.css?v=burger-centered-v114" rel="stylesheet">
+<link href="styles/hero-spotlight.css?v=ambient-v3" rel="stylesheet">
+<link href="styles/visual-rhythm.css?v=h2-scale-v91" rel="stylesheet">
+<script src="scripts/hero-spotlight.js?v=ambient-v3" defer></script>
+<link href="styles/skills-monolith.css?v=h2-scale-v91" rel="stylesheet">
+<link href="styles/chapter-spacing.css?v=services-focus-v92" rel="stylesheet">
+<link href="styles/services-focus.css?v=service-background-v148" rel="stylesheet">
+<link href="styles/cycle-iwe.css?v=we-motion-control-v163" rel="stylesheet">
+<link href="styles/human-portrait.css?v=portrait-blend-v146" rel="stylesheet">
+<link href="styles/chapter-scroll.css?v=scene-rest-v113" rel="stylesheet">
+<link href="styles/viewport-fit.css?v=state-fit-v118" rel="stylesheet">
+<link href="styles/portfolio-polish.css?v=we-mobile-timing-v164" rel="stylesheet">
+<link rel="stylesheet" href="styles/meaning-lens.css?v=real-problem-v152">
+<link rel="stylesheet" href="styles/bottleneck.css?v=flow-motion-control-v160">
+<link rel="stylesheet" href="styles/visual-polish.css?v=cases-clean-v140">
+<link rel="stylesheet" href="styles/wide-layout.css?v=we-motion-control-v163">
+<link rel="stylesheet" href="styles/locales.css?v=case-context-v170"><link rel="alternate" hreflang="en" href="https://terekh-martketing.com/"><link rel="alternate" hreflang="ru" href="https://terekh-martketing.com/ru/"><link rel="alternate" hreflang="x-default" href="https://terekh-martketing.com/"><meta name="robots" content="noindex,nofollow"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"><link href="styles/hero-v5.css?v=1" rel="stylesheet"></head>
+<body>
+<section class="site-intro" id="siteIntro" hidden aria-label="Opening animation">
+<div class="site-intro__brand"><p class="site-intro__name" aria-hidden="true"><span>DANIIL</span><span>TEREKH</span></p><span class="site-intro__loader" aria-hidden="true"></span></div>
+<span class="sr-only" role="status">Opening Daniil Terekh’s portfolio.</span>
+<button class="site-intro__skip" id="introSkip" type="button">Skip intro</button>
+</section>
+<a class="skip-link" href="#mainPage">Skip to content</a>
+<header class="site-header" id="siteHeader">
+<div class="header-identity"><a class="header-name" href="#home" data-nav-target="home" aria-label="Daniil Terekh — Head of Marketing, home"><span>DANIIL TEREKH</span><span class="header-role">Head of Marketing</span></a><a class="language-switch" data-language-switch href="ru/" lang="ru" hreflang="ru" aria-label="Русская версия">RU</a></div>
+<button class="header-menu-toggle" id="headerMenuToggle" type="button" aria-expanded="false" aria-controls="headerNavigation" hidden><span>Menu</span><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M3 10h14" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h14" stroke="currentColor" stroke-width="1.5"/></svg></button>
+<nav class="header-navigation" id="headerNavigation" aria-label="Main navigation"><ul class="header-pages">
+<li><a href="#experience/all" data-nav-target="work" id="siteWorkLink">Work</a></li>
+<li><a href="services/" data-nav-target="services" id="servicesNavLink">Services</a></li>
+</ul><ul class="header-sections">
+<li><a href="#thinking" data-nav-target="thinking">Approach</a></li>
+<li><a href="#skills" data-nav-target="skills">Hard skills</a></li>
+<li><a href="#human" data-nav-target="human">About</a></li>
+</ul></nav>
+<a class="header-contact" href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect" id="contactBtn">Let’s talk <span aria-hidden="true"><svg class="ui-arrow ui-arrow-inline" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+</header>
+<div class="site ref-mode" data-gallery="1" id="site">
+<main id="mainPage" tabindex="-1" aria-label="Daniil Terekh — portfolio">
+
+<section class="hero hero--v0 hero-v5" id="hero" data-design="hero-v5-01-editorial-split">
+<div class="hero-spotlight" data-hero-spotlight aria-hidden="true">
+  <span class="hero-spotlight__pool hero-spotlight__light"></span>
+  <span class="hero-spotlight__beam hero-spotlight__light"></span>
+</div>
+<div class="hero-v5-media" aria-hidden="true">
+  <img src="assets/companies/barnes-international-home.jpg" alt="" loading="eager" decoding="async" fetchpriority="high" width="1120" height="1300">
+  <span class="hero-v5-media-index">BARNES / SELECTED WORK</span>
+</div>
+<div class="hero-head">
+  <p class="hero-v5-kicker">INDEPENDENT DIGITAL DIRECTION / 01</p>
+  <h1 class="hero-name" id="heroName"><span>DANIIL</span><span>TEREKH</span></h1>
+  <p class="hero-v5-statement">Eight years connecting strategy, digital experiences and growth in real estate.</p>
+  <div class="signature"><img alt="Every audience is a character. Every character has a story." src="assets/6e32f4c0a949.webp" width="626" height="218"><p class="hero-v5-tagline">Every audience is a character.<br>Every character has a story.</p></div>
+  <a class="hero-v5-cta" href="#work">EXPLORE THE WORK <span aria-hidden="true">↘</span></a>
+</div>
+
+<span class="hero-v5-marker" aria-hidden="true">EDITORIAL SPLIT / STUDY</span>
+<span class="hero-v5-corner" aria-hidden="true">DANIIL TEREKH © 2026</span>
+</section>
+
+<section aria-label="Selected work. Scroll to explore companies." class="scroll-experience work-tablet" id="work">
+<div class="story-sticky" id="storySticky">
+<div aria-hidden="true" class="story-ambient" id="storyAmbient"></div>
+<h2 class="work-sr-title" id="storyName">BARN ESTATE</h2>
+<div class="story-frame" id="storyFrame" role="group" aria-label="Selected company: BARN Estate">
+<div class="story-browser" aria-hidden="true"><span class="chrome-dots"><i></i><i></i><i></i></span></div>
+<div class="story-screens" id="storyScreens"></div>
+</div>
+<div class="story-controls" id="storyControls" role="group" aria-label="Choose a company">
+<button aria-label="Previous project" id="storyPrev" type="button"><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M12 21V3m-7 7 7-7 7 7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<button aria-label="Next project" id="storyNext" type="button"><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M12 3v18m-7-7 7 7 7-7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<div class="story-caption" id="storyCaption"><a class="work-archive-link" id="allBtn" href="#experience/all">VIEW ALL CASES <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+</div>
+</section>
+
+
+<section aria-labelledby="thinking-title" class="thinking-section lens-orbit" data-meaning-lens id="thinking">
+<div class="thinking-sticky">
+<h2 class="thinking-title" id="thinking-title">FIND THE REAL PROBLEM.</h2>
+<div class="meaning-visual" id="signal-visual" aria-hidden="true">
+<div class="meaning-plane meaning-request"><div class="meaning-copy">
+<p class="meaning-eyebrow">THE INITIAL REQUEST</p><strong>WE NEED A</strong><strong>WEBSITE.</strong>
+</div></div>
+<div class="meaning-plane meaning-question"><div class="meaning-copy">
+<p class="meaning-eyebrow">THE CUSTOMER'S VIEW</p><span>WHAT MUST</span><strong>YOUR CUSTOMER UNDERSTAND</strong><span class="meaning-bridge">TO</span><strong class="meaning-choice">CHOOSE YOU?</strong>
+</div></div>
+<canvas class="meaning-glass"></canvas>
+</div>
+<div class="meaning-footer"><p class="meaning-hint" aria-hidden="true">Scroll to change perspective</p><button class="meaning-motion-control" type="button" hidden aria-pressed="false" data-enable="Enable animation" data-disable="Disable animation">Enable animation</button></div>
+<p class="sr-only">The initial request: we need a website. The question behind it: what must your customer understand to choose you?</p>
+</div></section>
+
+<section id="the-edit" data-bottleneck aria-labelledby="edit-title">
+<div class="edit-sticky bottleneck-sticky">
+<div class="bottleneck-heading"><h2 id="edit-title">Find what holds the result back.</h2><button type="button" hidden class="bottleneck-motion" data-pause="Disable animation" data-play="Enable animation" aria-pressed="false">Enable animation</button></div>
+<div class="bottleneck-visual"><canvas class="bottleneck-canvas" aria-hidden="true"></canvas>
+<ol class="bottleneck-stages"><li><small>01</small><span class="bottleneck-stage-name">ACQUISITION</span></li><li><small>02</small><span class="bottleneck-stage-name">OFFER</span></li><li><small>03</small><span class="bottleneck-stage-name">ENQUIRY</span></li><li><small>04</small><span class="bottleneck-stage-name">SALE</span></li></ol>
+<div class="bottleneck-annotation" aria-hidden="true"><span class="constraint">UNCLEAR VALUE</span><span class="resolved">PRIORITY / CLARIFY THE VALUE</span></div></div>
+<div class="bottleneck-footer" hidden><p hidden class="bottleneck-caption" aria-live="polite">Focus effort where it helps the whole system.</p>
+<div hidden><span data-bottleneck-copy>People keep moving. One constraint slows them down.</span><span data-bottleneck-copy>Find the stage that holds the whole journey back.</span><span data-bottleneck-copy>Clarify the value. Open the way forward.</span></div>
+<div class="bottleneck-controls" role="group" aria-label="Explore the decision process"><button type="button" hidden data-bottleneck-stage="0" aria-pressed="true">OBSERVE</button><button type="button" hidden data-bottleneck-stage="1" aria-pressed="false">DIAGNOSE</button><button type="button" hidden data-bottleneck-stage="2" aria-pressed="false">IMPROVE</button></div></div>
+</div></section>
+
+<section aria-labelledby="skills-heading" class="skills-lab" data-variant="5" id="skills">
+<div class="skills-showcase">
+<h2 id="skills-heading">HARD SKILLS.</h2>
+<div class="skills-picker"><label for="skills-picker">Choose a skill</label><select id="skills-picker"><option value="0">Digital strategy</option></select></div>
+<div class="skills-content">
+<aside class="skills-detail">
+<h3 id="skills-detail-name" tabindex="-1">Digital strategy</h3>
+<section class="skills-solution" id="skills-solution" tabindex="0" aria-label="Selected skill explanation" aria-live="polite" aria-atomic="true">
+<section class="skills-leaf"><h4>THE CHALLENGE</h4><p id="skills-solution-challenge">Digital activity has no clear priorities.</p></section>
+<section class="skills-leaf"><h4>MY APPROACH</h4><p id="skills-solution-approach">Connect business goals, audiences and channels.</p></section>
+<section class="skills-leaf"><h4>YOU GET</h4><p id="skills-solution-deliverable">A prioritised digital roadmap.</p></section>
+</section>
+<div class="skills-card-controls"><div class="skills-pagination" id="skills-pagination" role="group" aria-label="Explanation cards">
+<button type="button" aria-label="Show challenge" aria-current="true"><span></span></button>
+<button type="button" aria-label="Show approach" aria-current="false"><span></span></button>
+<button type="button" aria-label="Show result" aria-current="false"><span></span></button>
+</div>
+<div class="skills-card-arrows" role="group" aria-label="Browse explanation cards">
+<button id="skills-card-prev" type="button" hidden disabled aria-label="Previous explanation card" aria-controls="skills-solution"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M19 12H5m6-6-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<button id="skills-card-next" type="button" hidden aria-label="Next explanation card" aria-controls="skills-solution"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div></div>
+<div class="skills-related"><p>Works with</p><div id="skills-related" role="group" aria-label="Related skills"></div></div>
+</aside>
+<div class="skills-scene">
+<button class="skills-overview" id="skills-overview" type="button" hidden aria-label="Return to all six skill directions"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M19 12H5m6-6-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>All skills</button>
+<div aria-label="Skill monolith: choose a cube" class="skills-stage" id="skills-stage" role="group">
+<div class="skills-field" id="skills-field"><div class="skills-sockets" id="skills-sockets"></div><svg aria-hidden="true" class="skills-connections" id="skills-connections" viewBox="0 0 800 700"></svg></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="human-title" class="human-section human-editorial has-portrait" id="human">
+<div class="human-editorial-grid">
+<figure class="human-editorial-portrait"><img src="assets/daniil-terekh-portrait-dark-v102.webp" alt="Daniil Terekh" width="1122" height="1402" loading="lazy" decoding="async"></figure>
+
+<div class="human-editorial-copy">
+<h2 id="human-title"><span>STILL</span> <span>CURIOUS.</span></h2>
+<p class="human-editorial-intro">I lead digital marketing for premium real estate, with eight years of experience connecting strategy, acquisition and sales.</p>
+<p class="human-editorial-background">Based in Montenegro, working worldwide. I’ve managed campaigns across Europe, Russia, the US, the Gulf and Asia, with budgets up to $1,800 a day.</p>
+<div class="human-editorial-columns">
+<div class="human-editorial-column"><h3>WORK</h3><ul><li><a href="#experience/barnes">BARNES <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5"/></svg></a><span>Head of Digital · Moscow team</span></li><li><a href="#cycle">CYCLE <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5"/></svg></a><span>Agency Director</span></li></ul></div>
+<div class="human-editorial-column human-education"><h3>EDUCATION</h3><ul><li><strong>Business planning &amp; marketing</strong><span>St Petersburg University</span><span>2023</span></li></ul>
+<details class="human-courses">
+<summary><span>Courses &amp; certifications<small>9 entries · 2023–2024</small></span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 12h14" stroke="currentColor" stroke-width="1.5"/><path d="M12 5v14" stroke="currentColor" stroke-width="1.5"/></svg></summary>
+<div class="human-course-groups">
+<section class="human-course-group" aria-labelledby="human-course-yandex"><h4 id="human-course-yandex">Yandex <span>2024</span></h4><ul><li>Yandex Direct certification · basic &amp; advanced</li><li>Yandex Metrica certification</li></ul></section>
+<section class="human-course-group" aria-labelledby="human-course-spbu-2024"><h4 id="human-course-spbu-2024">St Petersburg University <span>2024</span></h4><ul><li>UX/UI design: usability &amp; interactive systems testing</li><li>Artistic website design</li><li>Brand management in the digital economy</li></ul></section>
+<section class="human-course-group" aria-labelledby="human-course-skillbox"><h4 id="human-course-skillbox">Skillbox <span>2023</span></h4><ul><li>SEO</li><li>SEO PRO</li><li>Web analytics</li></ul></section>
+<section class="human-course-group" aria-labelledby="human-course-spbu-2023"><h4 id="human-course-spbu-2023">St Petersburg University <span>2023</span></h4><ul><li>Digital marketing in e-commerce · professional development</li></ul></section>
+</div>
+</details>
+</div>
+<div class="human-editorial-column"><h3>LIFE</h3><ul><li>Yoga</li><li>Cooking</li><li>Learning languages</li></ul></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="cycle" class="cycle-section cycle-iwe" aria-labelledby="cycle-title">
+<div class="cycle-composition">
+<div class="cycle-intro"><h2 id="cycle-title">I LEAD.<br>WE DELIVER.</h2><button class="cycle-motion" type="button" hidden aria-pressed="false" data-play="Enable animation" data-pause="Disable animation">Enable animation</button><p class="cycle-lead">The right team. <br>One direction.</p><p class="cycle-description">I bring together the specialists your project needs — and stay responsible for direction, decisions and delivery.</p><a class="cycle-project" href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect" data-contact-topic="A bigger project with CYCLE">DISCUSS YOUR PROJECT <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="cycle-type-scene" role="img" aria-label="I becomes the spine of E as W unfolds alongside it: personal direction grows into a team. Daniil Terekh leads direction and accountability; CYCLE brings design, development and marketing.">
+<div class="cycle-letters" aria-hidden="true"><svg viewBox="0 0 600 400" class="cycle-letter-art"><g class="iwe-w"><path class="iwe-letter-w" d="M110.06818181818181 330.0 80.0 50.0H134.72727272727272L150.1590909090909 226.75L165.9090909090909 50.0H218.09090909090907L233.04545454545456 226.75L248.0 50.0H303.3636363636364L272.8181818181818 330.0H205.6818181818182L191.6818181818182 195.25L178.3181818181818 330.0Z"/></g><g class="iwe-e"><rect class="iwe-bar iwe-top" x="380" y="50" width="154" height="44"/><rect class="iwe-bar iwe-middle" x="380" y="168" width="131" height="44"/><rect class="iwe-bar iwe-bottom" x="380" y="286" width="154" height="44"/></g><rect class="iwe-spine" x="270" y="50" width="44" height="280"/></svg></div>
+<div class="cycle-signatures" aria-hidden="true"><div class="cycle-person"><strong>DANIIL TEREKH</strong><span>Direction. Decisions. Accountability.</span></div><div class="cycle-team"><svg class="cycle-iwe-logo" viewBox="300 410 945 165"><image href="assets/55ea4e5a2767.webp" width="1536" height="1024"/></svg><span>Design. Development. Marketing.</span></div></div>
+</div></div></section>
+
+<section id="services" class="services-negative" aria-labelledby="services-title">
+<div class="services-negative-stage">
+<div class="services-white-field" aria-hidden="true"></div>
+<h2 class="services-heading" id="services-title">HOW CAN I HELP?</h2>
+<div class="services-type" aria-label="Choose a service direction" role="group"><button class="service-direction" id="service-tab-strategy" type="button" aria-expanded="false" aria-controls="service-panel-strategy" data-service="strategy">STRATEGY</button><button class="service-direction" id="service-tab-websites" type="button" aria-expanded="false" aria-controls="service-panel-websites" data-service="websites">WEBSITES</button><button class="service-direction" id="service-tab-marketing" type="button" aria-expanded="false" aria-controls="service-panel-marketing" data-service="marketing">GROWTH</button><button class="service-direction" id="service-tab-creative" type="button" aria-expanded="false" aria-controls="service-panel-creative" data-service="creative">CREATIVE</button><button class="service-direction" id="service-tab-systems" type="button" aria-expanded="false" aria-controls="service-panel-systems" data-service="systems">SYSTEMS</button><button class="service-direction" id="service-tab-leadership" type="button" aria-expanded="false" aria-controls="service-panel-leadership" data-service="leadership">LEADERSHIP</button></div>
+<div class="services-panel-area"><section class="service-panel" id="service-panel-strategy" aria-labelledby="service-tab-strategy" hidden>
+<h3>Make the next move count.</h3><p>Before you invest in another channel, website or campaign, we define the problem, the audience and the next move.</p><div class="service-groups"><div class="service-group"><h4>Where to focus</h4><ul><li>Audience needs and buying decisions</li><li>Your offer, positioning and market context</li><li>What slows the customer journey</li></ul></div><div class="service-group"><h4>What you get</h4><ul><li>A prioritised action plan</li><li>A clear brief for the next project</li><li>Measures for deciding what to test</li></ul></div></div>
+<div class="service-price"><span>From <strong>$500</strong></span><small>per project</small></div><div class="service-actions"><a class="service-project" href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect" data-contact-topic="Project enquiry — Strategy &amp; consulting">FIND THE NEXT MOVE <span aria-hidden="true"><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="service-all-link" href="services/" aria-label="View all services and pricing">ALL SERVICES <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<p class="service-team">I lead the direction and stay close to delivery. For larger projects, I bring in my team at <a href="#cycle">CYCLE <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>.</p>
+</section><section class="service-panel" id="service-panel-websites" aria-labelledby="service-tab-websites" hidden>
+<h3>Turn attention into a clear next step.</h3><p>A website should make your offer easy to understand and your business easy to contact. I connect the story, the interface and the build.</p><div class="service-groups"><div class="service-group"><h4>What we create</h4><ul><li>Landing pages, brand sites and catalogues</li><li>Mobile journeys from first visit to enquiry</li><li>Forms, e-commerce and integrations</li></ul></div><div class="service-group"><h4>What you get</h4><ul><li>Clear structure and persuasive page content</li><li>A designed and developed website</li><li>Launch checks and a practical handover</li></ul></div></div>
+<div class="service-price"><span>From <strong>$1,500</strong></span><small>per project</small></div><div class="service-actions"><a class="service-project" href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect" data-contact-topic="Project enquiry — Websites &amp; UX/UI">PLAN YOUR WEBSITE <span aria-hidden="true"><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="service-all-link" href="services/" aria-label="View all services and pricing">ALL SERVICES <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<p class="service-team">I lead the direction and stay close to delivery. For larger projects, I bring in my team at <a href="#cycle">CYCLE <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>.</p>
+</section><section class="service-panel" id="service-panel-marketing" aria-labelledby="service-tab-marketing" hidden>
+<h3>Give the right audience a reason to act.</h3><p>If campaigns bring visits but weak enquiries, I look at the whole path: audience, offer, creative and landing page.</p><div class="service-groups"><div class="service-group"><h4>The work</h4><ul><li>Audit campaigns and conversion tracking</li><li>Test messages, audiences and landing pages</li><li>Paid campaigns, SEO and local visibility</li></ul></div><div class="service-group"><h4>What you can see</h4><ul><li>A focused campaign and testing plan</li><li>Reporting on enquiries and lead quality</li><li>Clear decisions on what to change next</li></ul></div></div>
+<div class="service-price"><span>From <strong>$750</strong></span><small>per month · ad spend excluded</small></div><div class="service-actions"><a class="service-project" href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect" data-contact-topic="Project enquiry — Advertising &amp; growth">DISCUSS YOUR GROWTH <span aria-hidden="true"><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="service-all-link" href="services/" aria-label="View all services and pricing">ALL SERVICES <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<p class="service-team">I lead the direction and stay close to delivery. For larger projects, I bring in my team at <a href="#cycle">CYCLE <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>.</p>
+</section><section class="service-panel" id="service-panel-creative" aria-labelledby="service-tab-creative" hidden>
+<h3>Give your brand a voice people recognise.</h3><p>From a campaign idea to the last touchpoint, I give the message and visual direction one clear thread.</p><div class="service-groups"><div class="service-group"><h4>Shape the idea</h4><ul><li>Campaign concepts and art direction</li><li>Website, advertising and email copy</li><li>Visuals, presentations and sales materials</li></ul></div><div class="service-group"><h4>Carry it through</h4><ul><li>Adaptations for the channels you use</li><li>Video scripts, editing and motion</li><li>AI visuals and 3D where they serve the idea</li></ul></div></div>
+<div class="service-price"><span>From <strong>$300</strong></span><small>per project</small></div><div class="service-actions"><a class="service-project" href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect" data-contact-topic="Project enquiry — Creative &amp; content">SHAPE YOUR CAMPAIGN <span aria-hidden="true"><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="service-all-link" href="services/" aria-label="View all services and pricing">ALL SERVICES <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<p class="service-team">I lead the direction and stay close to delivery. For larger projects, I bring in my team at <a href="#cycle">CYCLE <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>.</p>
+</section><section class="service-panel" id="service-panel-systems" aria-labelledby="service-tab-systems" hidden>
+<h3>Know where your enquiries go.</h3><p>When data and follow-up live in different places, opportunities get lost. I connect measurement, CRM and workflows so your team can see what happens next.</p><div class="service-groups"><div class="service-group"><h4>See the journey</h4><ul><li>Tracking from first visit to enquiry</li><li>Analytics audits and dependable reports</li><li>CRM and call-tracking attribution</li></ul></div><div class="service-group"><h4>Keep work moving</h4><ul><li>Lead routing and follow-up flows</li><li>Email, API and workflow connections</li><li>Automation with clear rules and handover</li></ul></div></div>
+<div class="service-price"><span>From <strong>$500</strong></span><small>per project</small></div><div class="service-actions"><a class="service-project" href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect" data-contact-topic="Project enquiry — Analytics &amp; automation">CONNECT YOUR SYSTEMS <span aria-hidden="true"><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="service-all-link" href="services/" aria-label="View all services and pricing">ALL SERVICES <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<p class="service-team">I lead the direction and stay close to delivery. For larger projects, I bring in my team at <a href="#cycle">CYCLE <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>.</p>
+</section><section class="service-panel" id="service-panel-leadership" aria-labelledby="service-tab-leadership" hidden>
+<h3>One direction. Clear ownership.</h3><p>When marketing, design and development pull in different directions, I bring the priorities, people and delivery into one working plan.</p><div class="service-groups"><div class="service-group"><h4>The mandate</h4><ul><li>External digital direction</li><li>Project leadership from brief to launch</li><li>Team and contractor coordination</li></ul></div><div class="service-group"><h4>The working rhythm</h4><ul><li>Clear responsibilities and decision points</li><li>Budget, timeline and quality oversight</li><li>Regular reviews and next-step priorities</li></ul></div></div>
+<div class="service-price"><span>From <strong>$2,000</strong></span><small>per month</small></div><div class="service-actions"><a class="service-project" href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect" data-contact-topic="Project enquiry — Digital leadership">DISCUSS THE MANDATE <span aria-hidden="true"><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="service-all-link" href="services/" aria-label="View all services and pricing">ALL SERVICES <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<p class="service-team">I lead the direction and stay close to delivery. For larger projects, I bring in my team at <a href="#cycle">CYCLE <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>.</p>
+</section><section class="service-panel service-panel-role" id="service-panel-team" aria-labelledby="service-tab-team" hidden>
+<h3>Give your team a shared direction.</h3><p>For a long-term role, I connect strategy to daily delivery and give teams a shared direction across marketing, design and technology.</p><div class="service-groups"><div class="service-group"><h4>What I take on</h4><ul><li>Digital and marketing leadership</li><li>Priorities, roadmaps and delivery</li><li>Coordination across teams and partners</li></ul></div><div class="service-group"><h4>What we agree</h4><ul><li>Mandate and decision-making scope</li><li>Resources and measures of progress</li><li>Working format and compensation</li></ul></div></div>
+<div class="service-price"><span>From <strong>$50,000</strong></span><small>per year · annual compensation</small></div>
+<div class="service-actions"><a class="service-project" href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect" data-contact-topic="Team role enquiry">LET’S TALK ABOUT THE ROLE <span aria-hidden="true"><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="service-all-link" href="services/" aria-label="View all services and pricing">ALL SERVICES <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+</section></div>
+<button class="service-role-card" id="service-tab-team" type="button" data-service="team" aria-controls="service-panel-team" aria-expanded="false"><span class="service-role-title"><span class="service-role-label">I CAN JOIN <br>YOUR TEAM</span><span aria-hidden="true"><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><small>From <strong>$50,000</strong> / year</small></button>
+<button type="button" class="services-close" aria-label="Close service details" hidden><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="m5 5 14 14M19 5 5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+</div></section>
+<section aria-labelledby="contact-title" class="contact-section" id="contact">
+<div class="contact-shell"><div class="contact-composition">
+
+<div class="contact-center"><h2 id="contact-title"><span>WHAT’S YOUR</span><span>STORY?</span></h2>
+<svg aria-hidden="true" class="contact-underline" viewbox="0 0 650 25"><path d="M4 18 C100 -2 480 0 640 12 C648 14 628 16 612 14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.7"></path></svg>
+<div class="contact-signature"><svg aria-label="Let’s make it matter." role="img" viewbox="0 0 597 87" xmlns="http://www.w3.org/2000/svg"><title>Let’s make it matter.</title><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M38 5 C20 18 5 51 4 67 C3 74 11 69 19 65 L45 59" transform="translate(8,0)"></path><path d="M0 61 C24 51 23 41 15 45 C3 51 3 68 13 67 C20 67 26 61 30 57" transform="translate(48,0)"></path><path d="M30 15 C19 33 8 61 13 66 C17 70 26 62 29 58 M4 43 L33 39" transform="translate(74,0)"></path><path d="M10 21 L4 31" transform="translate(98,0)"></path><path d="M29 44 C23 39 10 50 14 55 C16 58 28 57 23 63 C18 71 4 70 4 65 C4 62 12 62 16 63" transform="translate(108,0)"></path><path d="M0 63 C8 50 18 38 14 48 L6 67 C15 51 31 38 27 49 L19 66 C33 48 45 40 41 52 C37 64 37 68 47 62 L54 57" transform="translate(161,0)"></path><path d="M27 47 C16 38 6 51 5 60 C4 72 20 62 28 45 C19 62 20 70 34 58" transform="translate(211,0)"></path><path d="M2 67 C19 24 41 -8 31 9 C19 28 8 59 8 59 C17 51 35 39 28 46 L17 55 C23 68 30 67 38 58" transform="translate(242,0)"></path><path d="M0 61 C24 51 23 41 15 45 C3 51 3 68 13 67 C20 67 26 61 30 57" transform="translate(273,0)"></path><path d="M7 48 C2 60 2 68 9 65 L24 57 M16 31 L17 29" transform="translate(323,0)"></path><path d="M30 15 C19 33 8 61 13 66 C17 70 26 62 29 58 M4 43 L33 39" transform="translate(343,0)"></path><path d="M0 63 C8 50 18 38 14 48 L6 67 C15 51 31 38 27 49 L19 66 C33 48 45 40 41 52 C37 64 37 68 47 62 L54 57" transform="translate(391,0)"></path><path d="M27 47 C16 38 6 51 5 60 C4 72 20 62 28 45 C19 62 20 70 34 58" transform="translate(441,0)"></path><path d="M30 15 C19 33 8 61 13 66 C17 70 26 62 29 58 M4 43 L33 39" transform="translate(472,0)"></path><path d="M30 15 C19 33 8 61 13 66 C17 70 26 62 29 58 M4 43 L33 39" transform="translate(496,0)"></path><path d="M0 61 C24 51 23 41 15 45 C3 51 3 68 13 67 C20 67 26 61 30 57" transform="translate(520,0)"></path><path d="M0 64 C11 49 17 36 11 47 C8 54 21 41 26 45 C31 49 27 56 37 55" transform="translate(546,0)"></path><path d="M5 64 L6 63" transform="translate(577,0)"></path></g></svg>
+</div>
+<p class="contact-context">A project to shape. A team to join.<br>Tell me what you want to change.</p><div class="contact-intents">
+<a id="contact-cta" href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect" data-contact-topic="Project collaboration"><span>Discuss a project <i aria-hidden="true"><svg class="ui-arrow ui-arrow-inline" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></i></span><small>Share the goal, what exists and your timing.</small></a>
+<a id="contact-role" href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect" data-contact-topic="Digital leadership role"><span>Talk about a role <i aria-hidden="true"><svg class="ui-arrow ui-arrow-inline" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></i></span><small>Share the team, the challenge and the scope.</small></a>
+</div><nav class="contact-messengers" aria-label="Message Daniil">
+<a class="contact-messenger" id="contact-direct-whatsapp" href="https://wa.me/79936107310" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp: +7 993 610 73 10 (opens in a new tab)"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+</svg><span>WhatsApp</span><small>+7 993 610 73 10</small></a>
+<a class="contact-messenger" id="contact-direct-telegram" href="https://t.me/daniilterekh" target="_blank" rel="noopener noreferrer" aria-label="Telegram: @daniilterekh (opens in a new tab)"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+</svg><span>Telegram</span><small>@daniilterekh</small></a>
+<button class="contact-messenger" id="contact-direct-wechat" type="button" data-contact-open data-contact-channel="wechat" aria-haspopup="dialog" aria-controls="connect" aria-label="WeChat: +382 69 722 229, show contact details"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wechat" viewBox="0 0 16 16">
+  <path d="M11.176 14.429c-2.665 0-4.826-1.8-4.826-4.018 0-2.22 2.159-4.02 4.824-4.02S16 8.191 16 10.411c0 1.21-.65 2.301-1.666 3.036a.32.32 0 0 0-.12.366l.218.81a.6.6 0 0 1 .029.117.166.166 0 0 1-.162.162.2.2 0 0 1-.092-.03l-1.057-.61a.5.5 0 0 0-.256-.074.5.5 0 0 0-.142.021 5.7 5.7 0 0 1-1.576.22M9.064 9.542a.647.647 0 1 0 .557-1 .645.645 0 0 0-.646.647.6.6 0 0 0 .09.353Zm3.232.001a.646.646 0 1 0 .546-1 .645.645 0 0 0-.644.644.63.63 0 0 0 .098.356"/>
+  <path d="M0 6.826c0 1.455.781 2.765 2.001 3.656a.385.385 0 0 1 .143.439l-.161.6-.1.373a.5.5 0 0 0-.032.14.19.19 0 0 0 .193.193q.06 0 .111-.029l1.268-.733a.6.6 0 0 1 .308-.088q.088 0 .171.025a6.8 6.8 0 0 0 1.625.26 4.5 4.5 0 0 1-.177-1.251c0-2.936 2.785-5.02 5.824-5.02l.15.002C10.587 3.429 8.392 2 5.796 2 2.596 2 0 4.16 0 6.826m4.632-1.555a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0m3.875 0a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0"/>
+</svg><span>WeChat</span><small>+382 69 722 229</small></button>
+</nav>
+<div class="contact-address"><a href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect">All ways to connect <span aria-hidden="true"><svg class="ui-arrow ui-arrow-inline" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
+</div>
+
+</div></div>
+</section>
+<footer aria-label="Daniil Terekh — footer" class="site-footer" id="site-footer"><div class="footer-shell"><div class="footer-grid">
+<div class="footer-identity"><h2>DANIIL<br>TEREKH</h2></div>
+<nav class="footer-personal-links" aria-label="Footer navigation"><a href="#experience/all">Work &amp; experience</a><a href="services/">Services &amp; pricing</a><a href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect">Get in touch</a><a href="https://github.com/daniilterekh-prog" rel="noopener noreferrer" target="_blank">GitHub</a></nav>
+<div class="footer-cycle"><a class="footer-cycle-control" href="#cycle" aria-label="Explore CYCLE"><svg aria-label="CYCLE" class="footer-cycle-logo" role="img" viewBox="300 410 945 165"><image href="assets/55ea4e5a2767.webp" width="1536" height="1024"/></svg></a><p class="footer-global">Working worldwide</p></div>
+</div><div class="footer-bottom"><span>© 2026 Daniil Terekh</span><button id="footer-top" type="button">Back to top <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M12 20V4m-7 7 7-7 7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div></footer>
+
+</main>
+<main aria-label="Case study" class="detail" id="detailPage" hidden>
+<div class="detail-top"><button class="detail-back" id="backBtn" type="button"><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M20 12H4m7-7-7 7 7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>BACK TO SELECTED WORK</span></button><a class="case-breadcrumb" href="#experience/all">ALL WORK <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="case-header"><h1 id="detailName">BARNES</h1><p id="detailHeadline"></p></div>
+<div class="detail-meta" id="detailRole"></div>
+<ul class="case-highlights" id="detailHighlights"></ul>
+<div class="detail-screen" id="detailVisual"><img alt="" id="detailImage" src="assets/companies/barnes-home.jpg" width="1440" height="900" loading="lazy" decoding="async"></div>
+<section class="case-film" id="case-film" aria-labelledby="case-film-title" hidden>
+<div class="case-film-heading"><h2 class="sr-only" id="case-film-title">BARNES IN MOTION.</h2><p>Brand film · 2:11</p></div>
+<div class="case-film-player">
+<video id="case-film-video" controls playsinline preload="none" width="1920" height="1080" aria-label="BARNES brand film" tabindex="0" hidden></video>
+<button class="case-film-start" id="case-film-start" type="button" aria-label="Play brand film: BARNES">
+<img src="assets/barnes-brand-film-poster.webp" alt="" width="1400" height="599" loading="lazy" decoding="async">
+<span class="case-film-play"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="m8 5 11 7-11 7V5Z"/></svg><span>PLAY BRAND FILM</span></span>
+</button>
+</div>
+<p class="case-film-status" id="case-film-status" role="status"></p>
+<a class="case-film-original" id="case-film-original" href="https://barn-estate.ru/upload/barnes.mp4" target="_blank" rel="noopener noreferrer" hidden>Open original video</a>
+</section>
+<p class="case-visual-note" id="caseVisualNote"></p>
+<div class="case-opening"><p id="detailDesc"></p></div>
+<div class="case-facts" id="case-facts"></div>
+<section class="case-collaboration"><h2>Working together.</h2><p id="caseCollaboration"></p></section>
+<a class="detail-link" href="https://barn-estate.ru/" id="detailExternal" rel="noopener noreferrer" target="_blank">COMPANY WEBSITE <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<div class="case-conversation"><p>Bring this thinking<br>to your next challenge.</p><a href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect">DISCUSS A PROJECT OR ROLE <span aria-hidden="true"><svg class="ui-arrow ui-arrow-inline" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
+<div class="case-bottom"><a class="case-breadcrumb" href="#experience/all"><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M20 12H4m7-7-7 7 7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> ALL WORK &amp; EXPERIENCE</a><a class="case-next" id="caseNext" href="#experience/mk-elit"><span><small>CONTINUE EXPLORING</small><span id="caseNextName"></span></span><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+</main>
+<main aria-label="All work and experience" class="detail" id="allPage" hidden>
+<div class="detail-top"><button class="detail-back" id="backAllBtn" type="button"><svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M20 12H4m7-7-7 7 7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> BACK TO SELECTED WORK</button><a class="detail-home-name" href="#home">Daniil Terekh</a></div>
+<h1>CASES &amp;<br>EXPERIENCE.</h1>
+<div class="archive-intro"><p>Different businesses. Connected thinking.<br>A closer look at the work, the role and the people behind it.</p><a href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect">LET’S TALK <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div role="group" aria-label="Filter cases by discipline" class="archive-filters" id="archive-filters"></div><p class="archive-count" id="archive-count" role="status" aria-live="polite"></p>
+<section class="archive-group" id="featuredGroup"><h2>Selected cases.</h2><div class="archive-grid" id="allList"></div></section>
+<section class="archive-group" id="moreGroup"><h2>More work.</h2><div class="experience-rows" id="moreList"></div></section>
+<div class="archive-end"><p>Have a task that needs<br>a connected approach?</p><a class="experience-contact" href="#connect" data-contact-open aria-haspopup="dialog" aria-controls="connect">TELL ME ABOUT IT <svg class="ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+</main>
+</div>
+<dialog id="connect" class="connect-dialog" aria-labelledby="connect-title" aria-describedby="connect-description">
+<div class="connect-top"><span>DANIIL TEREKH / CONTACT</span><button id="connect-close" class="connect-close" type="button" aria-label="Close contact options"><span>Close</span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.5"/></svg></button></div>
+<div class="connect-content"><div class="connect-intro"><img class="connect-portrait" src="assets/daniil-terekh-portrait-dark-v102.webp" alt="Daniil Terekh" width="1122" height="1402" loading="lazy" decoding="async"><div class="connect-intro-copy"><h2 id="connect-title">LET’S CONNECT.</h2><p id="connect-description" class="connect-description">A project to shape. A role to discuss. Start a conversation.</p><p id="connect-context" class="connect-context" hidden></p></div></div>
+<div class="connect-methods" role="group" aria-label="Contact methods">
+<a class="connect-method connect-method-live" id="connect-whatsapp" href="https://wa.me/79936107310" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp: +7 993 610 73 10 (opens in a new tab)"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+</svg><span>WhatsApp</span><small>Open chat</small></a>
+<a class="connect-method connect-method-live" id="connect-telegram" href="https://t.me/daniilterekh" target="_blank" rel="noopener noreferrer" aria-label="Telegram: @daniilterekh (opens in a new tab)"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+</svg><span>Telegram</span><small>Open chat</small></a>
+<a class="connect-method connect-method-live" id="connect-email" href="mailto:daniilterekh@gmail.com"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+</svg><span>Email</span><small>Write to me</small></a>
+<button class="connect-method connect-method-live" id="connect-callback" type="button" data-connect-panel aria-expanded="false" aria-controls="callback-panel"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-inbound" viewBox="0 0 16 16">
+  <path d="M15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0m-12.2 1.182a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+</svg><span>Callback</span><small>Arrange a call</small></button>
+<button class="connect-method connect-method-live" id="connect-wechat" type="button" data-connect-panel aria-expanded="false" aria-controls="wechat-panel"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wechat" viewBox="0 0 16 16">
+  <path d="M11.176 14.429c-2.665 0-4.826-1.8-4.826-4.018 0-2.22 2.159-4.02 4.824-4.02S16 8.191 16 10.411c0 1.21-.65 2.301-1.666 3.036a.32.32 0 0 0-.12.366l.218.81a.6.6 0 0 1 .029.117.166.166 0 0 1-.162.162.2.2 0 0 1-.092-.03l-1.057-.61a.5.5 0 0 0-.256-.074.5.5 0 0 0-.142.021 5.7 5.7 0 0 1-1.576.22M9.064 9.542a.647.647 0 1 0 .557-1 .645.645 0 0 0-.646.647.6.6 0 0 0 .09.353Zm3.232.001a.646.646 0 1 0 .546-1 .645.645 0 0 0-.644.644.63.63 0 0 0 .098.356"/>
+  <path d="M0 6.826c0 1.455.781 2.765 2.001 3.656a.385.385 0 0 1 .143.439l-.161.6-.1.373a.5.5 0 0 0-.032.14.19.19 0 0 0 .193.193q.06 0 .111-.029l1.268-.733a.6.6 0 0 1 .308-.088q.088 0 .171.025a6.8 6.8 0 0 0 1.625.26 4.5 4.5 0 0 1-.177-1.251c0-2.936 2.785-5.02 5.824-5.02l.15.002C10.587 3.429 8.392 2 5.796 2 2.596 2 0 4.16 0 6.826m4.632-1.555a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0m3.875 0a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0"/>
+</svg><span>WeChat</span><small>Add by phone</small></button>
+</div>
+<section id="callback-panel" class="connect-panel" aria-labelledby="callback-title" hidden>
+<h3 id="callback-title">Request a call.</h3>
+<p class="connect-panel-description">Add your number and choose where to open your request. We can then arrange a time to talk.</p>
+<form id="callback-form" action="https://t.me/daniilterekh" method="get" target="_blank" rel="noopener noreferrer" novalidate>
+<label for="callback-phone">Your phone number <span>(required)</span></label>
+<input id="callback-phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40" required placeholder="+44 7700 900123" aria-describedby="callback-hint callback-error">
+<p id="callback-hint" class="connect-field-hint">Include your country code. Spaces and brackets are fine.</p>
+<p id="callback-error" class="connect-field-error" role="alert"></p>
+<div class="callback-channel-row"><label for="callback-channel">Open your request in</label>
+<select id="callback-channel"><option value="telegram">Telegram</option><option value="whatsapp">WhatsApp</option><option value="email">Email</option></select></div>
+<input id="callback-text" type="hidden" name="text" value="">
+<button class="connect-action" id="callback-submit" type="submit" aria-label="Continue in Telegram (opens in a new tab)"><span id="callback-submit-label">Continue in Telegram</span> <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<p class="connect-field-hint callback-send-hint">This opens a draft. Send it in your chosen app when you’re ready.</p>
+</form>
+</section>
+<section id="wechat-panel" class="connect-panel" aria-labelledby="wechat-title" hidden>
+<h3 id="wechat-title">Find me on WeChat.</h3>
+<p class="connect-panel-description">Copy my number and search for it in WeChat’s Add Contacts.</p>
+<div class="connect-number-row"><span id="wechat-number" dir="ltr">+382 69 722 229</span><button id="copy-wechat" class="connect-action" type="button">Copy number</button></div>
+<p id="wechat-status" class="connect-copy-status" role="status"></p>
+</section>
+<div class="connect-email-address"><a href="mailto:daniilterekh@gmail.com">daniilterekh@gmail.com</a><button id="copy-email" type="button" aria-label="Copy email address">Copy email</button></div><p id="copy-status" class="connect-copy-status" role="status"></p></div>
+</dialog>
+<script src="scripts/viewport.js?v=wide-layout-v159"></script><script src="scripts/experience-data.js?v=case-context-v170"></script><script src="scripts/case-film.js?v=profile-contact-v68"></script><script src="scripts/work-catalog.js?v=portfolio-v114"></script><script src="scripts/work.js?v=case-context-v170"></script><script src="scripts/lens-orbit.js?v=edit-three-v125"></script><script src="scripts/meaning-lens.js?v=wide-layout-v159"></script><script src="scripts/bottleneck.js?v=flow-motion-control-v160"></script><script src="scripts/thinking.js?v=cases-clean-v140"></script><script src="scripts/skills-data.js?v=mobile-skill-notes-v17"></script><script src="scripts/skills.js?v=skills-card-arrows-v162"></script><script src="scripts/services.js?v=services-focus-v92"></script><script src="scripts/contact.js?v=messenger-icons-v109"></script><script src="scripts/scroll-stops.js?v=real-problem-v152"></script><script src="scripts/header-motion.js?v=burger-centered-v114"></script><script src="scripts/cycle-iwe.js?v=we-mobile-timing-v164"></script><script src="scripts/navigation.js?v=unified-work-v167"></script><script src="scripts/language-switch.js?v=case-context-v170" defer></script></body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://terekh-martketing.com/sitemap.xml
