@@ -141,7 +141,7 @@
   margin:15px 0 0;max-width:320px;
   font-size:13px;line-height:1.44;
  }
- html.mobile-actual body .site.ref-mode #hero.hero-v5 .hero-v5-tagline{
+ html.mobile-actual body .site.ref-mode #hero.hero-v5 .signature .hero-v5-tagline{
   font-size:clamp(17px,4.25vw,22px)!important;line-height:1.24!important;
   max-width:320px;
  }
@@ -192,7 +192,7 @@
  letter-spacing:0;max-width:280px;margin-top:30px;
 }
 #hero.hero-v5 .signature{margin-top:20px!important;max-width:390px!important}
-#hero.hero-v5 .hero-v5-tagline{
+#hero.hero-v5 .signature .hero-v5-tagline{
  font:400 clamp(15px,1.4vw,20px)/1.4 var(--v5-sans)!important;
  font-style:normal!important;color:#62645e!important;
  letter-spacing:-.045em!important;
@@ -228,7 +228,7 @@
   margin-top:16px;letter-spacing:0
  }
  html.mobile-actual body .site.ref-mode #hero.hero-v5 .signature{margin-top:14px!important}
- html.mobile-actual body .site.ref-mode #hero.hero-v5 .hero-v5-tagline{
+ html.mobile-actual body .site.ref-mode #hero.hero-v5 .signature .hero-v5-tagline{
   font:400 14px/1.5 var(--v5-sans)!important;font-style:normal!important;max-width:290px
  }
  html.mobile-actual body .site.ref-mode #hero.hero-v5 .hero-v5-cta{
